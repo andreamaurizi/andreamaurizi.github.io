@@ -22,7 +22,7 @@
 
     $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-
+    $pg_connect = __DIR__ . "/database.php";
     print_r($_POST);
     var_dump($password_hash);
 
