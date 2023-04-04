@@ -226,6 +226,7 @@
 
 .main{
     background-color: #141414;
+    background-size: cover;  /* Aggiunto da Andrea */
 }
 
 .main__container {
@@ -239,7 +240,7 @@
     z-index:1;
     width: 100%;
     max-width: 1300px;
-    padding: 0 50px;
+    padding: 0; /* Modificato da Andrea*/
 } 
 
 

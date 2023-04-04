@@ -1,4 +1,9 @@
 <?php
+#DB CONTEXT
+# host=rebuild-signup-db.cir4pq5hlxfs.eu-north-1.rds.amazonaws.com
+# dbname = ReBuild_db
+# username = postgres
+# password = rebuild1
 
 $host = "rebuild-signup-db.cir4pq5hlxfs.eu-north-1.rds.amazonaws.com";
 $dbname = "ReBuild_db";
