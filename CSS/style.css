@@ -211,9 +211,9 @@
         transform: translateY(-8px) rotate(-45deg);
     }
 
-    #main__img{
-        height: 30%;
-        width: 30%; 
+    #logo{
+        max-width: 20px;
+        max-height: 20px;
     }
 }
 
