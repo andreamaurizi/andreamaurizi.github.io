@@ -226,7 +226,6 @@
 
 .main{
     background-color: #141414;
-    background-size: cover;  /* Aggiunto da Andrea */
 }
 
 .main__container {
@@ -323,12 +322,6 @@
     height: 80%;
     width: 80%; 
 }
-
-body {
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-  }
   
 
 /*Mobile Responsive */
