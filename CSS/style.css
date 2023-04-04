@@ -30,7 +30,10 @@
     padding: 0 50px;
 }
 
-
+#logo__{
+    width: 10px;
+    height: 10px;
+}
 
 #navbar__logo{
     background-color: #ff8177;
