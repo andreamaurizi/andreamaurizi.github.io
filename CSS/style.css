@@ -214,6 +214,11 @@
         transform: translateY(-8px) rotate(-45deg);
     }
 
+    #logo{
+        width: 10%;
+        height: 10%;
+    }
+
 }
 
 
@@ -221,6 +226,7 @@
 
 .main{
     background-color: #141414;
+    background-size: cover;  /* Aggiunto da Andrea */
 }
 
 .main__container {
@@ -318,6 +324,12 @@
     width: 80%; 
 }
 
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
 
 /*Mobile Responsive */
 
