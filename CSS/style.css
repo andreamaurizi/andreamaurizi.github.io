@@ -214,6 +214,11 @@
         transform: translateY(-8px) rotate(-45deg);
     }
 
+    #logo{
+        width: 50%;
+        height: 50%;
+    }
+
 }
 
 
