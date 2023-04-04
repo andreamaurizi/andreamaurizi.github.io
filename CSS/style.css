@@ -235,7 +235,7 @@
     z-index:1;
     width: 100%;
     max-width: 1300px;
-    padding: 0; /* Modificato da Andrea*/
+    padding: 0 50px;
 } 
 
 
@@ -319,6 +319,12 @@
     width: 80%; 
 }
 
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
 
 /*Mobile Responsive */
 
