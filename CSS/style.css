@@ -315,8 +315,8 @@
 }
 
 #main__img{
-    height: 80%;
-    width: 80%; 
+    height: 50%;
+    width: 50%; 
 }
   
 
@@ -352,9 +352,7 @@
         font-size: 1.5rem;
     }
 
-    #main__img{
-        width: 50%;
-    }
+    
 }
 
 
