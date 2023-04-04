@@ -221,6 +221,7 @@
 
 .main{
     background-color: #141414;
+    background-size: cover;
 }
 
 .main__container {
