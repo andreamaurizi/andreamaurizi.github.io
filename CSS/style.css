@@ -554,6 +554,76 @@
 }
 
 
+.footer__link--items h2 {
+    margin-bottom: 16px;
+}
 
 
+.footer__link--items > h2 {
+    color: #fff;
+
+}
+
+
+.footer__link--items a{
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+
+
+.footer__link--items a:hover{
+    color: #fff;
+    transition: 0.3s ease-out;
+}
+
+/* Social Icons CSS*/
+
+.social__icon--link{
+    color:#fff;
+    font-size: 24px;
+}
+
+
+.social__media{
+    max-width: 1000px;
+    width: 100%;
+}
+
+
+.social__media--wrap{
+    display: flex;
+    justify-content: space;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto 0 auto;
+}
+
+
+.social__icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 240px;
+}
+
+
+.social__logo{
+    color: #fff;
+    justify-self: flex-start;
+    margin-left:20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+
+
+.website__right{
+    color: #fff;
+}
 
