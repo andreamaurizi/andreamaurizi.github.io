@@ -15,9 +15,17 @@ $conn_string = "host=$host port=$port dbname=$dbname user=$username password=$pa
 
 
 $pg_connect = pg_connect($conn_string)
-            or die("Failed to create connection to database: ". pg_last_error(). "<br/>");
-print("Successfully created connection to database.<br/>");
+            or die("Errore di connessione: ". pg_last_error(). "<br/>");
+
 
 return $pg_connect;
 
 ?>
+
+
+
+CREATE TABLE user (
+    id INT IDENTITY(1, 1) PRIMARY KEY,
+    email varchar(255) UNIQUE,
+    password_hash varchar(255) NOT NULL,
+);
