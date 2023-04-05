@@ -30,7 +30,10 @@
     padding: 0 50px;
 }
 
-
+#logo__{
+    width: 10px;
+    height: 10px;
+}
 
 #navbar__logo{
     background-color: #ff8177;
@@ -55,9 +58,6 @@
     margin-right: 0.5rem;
 }
 
-.fa-gem{
-    margin-right: 0.5rem;
-}
 
 
 .navbar__menu{
@@ -215,10 +215,9 @@
     }
 
     #logo{
-        width: 10%;
-        height: 10%;
+        max-width: 50px;
+        max-height: 50px;
     }
-
 }
 
 
@@ -226,7 +225,6 @@
 
 .main{
     background-color: #141414;
-    background-size: cover;  /* Aggiunto da Andrea */
 }
 
 .main__container {
@@ -305,6 +303,7 @@
     height: 100%;
     background: #4837ff;
     transition: all 0.35s;
+    border-radius: 4px;
 }
 
 .main__btn:hover{
@@ -323,12 +322,6 @@
     height: 80%;
     width: 80%; 
 }
-
-body {
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-  }
   
 
 /*Mobile Responsive */
@@ -364,8 +357,155 @@ body {
     }
 
     #main__img{
-        width: 50%;
+        max-width: 350px;
+    }
+   
+
+}
+
+@media screen and (max-width: 480px){
+    .main__content h1{
+        font-size: 2rem;
+        margin-top: 3rem;
+    }
+
+    .main__content h2{
+        font-size: 2rem;
+    }
+
+    .main__content p{
+        margin-top: 2rem;
+        font-size: 1.5rem;
+    }
+    .main__btn{
+        padding: 12px 36px;
+        margin: 2.5rem 0;
+    }
+
+    #main__img{
+        max-width: 351px;
     }
 }
 
 
+
+/* Services Section CSS */
+.services {
+    background: #141414;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.services h1 {
+    background-color: #ff8277;
+    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%,
+    #ff8c7f 21%, #ff9185 52%,#cf556c 78%,#b12a5b);
+    background-size: 100%;
+    margin-bottom: 5rem;
+    font-size: 2.5rem;  
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color:transparent;
+}
+
+
+
+.services__container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.services__card{
+    margin: 1rem;
+    height: 525px;
+    width: 400px;
+    border-radius: 4px;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0%
+        ,rgba(17,17,17,0.6) 100%)
+    , url(/Immaggini_Tutorial_Youtube/pexels-francesco-ungaro-1670977.jpg);
+    background-size: cover;
+    position: relative;
+    color: black;
+    max-width: 470px;
+    max-height: 470px;
+}
+
+
+.services__card:nth-child(2) {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0%
+        ,rgba(17,17,17,0.6) 100%)
+    , url(/Immaggini_Tutorial_Youtube/pic4.jpg);
+    color: #fff;
+}
+
+.services h2 {
+    position: absolute;
+    top: 350px;
+    left: 30px;
+}
+
+
+.services__card p {
+    position: absolute;
+    top: 400px;
+    left: 30px;
+}
+
+.services__card button {
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: #f77062;
+    position: absolute;
+    top: 440px;
+    left: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.services__card:hover {
+    transform: scale(1.075);
+    transition: 0.2s ease-in;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 960px){
+    .services{
+        height: 1600px;
+    }
+
+    .services h1{
+        font-size: 2rem;
+        margin-top: 12rem;
+
+    }
+}
+
+
+@media screen and (max-width:480px) {
+    .services{
+        height: 1400px;
+    }
+
+    .services h1 {
+        font-size: 1.2rem;
+    }
+
+    .services__card{
+        width: 300px;
+    }
+}
+
+
+/* Footer CSS
