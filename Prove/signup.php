@@ -24,9 +24,8 @@
 
     $pg_connect = require __DIR__ ."/database.php";
     $query1= "INSERT INTO user(email, password_hash) VALUES ('$email', '$password_hash')"; 
-    var_dump($query1);
-    $result1 = $pg_connect->pg_($query1);
-    $result1->execute();
+    $result1 = pg_query_params($pg_connect, $query1);
+    
     print_r($_POST);
     var_dump($password_hash);
 

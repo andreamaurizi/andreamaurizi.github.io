@@ -22,10 +22,3 @@ return $pg_connect;
 
 ?>
 
-
-
-CREATE TABLE user (
-    id INT IDENTITY(1, 1) PRIMARY KEY,
-    email varchar(255) UNIQUE,
-    password_hash varchar(255) NOT NULL,
-);
