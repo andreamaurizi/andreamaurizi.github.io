@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login & Registration</title>
+  <link rel="stylesheet" href="../CSS/Sign.css">
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="website icon" type="png" href="../Img/lego-icon-12.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar-->
+  <nav class="navbar">
+    <div class="navbar__container">
+        <a href="/" id="navbar__logo"><img src="../Img/lego-icon-12.ico" id="logo" > ReBuild</a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span><span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+            <li class="navbar__item">
+                <a href="/tech.html" class="navbar__links">Tech</a>
+            </li>
+            <li class="navbar__item">
+                <a href="/" class="navbar__links">Products</a>
+            </li>
+            <li class="navbar__btn">
+                <a href="../index.html" class="button">Home</a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+  
+  <!-- Form Login Registration-->
+  <div class="container">
+      <input type="checkbox" id="check">
+      <div class="login form">
+        <header>Login</header>
+        <form action="login.php" method="post">
+          <input type="text" placeholder="Enter your email">
+          <input type="password" placeholder="Enter your password">
+          <a href="#">Forgot password?</a>
+          <input type="submit" class="button" value="Login">
+        </form>
+        <div class="signup">
+          <span class="signup">Don't have an account?
+          <label for="check">Signup</label>
+          </span>
+        </div>
+      </div>
+      <div class="registration form">
+        <header>Signup</header>
+        <form action="signup.php" method="post">
+          <input type="text" placeholder="Enter your email">
+          <input type="password" placeholder="Create a password">
+          <input type="password" placeholder="Confirm your password">
+          <input type="submit" class="button" value="Signup">
+        </form>
+        <div class="signup">
+          <span class="signup">Already have an account?
+          <label for="check">Login</label>
+          </span>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <script src="../Script/app.js"></script>
+
+
+</body>
+</html>
