@@ -85,6 +85,15 @@ body{
 
 
 
+@media screen and (max-width: 768px) { 
+     .container{
+         width: 10%;
+     }
+}
+<<<<<<< HEAD
+
+
+
 @media screen and (max-width: 768px) {
   .container {
     max-width: 350px; 
@@ -231,4 +240,16 @@ body{
       padding: 10px;
       width: 100%;
   }
+=======
+@media screen and (max-widht: 480px){
+     .container{
+         width: 10%;
+     }
+}
+
+@media screen and (max-width: 960px) { 
+     .container{
+         width: 10%;
+     }
+>>>>>>> 0a99a9f2b6c4615b815814a49161a7de19e33981
 }
