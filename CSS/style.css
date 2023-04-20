@@ -107,7 +107,7 @@
 }
 
 @media screen and (max-width: 960px){  /*Media query*/
-    /*.navbar__container{
+    .navbar__container{
         display: flex;
         justify-content: space-between;
         height: 80px;
@@ -115,7 +115,7 @@
         width: 100%;
         width: 5354px;
         padding: 0;
-    }*/
+    }
 
     .navbar__menu{ 
         display: grid; /* Dispongo i collegamenti nella navbar in colonna tramite una grid */
