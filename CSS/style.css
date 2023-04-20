@@ -3,43 +3,39 @@
     margin: 0;
     padding: 0;
     font-family: 'Kumbh Sans',sans-serif;
+    
 }
 
-
-
+/* Navbar Css*/
 .navbar {
     background: #141414;
     height: 80px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
+    align-items: center; 
+    font-size: 1.2rem; 
+    position: sticky;  top: 0; /* Mantengo la navbar ancora all'inizio della pagina */
+    z-index: 999; /* Ordine di impilamento piu grande possibile */
 }
 
 .navbar__container{
-    display: flex;
-    justify-content: space-between;
+    display: flex; /* Definisco un contenitore di tipo Flexbox*/
+    justify-content: space-between; /* Mantengo lo spazio tra 'ReBuild' e la parte dei collegamenti alle altre pagine*/
     height: 80px;
-    z-index: 1;
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 50px;
+    z-index: 1; 
+    width: 100%; /* Largghezza della navbar*/
+    max-width: 1300px; /* Larghezza massima*/ 
+    padding-left: 20px; /* Spazio tra il margine sinistro della pagina e logo */
+    padding-right: 20px; /* Spazio tra il margine destro della pagina e collegamenti nella navbar */
 }
 
 
 #navbar__logo{
     background-color: #ff8177;
     background-image: linear-gradient(to top,#ff0844 0%,#ffb199 100%);
-    background-size: 100%;
-    background-clip: border-box; /*Non so se va messo questo*/
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
+    background-clip: border-box;
+    -webkit-background-clip: text; /* Il colore impostato su background-image è impostato solo sul testo */
     -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -49,23 +45,22 @@
 }
 
 #logo{
-    width: 50%;
-    height: 50%;
-    margin-right: 0.5rem;
+    max-width: 50%; 
+    max-height: 50%;
+    margin-right: 0.5rem; /* Distanza tra Logo e 'Rebuild' */
 }
 
 
 
 .navbar__menu{
-    display: flex;
+    display: flex; /* Definisco un contenitore di tipo Flexbox* per i collegamenti nella navbar */
     align-items: center;
     list-style: none;
-    text-align: center ;
 }
 
 
 .navbar__item{
-    height: 80px;
+    height: 80px; /* L'altezza di ogni elemento della lista */
 }
 
 
@@ -75,7 +70,7 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    padding: 0 1rem;
+    padding: 1rem; /*spazio tra gli elementi della lista */
     height: 100%;
 }
 
@@ -91,23 +86,19 @@
 
 .button{
     display: flex;
-    justify-content: center;
-    align-items: center;
     text-decoration: none;
     padding: 10px 20px;
     height: 100%;
     width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 4px;
+    border-radius: 100px; 
     background: #f77062;
     color: #fff;
 }
 
 
 .button:hover{
-    background: blue;
-    transition: all 0.3s ease;
+    background: blue; /* Quando il mouse va sul bottone sign up esso diventa blu */
+    transition: all 0.3s ease; /*Per diventare blu ci mette 0.3 sec */
 }
 
 .navbar__links:hover{
@@ -115,33 +106,33 @@
     transition: all 0.3s ease;
 }
 
-@media screen and (max-width: 960px){
-    .navbar__container{
+@media screen and (max-width: 960px){  /*Media query*/
+    /*.navbar__container{
         display: flex;
         justify-content: space-between;
         height: 80px;
-        z-index: 1;
+        z-index: -1;
         width: 100%;
-        max-width: 1300px;
+        width: 5354px;
         padding: 0;
-    }
+    }*/
 
-    .navbar__menu{
-        display: grid;
+    .navbar__menu{ 
+        display: grid; /* Dispongo i collegamenti nella navbar in colonna tramite una grid */
         grid-template-columns: auto;
         margin: 0;
         width: 100%;
-        position: absolute;
-        top : -1000px;
+        position: absolute; /* Consento ai collegamenti nella navbar di muoversi nella pagina */
+        top : -1000px; /*Navbar menu in alto cosi da avere l'effetto discesa del menu */
         opacity: 0;
         transition: all 0.5s ease;
         height: 50vh;
-        z-index: -1;
+        z-index: -1 ;
         background: #131313;
     }
 
-    .navbar__menu.active{
-        background: #131313;
+    .navbar__menu.active{ /*Guardare app.js */
+        background: #141414;
         top: 100%;
         opacity: 1;
         transition: all 0.5 ease;
@@ -159,7 +150,7 @@
         height: 3px;
         margin: 5px auto;
         transition: all 0.3s ease-in-out;
-        background: #fff;
+        background:white ;
     }
 
     .navbar__item{
@@ -177,7 +168,7 @@
         position: absolute;
         top: 20%;
         right: 5%;
-        transform: translate(5%,20%);
+        transform: translate(5%,20%); /*Traslo leggermente il mobile menu */
     }
 
     .navbar__btn{
@@ -212,7 +203,6 @@
 
     #logo{
         max-width: 50px;
-        max-height: 50px;
     }
 }
 
