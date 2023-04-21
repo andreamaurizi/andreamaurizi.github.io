@@ -1,130 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login & Registration</title>
-    <link rel="stylesheet" href="../CSS/sign.css" />
-    <link rel="website icon" type="png" href="../Img/lego-icon-12.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/css/all.css" /> 
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login & Registration</title>
+  <link rel="stylesheet" href="../CSS/sign.css" />
+  <link rel="website icon" type="png" href="../Img/lego-icon-12.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/css/all.css" />
 
 
-  </head>
-  <body>
-    <!-- Navbar-->
-    <nav class="navbar">
-      <div class="navbar__container">
-        <a href="/" id="navbar__logo"
-          ><img src="../Img/lego-icon-12.ico" id="logo" /> ReBuild</a
-        >
-        <div class="navbar__toggle" id="mobile-menu">
-          <span class="bar"></span><span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-        <ul class="navbar__menu">
-          <li class="navbar__item">
-            <a href="/tech.html" class="navbar__links">Tech</a>
-          </li>
-          <li class="navbar__item">
-            <a href="/" class="navbar__links">Products</a>
-          </li>
-          <li class="navbar__btn">
-            <a href="../index.html" class="button">Home</a>
-          </li>
-        </ul>
+</head>
+
+<body>
+  <!-- Navbar-->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="/" id="navbar__logo">
+        <img src="../Img/lego-icon-12.ico" id="logo" /> ReBuild</a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span><span class="bar"></span>
+        <span class="bar"></span>
       </div>
-    </nav>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="/tech.html" class="navbar__links">Tech</a>
+        </li>
+        <li class="navbar__item">
+          <a href="/" class="navbar__links">Products</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="../index.html" class="button">Home</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    
 
-    <!-- Form Login Registration-->
-    <div class="container">
-      <input type="checkbox" id="check" />
-      <div class="login form">
-        <header>Login</header>
-        <form action="login.php" method="post">
-          <input type="email" required placeholder="Enter your email" />
-          <input type="password" required placeholder="Enter your password" />
-          <input type="submit" class="button" value="Login" />
-        </form>
-        <div class="signup">
-          <span class="signup"
-            >Don't have an account?
-            <label for="check">Signup</label>
-          </span>
+
+  <!-- Form Login Registration-->
+  <div class="container">
+    <input type="checkbox" id="check" />
+    <div class="login form">
+      <header>Login</header>
+      <form action="login.php" method="post">
+        <input type="email" required placeholder="Enter your email" />
+        <input type="password" required placeholder="Enter your password" />
+        <input type="submit" class="button" value="Login" />
+      </form>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+          <label for="check">Signup</label>
+        </span>
+      </div>
+    </div>
+    <div class="registration form">
+      <header>Signup</header>
+      <form action="signup.php" method="post">
+        <input type="email" required placeholder="Enter your email" />
+        <input type="password" required placeholder="Create a password" />
+        <input type="password" required placeholder="Confirm your password" />
+        <input type="submit" class="button" value="Signup" />
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+          <label for="check">Login</label>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__container">
+    <div class="footer__links">
+      <div class="footer__link--wrapper">
+        <div class="footer__link--items">
+          <h2>About Us</h2>
+          <a href="/SignUp_SignIn/Login_Registration.html">How it Works</a>
+          <a href="/">Testimonals</a>
+          <a href="/">Careers</a>
+          <a href="/">Investments</a>
+          <a href="/">Terms of Service</a>
         </div>
       </div>
-      <div class="registration form">
-        <header>Signup</header>
-        <form action="signup.php" method="post">
-          <input type="email" required placeholder="Enter your email" />
-          <input type="password" required placeholder="Create a password" />
-          <input type="password" required placeholder="Confirm your password" />
-          <input type="submit" class="button" value="Signup" />
-        </form>
-        <div class="signup">
-          <span class="signup"
-            >Already have an account?
-            <label for="check">Login</label>
-          </span>
+      <div class="footer__link--wrapper">
+        <div class="footer__link--items">
+          <h2>Contact Us</h2>
+          <a href="/">Contact</a>
+          <a href="/">Support</a>
+          <a href="/">Careers</a>
         </div>
       </div>
     </div>
-
-    <div class="footer__container">
-      <div class="footer__links">
-        <div class="footer__link--wrapper">
-          <div class="footer__link--items">
-            <h2>About Us</h2>
-            <a href="/SignUp_SignIn/Login_Registration.html">How it Works</a>
-            <a href="/">Testimonals</a>
-            <a href="/">Careers</a>
-            <a href="/">Investments</a>
-            <a href="/">Terms of Service</a>
-          </div>
+    <div class="social__media">
+      <div class="social__media--wrap">
+        <div class="footer__logo">
+          <a href="/" id="footer__logo"><img src="/Img/lego-icon-12.ico" id="logo__" />ReBuild</a>
         </div>
-        <div class="footer__link--wrapper">
-          <div class="footer__link--items">
-            <h2>Contact Us</h2>
-            <a href="/">Contact</a>
-            <a href="/">Support</a>
-            <a href="/">Careers</a>
-          </div>
-        </div>
-      </div>
-      <div class="social__media">
-        <div class="social__media--wrap">
-          <div class="footer__logo">
-            <a href="/" id="footer__logo"
-              ><img src="/Img/lego-icon-12.ico" id="logo__" />ReBuild</a
-            >
-          </div>
-          <p class="website__right">© ReBuild 2023. All rights reserved</p>
-          <div class="social__icons">
-            <a href="/" class="social__icon--link" target="_blank">
-              <i class="fab fa-facebook"></i>
-            </a>
-            <a href="/" class="social__icon--link" target="_blank">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="/" class="social__icon--link" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="/" class="social__icon--link" target="_blank">
-              <i class="fab fa-youtube"></i>
-            </a>
-            <a href="/" class="social__icon--link" target="_blank">
-              <i class="fab fa-tiktok"></i>
-            </a>
-          </div>
+        <p class="website__right">© ReBuild 2023. All rights reserved</p>
+        <div class="social__icons">
+          <a href="/" class="social__icon--link" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="/" class="social__icon--link" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="/" class="social__icon--link" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="/" class="social__icon--link" target="_blank">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="/" class="social__icon--link" target="_blank">
+            <i class="fab fa-tiktok"></i>
+          </a>
         </div>
       </div>
     </div>
-  
-  
-    <script src="../Script/app.js"></script>
-  </body>
+  </div>
+
+
+  <script src="../Script/app.js"></script>
+</body>
+
 </html>
