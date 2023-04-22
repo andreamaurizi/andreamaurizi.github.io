@@ -34,10 +34,11 @@ else {
             $result = pg_query_params($pg_connect, $q2, array($email));
             $tuple=pg_fetch_array($result, null, PGSQL_ASSOC);
             if(password_verify($password, $tuple['password_hash'])){
-                #$nome = $tuple['nome'];
-                        #echo "<a href=../welcome.php?name=$nome> Premi qui </a>
-                        #per inziare a usare il sito";
                         echo "Benvenuto";
+                        session_start();
+                        $_SESSION["user_id"] = $tuple['id_n'];
+                        header("Location: session.php");
+                        exit;
             }
             else{
                 echo "<h1> La password e' sbagliata! </h1>
