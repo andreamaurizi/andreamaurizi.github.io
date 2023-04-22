@@ -215,16 +215,17 @@
 
 .main__container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /*Ogni elemento della grid ,disposti per colonna, occupa 1 unità frazionaria */ 
     align-items: center;
     justify-self: center;
     margin: 0 auto;
     height: 90vh;
     background-color: #141414;
-    z-index:1;
+    z-index: 1;
     width: 100%;
     max-width: 1300px;
-    padding: 0 50px;
+    padding-left: 50px;
+    padding-right: 50px;
 } 
 
 
@@ -235,9 +236,7 @@
     background-size: 100%;
     background-clip: border-box;
     -webkit-background-clip: text;
-    -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -moz-text-fill-color:transparent;
 }
 
 .main__content h2 {
