@@ -3,11 +3,11 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: /");
 }
 else {
-    $host = "rebuild-signup-db.cir4pq5hlxfs.eu-north-1.rds.amazonaws.com";
-    $dbname = "ReBuild_db";
+    $host = "localhost";
+    $dbname = "ReBuild";
     $username = "postgres";
     $port = "5432";
-    $password = "rebuild1";
+    $password = "postgres";
     $conn_string = "host=$host port=$port dbname=$dbname user=$username password=$password";
 
 
@@ -27,7 +27,7 @@ else {
         $result = pg_query_params($pg_connect, $q1, array($email));
         if (!($tuple=pg_fetch_array($result, null, PGSQL_ASSOC))) {
             echo "<h1>Non sembra che ti sia registrato/a</h1>
-                <a href=signup.html> Clicca qui per farlo </a>";
+                <a href=signup.php> Clicca qui per farlo </a>";
         }
         else{
             $q2 = "select * from utente where email = $1";

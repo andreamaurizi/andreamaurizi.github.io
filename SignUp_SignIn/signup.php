@@ -3,12 +3,13 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: /");
 }
 else {
-    $host = "rebuild-signup-db.cir4pq5hlxfs.eu-north-1.rds.amazonaws.com";
-    $dbname = "ReBuild_db";
+    $password = "postgres";
+    $host = "localhost";
+    $dbname = "ReBuild";
     $username = "postgres";
     $port = "5432";
-    $password = "rebuild1";
     $conn_string = "host=$host port=$port dbname=$dbname user=$username password=$password";
+
 
 
     $pg_connect = pg_connect($conn_string)
