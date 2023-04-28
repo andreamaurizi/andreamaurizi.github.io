@@ -59,8 +59,14 @@
     
     <?php else: ?>
         
-        <p><a href="Login_Registration.html">Log in</a></p>
-
+        <script>
+        
+        setTimeout(function(){
+            window.location.href=
+            "./Login_Registration.html";
+        }, 10);
+        
+        </script>
     <?php endif; ?>
 
     <script src="../Script/app.js"></script>
