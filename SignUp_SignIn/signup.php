@@ -1,3 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/session.css" />
+</head>
+<body>
+<nav class="navbar">
+      <div class="navbar__container">
+        <a href="/" id="navbar__logo"
+          ><img src="/Img/lego-icon-12.ico" id="logo" /> ReBuild</a
+        >
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/" class="navbar__links">Home</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/tech.html" class="navbar__links">Tech</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/" class="navbar__links">Products</a>
+          </li>
+          <li class="navbar__btn">
+            <a href="/SignUp_SignIn/Login_Registration.html" class="button"
+              >Area Riservata</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+</body>
+</html>
 <?php
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: /");
@@ -61,12 +101,12 @@ else {
              echo "<h1> Spiacente, l'indirizzo email non e' disponibile</h1>
                     Aspetta 5 secondi per essere reindirizzato alla pagina di login
                     oppure <a href=./Login_Registration.html> clicca qui</a>";
-            echo("<script> 
+            echo"<script> 
                      setTimeout(function(){
                      window.location.href=
                       \"./Login_Registration.html\";
                      }, 5000);
-                 </script>");
+                 </script>";
         }
         else{
             $q2= "insert into utente(email, password_hash) values ($1,$2)"; 
