@@ -16,6 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="website icon" type="png" href="/Img/lego-icon-12.ico" />
     <title>Document</title>
 </head>
 <body>
