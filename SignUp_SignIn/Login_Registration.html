@@ -45,10 +45,10 @@
       <input type="checkbox" id="check" />
       <div class="login form">
         <header>Login</header>
-        <form action="login.php" method="post">
+        <form action="login.php" method="post" name="login" onsubmit="return validaLogin();">
           <input name="email" type="email" required placeholder="Enter your email" />
           <input name="password" type="password" required placeholder="Enter your password" />
-          <input type="submit" class="button" value="Login" />
+          <input type="submit" class="button" value="Login"/>
         </form>
         <div class="signup">
           <span class="signup"
@@ -59,7 +59,7 @@
       </div>
       <div class="registration form">
         <header>Signup</header>
-        <form action="signup.php" method="post" name="registrazione">
+        <form action="signup.php" method="post" name="registrazione" onsubmit="return validaRegistrazione();">
           <input name="email" type="email" required placeholder="Enter your email" />
           <input name="password" type="password" required placeholder="Create a password" />
           <input name="conferma_password" type="password" required placeholder="Confirm your password" />
