@@ -59,15 +59,30 @@ else {
         $result=pg_query_params($pg_connect, $q1, array($email));
         if ($tuple=pg_fetch_array($result, null, PGSQL_ASSOC)) {
              echo "<h1> Spiacente, l'indirizzo email non e' disponibile</h1>
-                     Se vuoi, <a href=../login> clicca qui per loggarti </a>";
+                    Aspetta 5 secondi per essere reindirizzato alla pagina di login
+                    oppure <a href=./Login_Registration.html> clicca qui</a>";
+            echo("<script> 
+                     setTimeout(function(){
+                     window.location.href=
+                      \"./Login_Registration.html\";
+                     }, 5000);
+                 </script>");
         }
         else{
             $q2= "insert into utente(email, password_hash) values ($1,$2)"; 
             $result1 = pg_query_params($pg_connect, $q2, array($email, $password_hash));
 
             if($result1){
-                echo("La registrazione è andata a buon fine! Clicca <a href=login.html>qui</a> per loggarti");
-            }
+                echo("<h1>La registrazione è andata a buon fine!</h1><br> 
+                Aspetta 5 secondi per essere reindirizzato alla pagina di login
+                oppure clicca <a href=./Login_Registration.html>qui</a>");
+                echo("<script> 
+                        setTimeout(function(){
+                        window.location.href=
+                         \"./Login_Registration.html\";
+                        }, 5000);
+                    </script>");
+            }   
             else{
                 echo("Registrazione fallita");
             }
