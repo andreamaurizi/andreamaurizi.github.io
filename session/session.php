@@ -57,7 +57,6 @@
                 <button type="submit" onclick = "searchBrickset()"><img src="/Img/search.png" ></button>
             </form>
         </div>
-        <div id="zonaDinamica"></div>
     
     <?php else: ?>
         
