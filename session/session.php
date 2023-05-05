@@ -1,7 +1,5 @@
 <?php
-    session_start();
-
-    
+    session_start();   
 ?>
 
 <!DOCTYPE html>
@@ -44,18 +42,17 @@
         </div>
         <ul class="navbar__menu">
           <li class="navbar__item">
-            <a href="/" class="navbar__links">Recenti</a>
+            <p  class="navbar__links">Recenti</p>
           </li>
           <li class="navbar__item">
-            <a href="/tech.html" class="navbar__links">MySet</a>
+            <p  class="navbar__links">MySet</p>
           </li>
           <li class="navbar__item">
-            <a href="/" class="navbar__links">ReBuild</a>
+            <p class="navbar__links">ReBuild</p>
           </li>
           <li class="navbar__btn">
-            <a href="/SignUp_SignIn/Login_Registration.html" class="button"
-              >Area Riservata</a
-            >
+            <a href="/SignUp_SignIn/Login_Registration.html" class="button">
+              Area Riservata</a>
           </li>
         </ul>
       </div>
@@ -68,7 +65,7 @@
                 <input type="text" placeholder="Enter Lego Set Name" name="q">
                 <button type="submit" onclick = "searchBrickset()"><img src="/Img/search.png" ></button>
             </form>
-            <div class="div_dinamico">CIAOOO</div>
+            <div class="div_dinamico"></div>
         </div>
 
         
