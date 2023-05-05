@@ -220,16 +220,15 @@
 /* Search Bat */
 
 .container{
-    width: 100%;
-    min-height: 100vh;
-    padding: 5%;
-    background-image: url(/Img/pexels-francesco-ungaro-1670977.jpg);
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+  width: 100%;
+  min-height: 100vh;
+  padding: 5%;
+  background-image: url(/Img/pexels-francesco-ungaro-1670977.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 } 
 
 
@@ -241,6 +240,8 @@
   border-radius: 60px;
   padding: 10px 20px;
   backdrop-filter: blur(4px) saturate(180%);
+  position: absolute;
+  top: 150px;
 }
 
 .search-bar input{
@@ -256,7 +257,6 @@
 
 ::placeholder {
   color: black;
-
 }
 
 .search-bar button{

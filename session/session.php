@@ -18,6 +18,18 @@
     />
     <script src="../Script/session.js"></script>
     <title>Document</title>
+    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $(".navbar__links").click(function(){
+          $(".div_dinamico").load(this.innerHTML + ".html",
+                function(responseTxt ,statusTxt,xhr){
+                    if(statusTxt == "success") alert("Caricamento terminato");
+                    if(statusTxt == "error") alert("Errore"+xhr.status+":"+xhr.statusText);
+          });
+        })
+      })
+    </script>
 </head>
 <body>
 <nav class="navbar">
@@ -32,13 +44,13 @@
         </div>
         <ul class="navbar__menu">
           <li class="navbar__item">
-            <a href="/" class="navbar__links">Home</a>
+            <a href="/" class="navbar__links">Recenti</a>
           </li>
           <li class="navbar__item">
-            <a href="/tech.html" class="navbar__links">Tech</a>
+            <a href="/tech.html" class="navbar__links">MySet</a>
           </li>
           <li class="navbar__item">
-            <a href="/" class="navbar__links">Products</a>
+            <a href="/" class="navbar__links">ReBuild</a>
           </li>
           <li class="navbar__btn">
             <a href="/SignUp_SignIn/Login_Registration.html" class="button"
@@ -56,12 +68,17 @@
                 <input type="text" placeholder="Enter Lego Set Name" name="q">
                 <button type="submit" onclick = "searchBrickset()"><img src="/Img/search.png" ></button>
             </form>
+            <div class="div_dinamico">CIAOOO</div>
         </div>
+
+        
+
+
+        
     
     <?php else: ?>
         
         <script>
-        
         setTimeout(function(){
             window.location.href=
             "../SignUp_SignIn/Login_Registration.html";
