@@ -64,7 +64,7 @@
         
         setTimeout(function(){
             window.location.href=
-            "./Login_Registration.html";
+            "../SignUp_SignIn/Login_Registration.html";
         }, 10);
         
         </script>
