@@ -112,6 +112,15 @@ else {
             $q2= "insert into utente(email, password_hash) values ($1,$2)"; 
             $result1 = pg_query_params($pg_connect, $q2, array($email, $password_hash));
 
+            $q3="select id_n from utente where email= $1";
+            $result2=pg_query_params($pg_connect, $q3, array($email));
+
+            $tuple_id_n=pg_fetch_array($result2, null, PGSQL_ASSOC);
+
+            $q4= "insert into setutente(id_n, id_set) values ($1,NULL)"; 
+            $result3 = pg_query_params($pg_connect, $q4, array($tuple_id_n["id_n"]));
+
+
             if($result1){
                 echo("<h1>La registrazione è andata a buon fine!</h1><br> 
                 Aspetta 5 secondi per essere reindirizzato alla pagina di login
