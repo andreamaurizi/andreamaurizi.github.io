@@ -27,7 +27,7 @@ else {
         $result = pg_query_params($pg_connect, $q1, array($email));
         if (!($tuple=pg_fetch_array($result, null, PGSQL_ASSOC))) {
             echo "<h1>Non sembra che ti sia registrato/a</h1>
-                <a href=signup.php> Clicca qui per farlo </a>";
+                <a href=/Login_Registration.html> Clicca qui per farlo </a>";
         }
         else{
             $q2 = "select * from utente where email = $1";
@@ -37,12 +37,12 @@ else {
                         echo "Benvenuto";
                         session_start();
                         $_SESSION["user_id"] = $tuple['id_n'];
-                        header("Location: session.php");
+                        header("Location: ../session/session.php");
                         exit;
             }
             else{
                 echo "<h1> La password e' sbagliata! </h1>
-                <a href=login.html> Clicca qui per loggarti </a>";
+                <a href=/Login_Registration.html> Clicca qui per loggarti </a>";
             }
         }
     }
