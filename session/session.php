@@ -61,8 +61,8 @@
     <?php if (isset($_SESSION["user_id"])): ?>
 
         <div class="container">
-            <form action="" class="search-bar">
-                <input type="text" placeholder="Enter Lego Set Name" name="q">
+            <form action="setUtente.php" class="search-bar" method="POST">
+                <input type="text" placeholder="Enter Lego Set Name" name="set">
                 <button type="submit" onclick = "searchBrickset()"><img src="/Img/search.png" ></button>
             </form>
             <div class="div_dinamico"></div>
