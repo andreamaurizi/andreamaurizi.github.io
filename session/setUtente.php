@@ -29,6 +29,7 @@
         // Controllo che il lego set esista
         if (!($tuple=pg_fetch_array($result, null, PGSQL_ASSOC))) {
             echo "Lego set inesistente";
+            header("Location: ./session.php");
         } else {     
             $q2 = "select * from setutente where id_n= $1";
             $result2 = pg_query_params($pg_connect, $q2, array($id_n));
@@ -63,6 +64,39 @@
                     $result3 = pg_query_params($pg_connect, $q3, array($_SESSION["user_id"]));
                     $tuple3=pg_fetch_array($result3, null, PGSQL_ASSOC);
                     print_r($tuple3["id_set"]);
+
+
+                    //seleziona
+                    
+                    $query = "SELECT b.part_id, sum(b.quantity) as total_value
+                    FROM (
+                      SELECT id_set, row_number() OVER () AS index
+                      FROM setutente
+                    ) AS t
+                    JOIN parts b ON t.id_set[t.index] = b.set_id
+                    
+                    group by b.part_id";
+
+                    $result = pg_query($pg_connect, $query);
+
+                    if (!$result) {
+                        die("Error in SQL query: " . pg_last_error());
+                    }
+
+                    $data = array(); // initialize an array to hold the data
+
+                    while ($row = pg_fetch_assoc($result)) {
+                    // prepend each row to the beginning of the array
+                        array_unshift($data, array('part_id' => $row['part_id'], 'total_value' => $row['total_value']));
+                    }
+
+                    // convert the PHP array to a JavaScript object
+                    $js_data = json_encode($data);
+
+                    // store the JavaScript object in local storage
+                    echo "<script>localStorage.setItem('myData', " . $js_data . ");</script>";
+
+                    header("Location: ./session.php");
                 }
             }
 
