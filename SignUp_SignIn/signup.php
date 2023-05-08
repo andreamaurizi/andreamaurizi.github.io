@@ -29,9 +29,7 @@
             <a href="/" class="navbar__links">Products</a>
           </li>
           <li class="navbar__btn">
-            <a href="/SignUp_SignIn/Login_Registration.html" class="button"
-              >Area Riservata</a
-            >
+            <a href="/SignUp_SignIn/Login_Registration.html" class="button">Area Riservata</a>
           </li>
         </ul>
       </div>
