@@ -70,19 +70,19 @@
                     
                     $query = "SELECT b.part_id, sum(b.quantity) as total_value
                     FROM (
-                      SELECT id_set, row_number() OVER () AS index
-                      FROM setutente
+                          SELECT legoset
+                        FROM setutente, UNNEST(id_set) AS legoset
+                        where id_n=$id_n
                     ) AS t
-                    JOIN parts b ON t.id_set[t.index] = b.set_id
-                    
-                    group by b.part_id";
+                    JOIN parts b ON t.legoset = b.set_id
+                             
+                    group by b.part_id
+                    order by total_value desc";
 
                     $result = pg_query($pg_connect, $query);
 
-                    if (!$result) {
-                        die("Error in SQL query: " . pg_last_error());
-                    }
-
+                   
+                
                     $data = array(); // initialize an array to hold the data
 
                     while ($row = pg_fetch_assoc($result)) {
