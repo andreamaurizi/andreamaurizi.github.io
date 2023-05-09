@@ -66,7 +66,7 @@
                     print_r($tuple3["id_set"]);
 
 
-                    //seleziona
+                    //seleziona tutte le parti che possiede l'utente
                     
                     $query = "SELECT b.part_id, sum(b.quantity) as total_value
                     FROM (
@@ -94,9 +94,14 @@
                     $js_data = json_encode($data);
 
                     // store the JavaScript object in local storage
-                    echo "<script>localStorage.setItem('myData', " . $js_data . ");</script>";
+                    echo "<script>localStorage.setItem('myData', " . $js_data . ");
+                        setTimeout(function(){
+                        window.location.href=
+                        \"./session.php\";
+                        }, 10);
+                 </script>";
 
-                    header("Location: ./session.php");
+                    
                 }
             }
 

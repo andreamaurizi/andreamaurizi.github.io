@@ -1,3 +1,3 @@
 function searchBrickset(){
-    print_r(localStorage.getItem('myData'));
+    alert(print_r(localStorage.getItem('myData')));
 }
