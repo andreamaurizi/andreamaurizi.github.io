@@ -1,3 +1,4 @@
 function searchBrickset(){
-    alert(print_r(localStorage.getItem('myData')));
+    var myData = JSON.parse(localStorage.getItem('myData'));
+    console.log(myData);
 }

@@ -7,6 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        var sets = localStorage.getItem("mySet");
+        var set = JSON.parse(sets);
+        for (var i = 0; i < set.length; i++) {
+            var setIDValue = set[i].set_id;
+            document.querySelector(".set").innerHTML += setIDValue + '<br>';
+        }
+       // document.querySelector(".parti").innerHTML = JSON.stringify(part);
+    </script>
+
+    <h1 class="set"></h1>
 </body>
 </html>

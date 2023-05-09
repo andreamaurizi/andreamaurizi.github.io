@@ -59,9 +59,9 @@ session_start();
   <?php if (isset($_SESSION["user_id"])): ?>
 
     <div class="container">
-      <form action="setUtente.php" class="search-bar" method="POST">
+      <form action="setUtente.php" class="search-bar" method="POST" onsubmit="return searchBrickset()">
         <input type="text" placeholder="Enter Lego Set Name" name="set">
-        <button type="submit" onclick="return searchBrickset()"><img src="/Img/search.png"></button>
+        <button type="submit"><img src="/Img/search.png"></button>
       </form>
       <div class="div_dinamico"></div>
     </div>

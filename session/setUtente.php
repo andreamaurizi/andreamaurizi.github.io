@@ -60,10 +60,18 @@
                         echo "Elements added to array successfully.";
                     }
                     // Debugging
-                    $q3 = "select * from setutente where id_n= $1";
+                    $q3 = "select * from setutente, UNNEST(id_set) as set_id where id_n= $1";
                     $result3 = pg_query_params($pg_connect, $q3, array($_SESSION["user_id"]));
-                    $tuple3=pg_fetch_array($result3, null, PGSQL_ASSOC);
-                    print_r($tuple3["id_set"]);
+                   
+                    //print_r($tuple3["id_set"]);
+                    $mySetArray = array();
+                    while ($row = pg_fetch_assoc($result3)) {
+                        // prepend each row to the beginning of the array
+                            array_unshift($mySetArray, array('set_id' => $row['set_id']));
+                        }
+                    $js_set = json_encode($mySetArray);
+                    echo $js_set;
+                   
 
 
                     //seleziona tutte le parti che possiede l'utente
@@ -93,13 +101,19 @@
                     // convert the PHP array to a JavaScript object
                     $js_data = json_encode($data);
 
+                    echo $js_data;
                     // store the JavaScript object in local storage
-                    echo "<script>localStorage.setItem('myData', " . $js_data . ");
-                        setTimeout(function(){
+
+                    echo "<html><body>";
+                    echo "<script>";
+                    echo "localStorage.setItem('myData', '$js_data');";
+                    echo "localStorage.setItem('mySet', '$js_set');";
+                    echo"setTimeout(function(){
                         window.location.href=
                         \"./session.php\";
-                        }, 10);
-                 </script>";
+                        }, 5000)";
+                    echo "</script>";
+                    echo "</body></html>";
 
                     
                 }
