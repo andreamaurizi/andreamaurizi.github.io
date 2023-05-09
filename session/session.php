@@ -61,7 +61,7 @@ session_start();
     <div class="container">
       <form action="setUtente.php" class="search-bar" method="POST">
         <input type="text" placeholder="Enter Lego Set Name" name="set">
-        <button type="submit"onclick="searchBrickset()"><img src="/Img/search.png"></button>
+        <button type="submit" onclick="return searchBrickset()"><img src="/Img/search.png"></button>
       </form>
       <div class="div_dinamico"></div>
     </div>
