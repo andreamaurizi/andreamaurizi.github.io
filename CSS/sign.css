@@ -395,10 +395,7 @@ body {
 
 /* Social Icons CSS*/
 
-.social__icon--link {
-  color: #fff;
-  font-size: 24px;
-}
+
 
 
 .social__media {
@@ -417,12 +414,7 @@ body {
 }
 
 
-.social__icons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 240px;
-}
+
 
 
 
