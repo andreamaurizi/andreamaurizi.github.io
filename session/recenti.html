@@ -10,7 +10,13 @@
     <script>
         var sets = localStorage.getItem("mySet");
         var set = JSON.parse(sets);
-        for (var i = 0; i < set.length; i++) {
+        if(set.length <= 4){
+        var max = set.length;
+        }
+        else{
+        var max = 4;
+        }
+        for (var i = 0; i < max; i++) {
             var setIDValue = set[i].set_id;
             document.querySelector(".set").innerHTML += setIDValue + '<br>';
         }
