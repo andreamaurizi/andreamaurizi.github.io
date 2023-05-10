@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ReBuild</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script>
+    // accedi ai dati memorizzati nel localStorage
+
+    function prova(){
+        
+        
+        // invia i dati al server PHP utilizzando AJAX
+        var parti = localStorage.getItem("myData");
+        var part = JSON.parse(parti);
+        
+        $.ajax({
+            type: 'POST',
+            url: 'rebuild.php',
+            data: { data: parti },
+            success: function(response) {
+                //console.log(response);
+                console.log(parti);
+            }
+            
+        });
+    }
+
+    </script>
 </head>
 <body>
     <form action='rebuild.php' method='POST'>
-        <input type="submit" value="REBUILD">
+        <input type="submit" value="REBUILD" onclick="prova()">
     </form>
 </body>
 </html>

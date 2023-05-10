@@ -1,3 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReBuild</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script>
+    // accedi ai dati memorizzati nel localStorage
+
+    function prova(){
+        
+        
+        // invia i dati al server PHP utilizzando AJAX
+        var parti = localStorage.getItem("myData");
+        var part = JSON.parse(parti);
+        
+        $.ajax({
+            type: 'POST',
+            url: 'rebuild.php',
+            data: { data: parti },
+            success: function(response) {
+                //console.log(response);
+                console.log(parti);
+            }
+            
+        });
+    }
+
+    </script>
+</head>
+<body>
+    <form action='rebuild.php' method='POST'>
+        <input type="submit" value="REBUILD" onclick="prova()">
+    </form>
+</body>
+</html>
+
 <?php
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
         header("Location: /session.php");
@@ -18,6 +57,10 @@
     session_start();
 
     if ($pg_connect) {
+
+        $jsonString = $_POST["data"];
+        $myArray = json_decode($jsonString, true);
+        echo $myArray;
         // Query per selezionare tutti i set nel database
         $q1 = "select distinct set_id
         from parts";
@@ -32,8 +75,8 @@
         
         // Scandiamo ogni set
         for ($i = 0; $i < count($everySetArray); $i++) {
-            print_r( $everySetArray[$i]["set_id"]);
-            echo " ";
+            //print_r( $everySetArray[$i]["set_id"]);
+            //echo " ";
             $q2 = "select part_id, quantity
             from parts
             where set_id=$1";
@@ -47,12 +90,13 @@
             }
             // Scandiamo le parti per ogni set
             for ($j = 0; $j < count($partsArray); $j++) {
-                print_r( $partsArray[$j]["part_id"]);
+                /*print_r( $partsArray[$j]["part_id"]);
                 echo "  ";
                 print_r( $partsArray[$j]["quantity"]);
-                echo "/";
+                echo "/";*/
+
             }
-            echo "<br>";
+            //echo "<br>";
 
         }
 
