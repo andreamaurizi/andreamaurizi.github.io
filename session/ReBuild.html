@@ -9,16 +9,15 @@
     <script>
     // accedi ai dati memorizzati nel localStorage
 
-    function prova(){
+   
         
         
         // invia i dati al server PHP utilizzando AJAX
-        var parti = localStorage.getItem("myData");
-        var part = JSON.parse(parti);
+       phpCopy codevar parti = localStorage.getItem("myData");
         
         $.ajax({
             type: 'POST',
-            url: 'rebuild.php',
+            url: 'ReBuild.php',
             data: { data: parti },
             success: function(response) {
                 //console.log(response);
@@ -26,7 +25,6 @@
             }
             
         });
-    }
 
     </script>
 </head>

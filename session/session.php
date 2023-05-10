@@ -25,14 +25,6 @@ session_start();
             if (statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
           });
       })
-
-      $(".navbar__rebuild").click(function () {
-        $(".div_dinamico").load(this.innerHTML + ".php",
-          function (responseTxt, statusTxt, xhr) {
-            if (statusTxt == "success") alert("Caricamento terminato");
-            if (statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
-          });
-      })
     })
   </script>
 </head>
@@ -54,7 +46,7 @@ session_start();
           <p class="navbar__links">MySet</p>
         </li>
         <li class="navbar__item">
-          <p class="navbar__rebuild">ReBuild</p>
+          <p class="navbar__links">ReBuild</p>
         </li>
         <li class="navbar__btn">
           <a href="/SignUp_SignIn/Login_Registration.html" class="button">
