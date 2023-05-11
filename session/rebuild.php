@@ -1,4 +1,6 @@
 <?php
+    
+
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
         header("Location: /session.php");
     }
@@ -16,12 +18,12 @@
     }
 
     session_start();
-
+    
     if ($pg_connect) {
 
-        $jsonString = $_POST["data"];
-        $myArray = json_decode($jsonString, true);
-        echo $myArray;
+        
+       echo $_SESSION["mySet"];
+
         // Query per selezionare tutti i set nel database
         $q1 = "select distinct set_id
         from parts";
@@ -55,7 +57,6 @@
                 echo "  ";
                 print_r( $partsArray[$j]["quantity"]);
                 echo "/";*/
-
             }
             //echo "<br>";
 

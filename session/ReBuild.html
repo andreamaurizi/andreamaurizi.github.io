@@ -7,32 +7,32 @@
     <title>ReBuild</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script>
-    // accedi ai dati memorizzati nel localStorage
+        // recupera l'array di elementi JSON dal localStorage
+        // Recupera il valore del set dal Local Storage
+        function prova(){
+        var mySet = (localStorage.getItem("mySet"));
+        alert(mySet);
 
-    function prova(){
-        
-        
-        // invia i dati al server PHP utilizzando AJAX
-        var parti = localStorage.getItem("myData");
-        var part = JSON.parse(parti);
-        
+        // Invia il set al server PHP usando una richiesta HTTP POST
         $.ajax({
-            type: 'POST',
-            url: 'rebuild.php',
-            data: { data: parti },
+            type: "POST",
+            url: "rebuild.php",
+            data: { mySet: mySet },
             success: function(response) {
-                //console.log(response);
-                console.log(parti);
+                alert("Dati inviati correttamente:" + " " + response);
+            },
+            error: function(xhr, status, error) {
+                alert(xhr.responseText);
             }
-            
         });
-    }
+
+        }
 
     </script>
 </head>
 <body>
-    <form action='rebuild.php' method='POST'>
-        <input type="submit" value="REBUILD" onclick="prova()">
+    <form action='rebuild.php' method='POST' onsubmit="prova()">
+        <input type="submit" value="REBUILD"  >
     </form>
 </body>
 </html>
