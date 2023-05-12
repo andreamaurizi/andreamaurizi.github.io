@@ -10,21 +10,10 @@
         // recupera l'array di elementi JSON dal localStorage
         // Recupera il valore del set dal Local Storage
         function prova(){
-        var mySet = (localStorage.getItem("mySet"));
-        alert(mySet);
-
-        // Invia il set al server PHP usando una richiesta HTTP POST
-        $.ajax({
-            type: "POST",
-            url: "rebuild.php",
-            data: { mySet: mySet },
-            success: function(response) {
-                alert("Dati inviati correttamente:" + " " + response);
-            },
-            error: function(xhr, status, error) {
-                alert(xhr.responseText);
-            }
-        });
+            var myParts = (localStorage.getItem("myData"));
+            alert(myParts);
+            
+            document.cookie="myParts="+myParts;
 
         }
 

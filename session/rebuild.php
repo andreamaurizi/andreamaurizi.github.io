@@ -21,8 +21,15 @@
     
     if ($pg_connect) {
 
+        $cookie_parts = $_COOKIE['myParts'];
+        echo $cookie_parts;
+
+
+        $set = json_decode($cookie_parts, true);
         
-       echo $_SESSION["mySet"];
+        
+        print_r($set);
+        //echo $_SESSION["mySet"];
 
         // Query per selezionare tutti i set nel database
         $q1 = "select distinct set_id
