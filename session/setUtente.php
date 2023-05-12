@@ -69,8 +69,10 @@
                         // prepend each row to the beginning of the array
                             array_unshift($mySetArray, array('set_id' => $row['set_id']));
                         }
+
+                    
                     $js_set = json_encode($mySetArray);
-                    echo $js_set;
+                    //echo $js_set;
                    
 
 
@@ -97,11 +99,29 @@
                     // prepend each row to the beginning of the array
                         array_unshift($data, array('part_id' => $row['part_id'], 'total_value' => $row['total_value']));
                     }
+                    
 
+
+                    //MODIFICARE
+                    //MODIFICARE
+                    // MODIFICARE
+                    //(BISOGNA CARICARE SU DB L'ARRAY IN $DATA NELLA TABELLA SETUTENTE.PARTS)
+                    $data1 = "'" . implode("', '", $data) . "'";
+                    $query5 = "UPDATE setutente SET id_set = ARRAY[$data1] WHERE id_n = $id_n";
+
+                    $result5 = pg_query($pg_connect, $query5);
+                    $tuple5=pg_fetch_array($result5, null, PGSQL_ASSOC);
+                    print_r($tuple5);
+
+                    //MODIFICARE
+                    //MODIFICARE
+                    //MODIFICARE
+
+            
                     // convert the PHP array to a JavaScript object
                     $js_data = json_encode($data);
 
-                    echo $js_data;
+                    //echo $js_data;
                     // store the JavaScript object in local storage
 
                     echo "<html><body>";
@@ -111,7 +131,7 @@
                     echo"setTimeout(function(){
                         window.location.href=
                         \"./session.php\";
-                        }, 5000)";
+                        }, 5000000)";
                     echo "</script>";
                     echo "</body></html>";
 
