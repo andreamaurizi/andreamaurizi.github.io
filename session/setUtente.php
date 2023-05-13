@@ -106,12 +106,28 @@
                     //MODIFICARE
                     // MODIFICARE
                     //(BISOGNA CARICARE SU DB L'ARRAY IN $DATA NELLA TABELLA SETUTENTE.PARTS)
-                    $data1 = "'" . implode("', '", $data) . "'";
-                    $query5 = "UPDATE setutente SET id_set = ARRAY[$data1] WHERE id_n = $id_n";
-
+                    $js_data = json_encode($data);
+                    $query5 = "UPDATE setutente
+                    SET parts = (
+                      SELECT json_agg(q)
+                      FROM (
+                        SELECT b.part_id, SUM(b.quantity) AS total_value
+                        FROM (
+                          SELECT legoset
+                          FROM setutente, UNNEST(id_set) AS legoset
+                          WHERE id_n = $id_n
+                        ) AS t
+                        JOIN parts b ON t.legoset = b.set_id
+                        GROUP BY b.part_id
+                        ORDER BY total_value DESC
+                      ) AS q
+                    )
+                    WHERE id_n = $id_n";
+                                        
                     $result5 = pg_query($pg_connect, $query5);
-                    $tuple5=pg_fetch_array($result5, null, PGSQL_ASSOC);
-                    print_r($tuple5);
+
+                    print_r($result5);
+
 
                     //MODIFICARE
                     //MODIFICARE
@@ -119,7 +135,7 @@
 
             
                     // convert the PHP array to a JavaScript object
-                    $js_data = json_encode($data);
+                    
 
                     //echo $js_data;
                     // store the JavaScript object in local storage
