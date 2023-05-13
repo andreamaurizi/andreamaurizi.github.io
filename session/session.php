@@ -10,6 +10,7 @@ session_start();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../CSS/session.css" />
+  <link rel="stylesheet" href="../CSS/popup.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="website icon" type="png" href="/Img/lego-icon-12.ico" />
@@ -27,9 +28,44 @@ session_start();
       })
     })
   </script>
+
+  <script>
+    $(document).ready(function() {
+      $('.search-bar').submit(function(event) {
+        event.preventDefault(); // Impedisce il comportamento predefinito del modulo
+
+        // Invia i dati del modulo a setUtente.php tramite Ajax
+        $.ajax({
+          type: 'POST',
+          url: 'setUtente.php',
+          data: $(this).serialize(),
+          success: function(response) {
+            // Mostra il popup di successo
+            var alert = $('.alert.success');
+            alert.find('.alertText').html(response);
+            alert.show();
+            setTimeout(function(){
+              alert.hide();
+            }, 2000);
+          },
+          error: function(response) {
+            // Mostra il popup di errore
+            var alert = $('.alert.error');
+            alert.find('.alertText').html(response);
+            alert.show();
+            setTimeout(function(){
+              alert.hide();
+            }, 2000);
+          }
+        });        
+      });
+    });
+
+  </script>
 </head>
 
 <body>
+
   <nav class="navbar">
     <div class="navbar__container">
       <a href="/" id="navbar__logo"><img src="/Img/lego-icon-12.ico" id="logo" /> ReBuild</a>
@@ -59,12 +95,28 @@ session_start();
   <?php if (isset($_SESSION["user_id"])): ?>
 
     <div class="container">
-      <form action="setUtente.php" class="search-bar" method="POST" onsubmit="return searchBrickset()">
+      <form action="setUtente.php" class="search-bar" method="POST" onsubmit="mostraCustomAlert();">
         <input type="text" placeholder="Enter Lego Set Name" name="set">
         <button type="submit"><img src="/Img/search.png"></button>
       </form>
       <div class="div_dinamico"></div>
+
+      <label>
+        <input type="checkbox" class="alertCheckbox" autocomplete="off" />
+        <div class="alert success" style="display:none">
+          <span class="alertText"></span>
+        </div>
+      </label>
+
+      <label>
+        <input type="checkbox" class="alertCheckbox" autocomplete="off" />
+        <div class="alert error" style="display:none">
+          <span class="alertText"></span>
+        </div>
+      </label>
     </div>
+
+
 
   <?php else: ?>
 
