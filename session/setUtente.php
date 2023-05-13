@@ -129,17 +129,6 @@
                     print_r($result5);
 
 
-                    //MODIFICARE
-                    //MODIFICARE
-                    //MODIFICARE
-
-            
-                    // convert the PHP array to a JavaScript object
-                    
-
-                    //echo $js_data;
-                    // store the JavaScript object in local storage
-
                     echo "<html><body>";
                     echo "<script>";
                     echo "localStorage.setItem('myData', '$js_data');";
