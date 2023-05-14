@@ -98,15 +98,10 @@
                     }
                     
 
-
-                    //MODIFICARE
-                    //MODIFICARE
-                    // MODIFICARE
-                    //(BISOGNA CARICARE SU DB L'ARRAY IN $DATA NELLA TABELLA SETUTENTE.PARTS)
                     $js_data = json_encode($data);
                     $query5 = "UPDATE setutente
                     SET parts = (
-                      SELECT json_agg(q)
+                    SELECT ARRAY_AGG(ROW(part_id, total_value)) AS parts
                       FROM (
                         SELECT b.part_id, SUM(b.quantity) AS total_value
                         FROM (
@@ -118,8 +113,7 @@
                         GROUP BY b.part_id
                         ORDER BY total_value DESC
                       ) AS q
-                    )
-                    WHERE id_n = $id_n";
+                    ) where id_n = $id_n";
                                         
                     $result5 = pg_query($pg_connect, $query5);
 

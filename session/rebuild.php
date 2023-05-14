@@ -24,7 +24,7 @@
 
         // Query per selezionare tutti i set nel database
         $q1 = "select distinct set_id
-        from parts";
+               from parts";
         $result1 = pg_query($pg_connect, $q1);
 
         // Creiamo un array con tutti i set
@@ -39,8 +39,8 @@
             print_r( $everySetArray[$i]["set_id"]);
             echo ": ";
             $q2 = "select part_id, quantity
-            from parts
-            where set_id=$1";
+                   from parts
+                   where set_id=$1";
             $result2 = pg_query_params($pg_connect, $q2, array($everySetArray[$i]["set_id"]) );
 
             // Creiamo un array con tutte le parti di un set
@@ -56,24 +56,46 @@
                 print_r( $partsArray[$j]["quantity"]);
                 echo "----";*/
                 
-                $q3 = "select parts from setutente where id_n = $id_n";
+                $q3 = "select unnest(parts) from setutente where id_n = $id_n";
+
+
                 $result3 = pg_query($pg_connect, $q3);
-                print_r( $partsArray[$j]["part_id"]);
-               // print_r(pg_fetch_assoc($result3));
-                if(in_array($partsArray[$j], pg_fetch_assoc($result3))){
+                //print_r(pg_fetch_array($result3)['0']);
+
+                $prova = pg_fetch_all($result3);
+                //  print_r($prova);
+                $myPartsArray = array();
+                //print_r( $prova);
+
+                foreach($prova as $row){
+                    $values = array_values($row);
+                    $tupla = $values[0];
+                    //$quantity = $values[1];
+                    if($partsArray[$j]['part_id'] == $tupla[0]){
+                        echo " SI";
+                    }
+                    else{
+                        echo"NO";
+                    }
+                }
+
+
+
+
+                /*while ($row = $prova) {
+                // prepend each row to the beginning of the array
+                    array_unshift($myPartsArray, array('part_id' => $row[0], 
+                    'total_value' => $row[1]));
+                }
+                print_r( $myPartsArray);
+                /*if(in_array($partsArray[$j], $myPartsArray)){
                     echo "SI";
                 }
                 else{
                     echo "NO";
-                }
-                // Creiamo un array con tutti i set
-               /* $myPartsArray = array();
-                $phpResult = json_decode(pg_fetch_assoc($result3), true);
-                while ($row = pg_fetch_assoc($phpResult)) {
-                // prepend each row to the beginning of the array
-                    array_unshift($myPartsArray, array('part_id' => $row['part_id'], 
-                    'total_value' => $row['total_value']));
                 }*/
+                // Creiamo un array con tutti i set
+              
             }
             echo "<br>";
 
