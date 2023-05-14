@@ -48,10 +48,10 @@ session_start();
               alert.hide();
             }, 2000);
           },
-          error: function(response) {
+          error: function(xhr, status, error) {
             // Mostra il popup di errore
             var alert = $('.alert.error');
-            alert.find('.alertText').html(response);
+            alert.find('.alertText').html(error);
             alert.show();
             setTimeout(function(){
               alert.hide();
@@ -108,14 +108,7 @@ session_start();
         </div>
       </label>
 
-      <label>
-        <input type="checkbox" class="alertCheckbox" autocomplete="off" />
-        <div class="alert error" style="display:none">
-          <span class="alertText"></span>
-        </div>
-      </label>
-    </div>
-
+    
 
 
   <?php else: ?>

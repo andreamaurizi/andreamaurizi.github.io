@@ -312,7 +312,6 @@
 
 
 /*Mobile Responsive */
-
 @media screen and (max-width: 768px) {
     .main__container{
         display: grid;
@@ -566,9 +565,6 @@
 }
 
 /* Social Icons CSS*/
-
-
-
 .social__media{
     max-width: 1000px;
     width: 100%;

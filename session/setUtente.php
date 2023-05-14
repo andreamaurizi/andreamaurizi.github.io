@@ -20,9 +20,8 @@
     if ($pg_connect) {
         // controllo che il numero di set sia sintatticamente corretto
         if(!preg_match("/^\d{1,5}-\d$/", $_POST["set"])){
-            http_response_code(400);
+
             die("Il numero di set inserito è invalido");
-            
         }
         $set = $_POST["set"];
         $id_n = $_SESSION["user_id"];
@@ -43,10 +42,10 @@
 
                 // Controlla se l'elemento è presente
                 if (in_array($set, $phpArray)) {
-                    echo "The element '$set' is present in the array. e non va bene";
+                    echo "Set gia presente";
                     die();
                 } else {
-                    echo "The element '$set' is not present in the array.";
+                    echo "Lego set aggiunto";
                 
                     $newElements = array($set);
 
@@ -56,11 +55,7 @@
                     $result = pg_query($pg_connect, $sql);
 
                     // Controllo errori
-                    if (!$result) {
-                        echo "Error adding elements to array: " . pg_last_error($pg_connect);
-                    } else {
-                        echo "Elements added to array successfully.";
-                    }
+                
                     // Debugging
                     $q3 = "select * from setutente, UNNEST(id_set) as set_id where id_n= $1";
                     $result3 = pg_query_params($pg_connect, $q3, array($_SESSION["user_id"]));
@@ -128,9 +123,7 @@
                                         
                     $result5 = pg_query($pg_connect, $query5);
 
-                    print_r($result5);
-
-
+    
                     echo "<html><body>";
                     echo "<script>";
                     echo "localStorage.setItem('myData', '$js_data');";
