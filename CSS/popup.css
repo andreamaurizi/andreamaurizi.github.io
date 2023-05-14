@@ -1,5 +1,5 @@
 .alert {
-    position: fixed;
+    position: absolute;
     top: 80px;
     right: 10px;
     /*transform: translate(-50%,0);*/
@@ -34,9 +34,18 @@
   }
   
   .alertClose {
+    position: absolute;
     float: right;
     padding-top: 5px;
-    font-size: 10px;
+    color: black;
+    right: 10px;
+  }
+  
+  #close-img{
+    width: 20px;
+    position: absolute;
+    right: -14px;
+    top: -7px;
   }
   
   .clear {
@@ -53,9 +62,9 @@
   }
   
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     .alert {
-      position: fixed;
+      position: absolute;
       top: 85px;
       transform: translate(-24%,0);
       width: 300px; 

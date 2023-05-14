@@ -26,6 +26,10 @@ session_start();
             if (statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
           });
       })
+
+      $(".alertClose").click(function() {
+        $(".alert").hide()
+      })
     })
   </script>
 
@@ -46,7 +50,7 @@ session_start();
             alert.show();
             setTimeout(function(){
               alert.hide();
-            }, 2000);
+            }, 5000);
           },
           error: function(xhr, status, error) {
             // Mostra il popup di errore
@@ -104,7 +108,8 @@ session_start();
       <label>
         <input type="checkbox" class="alertCheckbox" autocomplete="off" />
         <div class="alert success" style="display:none">
-          <span class="alertText"></span>
+          <span class="alertClose"><img src="../Img/close.png"  id="close-img"></span>
+          <span class="alertText"><br class="clear"/></span>
         </div>
       </label>
 
