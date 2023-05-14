@@ -52,15 +52,6 @@ session_start();
               alert.hide();
             }, 5000);
           },
-          error: function(xhr, status, error) {
-            // Mostra il popup di errore
-            var alert = $('.alert.error');
-            alert.find('.alertText').html(error);
-            alert.show();
-            setTimeout(function(){
-              alert.hide();
-            }, 2000);
-          }
         });        
       });
     });

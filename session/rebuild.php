@@ -20,16 +20,7 @@
     session_start();
     
     if ($pg_connect) {
-
-        $cookie_parts = $_COOKIE['myParts'];
-        echo $cookie_parts;
-
-
-        $set = json_decode($cookie_parts, true);
-        
-        
-        print_r($set);
-        //echo $_SESSION["mySet"];
+        $id_n = $_SESSION["user_id"];
 
         // Query per selezionare tutti i set nel database
         $q1 = "select distinct set_id
@@ -45,8 +36,8 @@
         
         // Scandiamo ogni set
         for ($i = 0; $i < count($everySetArray); $i++) {
-            //print_r( $everySetArray[$i]["set_id"]);
-            //echo " ";
+            print_r( $everySetArray[$i]["set_id"]);
+            echo ": ";
             $q2 = "select part_id, quantity
             from parts
             where set_id=$1";
@@ -61,11 +52,30 @@
             // Scandiamo le parti per ogni set
             for ($j = 0; $j < count($partsArray); $j++) {
                 /*print_r( $partsArray[$j]["part_id"]);
-                echo "  ";
+                echo "/";
                 print_r( $partsArray[$j]["quantity"]);
-                echo "/";*/
+                echo "----";*/
+                
+                $q3 = "select parts from setutente where id_n = $id_n";
+                $result3 = pg_query($pg_connect, $q3);
+                print_r( $partsArray[$j]["part_id"]);
+               // print_r(pg_fetch_assoc($result3));
+                if(in_array($partsArray[$j], pg_fetch_assoc($result3))){
+                    echo "SI";
+                }
+                else{
+                    echo "NO";
+                }
+                // Creiamo un array con tutti i set
+               /* $myPartsArray = array();
+                $phpResult = json_decode(pg_fetch_assoc($result3), true);
+                while ($row = pg_fetch_assoc($phpResult)) {
+                // prepend each row to the beginning of the array
+                    array_unshift($myPartsArray, array('part_id' => $row['part_id'], 
+                    'total_value' => $row['total_value']));
+                }*/
             }
-            //echo "<br>";
+            echo "<br>";
 
         }
 

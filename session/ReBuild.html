@@ -9,18 +9,11 @@
     <script>
         // recupera l'array di elementi JSON dal localStorage
         // Recupera il valore del set dal Local Storage
-        function prova(){
-            var myParts = (localStorage.getItem("myData"));
-            alert(myParts);
-            
-            document.cookie="myParts="+myParts;
-
-        }
 
     </script>
 </head>
 <body>
-    <form action='rebuild.php' method='POST' onsubmit="prova()">
+    <form action='rebuild.php' method='POST'>
         <input type="submit" value="REBUILD"  >
     </form>
 </body>
