@@ -56,7 +56,7 @@
                 print_r( $partsArray[$j]["quantity"]);
                 echo "----";*/
                 
-                $q3 = "select unnest(parts) from setutente where id_n = $id_n";
+                $q3 = "SELECT split_part(Unnest(parts), ',', 1) AS value1, split_part(Unnest(parts), ',', 2) AS value2 FROM setutente where id_n = $id_n";
 
 
                 $result3 = pg_query($pg_connect, $q3);
@@ -68,14 +68,19 @@
                 //print_r( $prova);
 
                 foreach($prova as $row){
-                    $values = array_values($row);
-                    $tupla = $values[0];
-                    //$quantity = $values[1];
-                    if($partsArray[$j]['part_id'] == $tupla[0]){
-                        echo " SI";
+                    $parts = str_replace('(','',$row['value1']);
+                    $quantity = str_replace(')','',$row['value2']);
+                    //echo $parts . $quantity;
+                    if($partsArray[$j]['part_id'] == $parts){
+                        if($quantity <= $partsArray[$j]['quantity']){
+                            echo "NO";
+                        }
+                        else{
+                            echo "SI";
+                        }
                     }
                     else{
-                        echo"NO";
+                        echo "boh";
                     }
                 }
 
