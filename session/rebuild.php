@@ -22,6 +22,15 @@
     if ($pg_connect) {
         $id_n = $_SESSION["user_id"];
 
+        $q3 = "SELECT split_part(Unnest(parts), ',', 1) AS value1, split_part(Unnest(parts), ',', 2) AS value2 FROM setutente where id_n = $id_n";
+
+
+        $result3 = pg_query($pg_connect, $q3);
+        //print_r(pg_fetch_array($result3)['0']);
+
+        $prova = pg_fetch_all($result3);
+
+
         // Query per selezionare tutti i set nel database
         $q1 = "select distinct set_id
                from parts";
@@ -56,33 +65,32 @@
                 print_r( $partsArray[$j]["quantity"]);
                 echo "----";*/
                 
-                $q3 = "SELECT split_part(Unnest(parts), ',', 1) AS value1, split_part(Unnest(parts), ',', 2) AS value2 FROM setutente where id_n = $id_n";
-
-
-                $result3 = pg_query($pg_connect, $q3);
-                //print_r(pg_fetch_array($result3)['0']);
-
-                $prova = pg_fetch_all($result3);
-                //  print_r($prova);
-                $myPartsArray = array();
-                //print_r( $prova);
-
+                $possiede = 0;
+                $nonPossiede = 0;
+                $presente = 0;
                 foreach($prova as $row){
                     $parts = str_replace('(','',$row['value1']);
                     $quantity = str_replace(')','',$row['value2']);
+                    
                     //echo $parts . $quantity;
                     if($partsArray[$j]['part_id'] == $parts){
                         if($quantity <= $partsArray[$j]['quantity']){
-                            echo "NO";
+                            echo $parts. ": ";
+
                         }
                         else{
-                            echo "SI";
+                            echo $parts . ": ";
+                            $presente +=1;
                         }
                     }
-                    else{
-                        echo "boh";
-                    }
                 }
+                if ($presente == 0){
+                    $nonPossiede += 1;
+                }
+                else{
+                    $possiede +=1;
+                }
+
 
 
 
@@ -102,6 +110,8 @@
                 // Creiamo un array con tutti i set
               
             }
+            $percentuale = ($possiede/($nonPossiede+$possiede))*100;
+            echo $percentuale;
             echo "<br>";
 
         }
