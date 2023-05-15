@@ -55,7 +55,6 @@ session_start();
         });        
       });
     });
-
   </script>
 </head>
 
