@@ -89,10 +89,15 @@ session_start();
   <?php if (isset($_SESSION["user_id"])): ?>
 
     <div class="container">
+      
       <form action="setUtente.php" class="search-bar" method="POST" onsubmit="mostraCustomAlert();">
         <input type="text" placeholder="Enter Lego Set Name" name="set">
         <button type="submit"><img src="/Img/search.png"></button>
       </form>
+      <div class="searchDiv">
+      <button class="Camera"  onclick="takePicture()">Camera</button>
+      <button class="File">Carica</button>
+      </div>
       <div class="div_dinamico"></div>
 
       <label>

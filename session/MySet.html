@@ -7,24 +7,40 @@
     <title>Document</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script>
+
         $(document).ready(function(event) {
          // Impedisce il comportamento predefinito del modulo
-    
+            var jsonString = localStorage.getItem("mySet");
+
+            var oggetti = JSON.parse(jsonString);
+
+            // ciclo su tutti gli oggetti e accedi alle loro proprietà
+            for (var i = 0; i < oggetti.length; i++) {
+            var oggetto = oggetti[i];
+            getImg(JSON.stringify(oggetto.set_id));
+            }   
             // Invia i dati del modulo a setUtente.php tramite Ajax
+                
+        });
+
+        function getImg(setId){
+            alert(setId);
             $.ajax({
-              type: 'POST',
-              url: 'MySet.php',
-              success: function(response) {
+                type: 'POST',
+                url: 'MySet.php',
+                data: {
+                    setId: setId
+                },
+                success: function(response) {
                 // Mostra il popup di successo
                 alert(response);
-              },
-            });        
-        });
+                },
+            });
+            
+        };
     </script>
 </head>
 <body>
-    <form action='MySet.php' method='POST'>
-        <input type="submit" value="MYSET"  >
     </form>
 </body>
 </html>
