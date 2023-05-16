@@ -1,21 +1,22 @@
 #lista {
   display: flex;
+  list-style: none;
+  padding: 0;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
 }
 
-#lista li {
+li {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin-right: 20px;
+}
+
+span {
   text-align: center;
 }
 
-#lista li img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 5px;
+/* Regola opzionale per allineare gli elementi al centro orizzontalmente */
+.span {
+  justify-content: center;
 }
