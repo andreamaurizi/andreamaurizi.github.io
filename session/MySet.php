@@ -1,6 +1,6 @@
 <?php
 
-$apiKey = "3-8aLX-B2Qx-jPCCT";
+$apiKey = "3-1KNg-2P7y-sVK1B";
 $setNumber = $_POST['setId'];
 // Url per la chiamata all'API
 
@@ -24,21 +24,10 @@ if ($data->status == "success") {
   $setID = $sets[0] -> setID;
   $name = $sets[0] -> name;
   $year = $sets[0] -> year;
-  print_r($name. " " ."(".$year.")". ",");
+  $imgURL = $sets[0] -> image -> imageURL;
+  print_r($name. " " ."(".$year.")". "," .$imgURL);
 
-  $url2 = "https://brickset.com/api/v3.asmx/getAdditionalImages?apiKey=$apiKey&setID=$setID";
-
-  // Esegue la chiamata all'API e memorizza la risposta come una stringa
-  $response2 = file_get_contents($url2);
-
-  // Decodifica la risposta come oggetto JSON
-  $data2 = json_decode($response2);
-
-  if($data2 -> status == "success"){
-     $imgs = $data2->additionalImages;
-      $imageURL = $imgs[0]-> thumbnailURL;
-      print_r($imageURL);
-  }
+  
 
 } else {
   echo "Si è verificato un errore durante la chiamata all'API.";

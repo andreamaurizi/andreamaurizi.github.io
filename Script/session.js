@@ -65,4 +65,34 @@ function prova() {
 
             
            
-        }
+}
+
+
+function settaImmagine(nome, imageURL){
+    var elementList = document.getElementById("lista");
+
+    // Crea un nuovo elemento <li>
+    var newItem = document.createElement("li");
+    newItem.classList.add("element-item");
+    newItem.className = "element-id"
+
+    // Crea l'elemento <img>
+    var newImage = document.createElement("img");
+    newImage.src = imageURL;
+    newImage.alt = "Immagine";
+    newImage.className = "list-img"
+
+    // Crea l'elemento <span> per il testo
+    var newText = document.createElement("span");
+    newText.textContent = nome;
+    newText.className = "Set-Name"
+
+    // Aggiungi l'immagine e il testo come figli del nuovo elemento <li>
+    newItem.appendChild(newImage);
+    newItem.appendChild(newText);
+
+    // Aggiungi il nuovo elemento <li> alla lista
+    elementList.appendChild(newItem);
+    
+}
+

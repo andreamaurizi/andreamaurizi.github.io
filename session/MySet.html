@@ -8,7 +8,6 @@
     <title>Document</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script>
-
         $(document).ready(function(event) {
          // Impedisce il comportamento predefinito del modulo
             var jsonString = localStorage.getItem("mySet");
@@ -18,10 +17,9 @@
             // ciclo su tutti gli oggetti e accedi alle loro proprietà
             for (var i = 0; i < oggetti.length; i++) {
                 var oggetto = oggetti[i];
-               // getImg(oggetto.set_id);
+                 getImg(oggetto.set_id);
             }   
-            // Invia i dati del modulo a setUtente.php tramite Ajax
-            //getImg("79111-1");   
+            
         });
 
         function getImg(setId){
@@ -37,47 +35,13 @@
                 var nome = risposta[0];
                 var imageURL = risposta[1];
                 settaImmagine(nome, imageURL);
-                
                 },
             });
             
         };
-
-
-        function settaImmagine(nome, imageURL){
-            var elementList = document.getElementById("lista");
-
-            // Crea un nuovo elemento <li>
-            var newItem = document.createElement("li");
-            newItem.classList.add("element-item");
-            newItem.id = "element-id"
-
-            // Crea l'elemento <img>
-            var newImage = document.createElement("img");
-            newImage.src = imageURL;
-            newImage.alt = "Immagine";
-            newImage.id = "list-img"
-
-            // Crea l'elemento <span> per il testo
-            var newText = document.createElement("span");
-            newText.classList.add(nome);
-            newText.textContent = nome;
-            newText.id = "Set-Name"
-
-            // Aggiungi l'immagine e il testo come figli del nuovo elemento <li>
-            newItem.appendChild(newImage);
-            newItem.appendChild(newText);
-
-            // Aggiungi il nuovo elemento <li> alla lista
-            elementList.appendChild(newItem);
-            
-        }
-
-        
     </script>
 </head>
 <body>
-    <button onclick="settaImmagine('ciao', 'https://images.brickset.com/sets/AdditionalImages/79111-1/tn_79111_alt1_jpg.jpg')"> casdkjsfiosfkjisfuji</button>
     <ul id="lista"></ul>
 </body>
 </html>

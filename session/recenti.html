@@ -18,11 +18,25 @@
         }
         for (var i = 0; i < max; i++) {
             var setIDValue = set[i].set_id;
-            document.querySelector(".set").innerHTML += setIDValue + '<br>';
+            $.ajax({
+                type: 'POST',
+                url: 'MySet.php',
+                data: {
+                    setId: setIDValue
+                },
+                success: function(response) {
+                // Mostra il popup di successo
+                var risposta = response.split(",");
+                var nome = risposta[0];
+                var imageURL = risposta[1];
+                settaImmagine(nome, imageURL);
+                },
+            });
         }
        // document.querySelector(".parti").innerHTML = JSON.stringify(part);
     </script>
 
     <h1 class="set"></h1>
 </body>
+    <ul id="lista"></ul>
 </html>

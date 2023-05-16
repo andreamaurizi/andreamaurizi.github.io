@@ -7,7 +7,7 @@
   margin-left: 50px;
 }
 
-#element-id {
+.element-id {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,26 +15,30 @@
   margin-left: 45px;
 }
 
-#list-img{
+.list-img{
     margin: 1rem;
     border-radius: 4px;
     background-size: cover;
     position: relative;
     color: #fff;
+    width: 240px;
+    height: 216px;
 }
 
-#list-img:hover {
+.list-img:hover {
   transform: scale(1.075);
   transition: 0.2s ease-in;
   cursor: pointer;
 }
 
-#Set-Name {
+.Set-Name {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 25px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: red;
+  font-size: 1.3rem;
+  -webkit-text-stroke: 1px white;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
 }
 
 /* Regola opzionale per allineare gli elementi al centro orizzontalmente */
