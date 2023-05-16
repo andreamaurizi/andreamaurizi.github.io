@@ -47,39 +47,34 @@
         function settaImmagine(nome, imageURL){
             alert(nome + imageURL);
 
-            var elementList = document.getElementById("lista");
+            const myList = document.getElementById("lista");
+            const newListItem = document.createElement("li");
+            const newImage = document.createElement("img");
+            newImage.setAttribute("src", imageURL);
+            newListItem.appendChild(newImage);
+            myList.appendChild(newListItem);
 
-            // Crea un nuovo elemento <li>
-            var newItem = document.createElement("li");
-            newItem.classList.add("element-item");
+            
+           var lista = document.getElementById("lista");
+            // creare un nuovo elemento della lista
+            var nuovo_elemento = document.createElement("li");
+            nuovo_elemento.textContent = nome;
+            // aggiungere il nuovo elemento alla lista
+            lista.appendChild(nuovo_elemento);
 
-            // Crea l'elemento <img>
-            var newImage = document.createElement("img");
-            newImage.src = imageURL;
-            newImage.alt = "Immagine";
-
-            // Crea l'elemento <span> per il testo
-            var newText = document.createElement("span");
-            newText.classList.add(nome);
-            newText.textContent = nome;
-
-            // Aggiungi l'immagine e il testo come figli del nuovo elemento <li>
-            newItem.appendChild(newImage);
-            newItem.appendChild(newText);
-
-            // Aggiungi il nuovo elemento <li> alla lista
-            elementList.appendChild(newItem);
             
 
 
 
         }
+
+        
     </script>
 </head>
 <body>
     <button onclick="settaImmagine('ciao', 'https://images.brickset.com/sets/AdditionalImages/79111-1/tn_79111_alt1_jpg.jpg')"> casdkjsfiosfkjisfuji</button>
-    <ul id="lista">
-
-    </ul>
+    <div class="container">
+        <div class="row" id="myRow"></div>
+      </div>
 </body>
 </html>
