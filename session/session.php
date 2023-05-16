@@ -89,15 +89,20 @@ session_start();
   <?php if (isset($_SESSION["user_id"])): ?>
 
     <div class="container">
-      
-      <form action="setUtente.php" class="search-bar" method="POST" onsubmit="mostraCustomAlert();">
+    
+      <form id="search-bar" action="setUtente.php" class="search-bar" method="POST" onsubmit="mostraCustomAlert();">
         <input type="text" placeholder="Enter Lego Set Name" name="set">
         <button type="submit"><img src="/Img/search.png"></button>
       </form>
+
       <div class="searchDiv">
-      <button class="Camera"  onclick="takePicture()">Camera</button>
-      <button class="File">Carica</button>
+      <button id="Camera" class="Camera" onclick="prova()">Camera</button>
+      <button id="File" class="File">Carica</button>
       </div>
+      <!-- Questa roba è per far funzionare la camera -->
+      <video id="video" width="640" height="480"></video>
+      <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
+
       <div class="div_dinamico"></div>
 
       <label>
@@ -107,6 +112,8 @@ session_start();
           <span class="alertText"><br class="clear"/></span>
         </div>
       </label>
+      
+    </div>
 
     
 

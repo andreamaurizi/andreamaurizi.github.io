@@ -152,12 +152,12 @@
       font-size: 1.6rem;
       z-index: 99;
     }
-    /**/
+    /*
     .searchDiv{
       right: 150px;
       top: 1000000000000000000px;
     }
-    /**/
+    */
     #navbar__logo {
       padding-left: 25px;
     }
@@ -241,10 +241,10 @@
 /**/
 .searchDiv{
   position: absolute;
-  right: 22%;
-  top: 17%;
+  top: 170px;
+  left: 170px;
 }
-/**/
+
 .search-bar{
   width: 100%;
   max-width: 700px;
@@ -285,32 +285,33 @@
   cursor: pointer ;
 }
 /**/
-.Camera{
-  width: 25px;
-}
+
 
 .Camera{
     border: 0;
     border-radius: 50%;
     width: 60px;
     height: 60px;
+    color: white;
     background: transparent;
     cursor: pointer ;
-    background: rgba(255,255,255,0.2);
+    background:#dd402477
 }
 
-.File{
-  width: 25px;
-}
 
 .File{
   border: 0;
   border-radius: 50%;
   width: 60px;
   height: 60px;
+  color: white;
   background: transparent;
   cursor: pointer ;
-  background: rgba(255,255,255,0.2);
+  background: rgba(20, 0, 0, 0.714);
 }
-/**/
+
+.div_dinamico {
+  position: absolute;
+  top: 300px;
+}
 
