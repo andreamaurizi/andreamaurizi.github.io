@@ -44,35 +44,32 @@
         };
 
 
-        function settaImmagine(nome, imageURL){
-            alert(nome + imageURL);
+            
+        function settaImmagine(nome, imageURL) {
 
-            const myList = document.getElementById("lista");
-            const newListItem = document.createElement("li");
+            const myRow = document.getElementById("myRow");
+
             const newImage = document.createElement("img");
-            newImage.setAttribute("src", imageURL);
-            newListItem.appendChild(newImage);
-            myList.appendChild(newListItem);
-
-            
-           var lista = document.getElementById("lista");
-            // creare un nuovo elemento della lista
-            var nuovo_elemento = document.createElement("li");
-            nuovo_elemento.textContent = nome;
-            // aggiungere il nuovo elemento alla lista
-            lista.appendChild(nuovo_elemento);
-
-            
-
-
+            newImage.setAttribute("src", imageUrl);
+            newImage.classList.add("img-fluid", "rounded");
+            const newName = document.createElement("span");
+            newName.textContent = name;
+            newName.classList.add("d-block", "text-center");
+            const newCol = document.createElement("div");
+            newCol.classList.add("col");
+            newCol.appendChild(newImage);
+            newCol.appendChild(newName);
+            myRow.appendChild(newCol);
 
         }
+
+        
     </script>
 </head>
 <body>
     <button onclick="settaImmagine('ciao', 'https://images.brickset.com/sets/AdditionalImages/79111-1/tn_79111_alt1_jpg.jpg')"> casdkjsfiosfkjisfuji</button>
-    <ul id="lista">
-
-    </ul>
+    <div class="container">
+        <div class="row" id="myRow"></div>
+      </div>
 </body>
 </html>

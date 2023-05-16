@@ -1,21 +1,10 @@
-#lista {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+ul {
+  list-style-type: none; /* Rimuove i punti dalla lista */
+  padding: 0; /* Rimuove il padding predefinito */
+  margin: 0; /* Rimuove il margine predefinito */
 }
 
-#lista li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  text-align: center;
-}
-
-#lista li img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 5px;
+li {
+  display: inline; /* Mostra gli elementi della lista in linea */
+  margin-right: 10px; /* Aggiunge uno spazio tra gli elementi */
 }
