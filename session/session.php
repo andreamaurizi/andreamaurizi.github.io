@@ -11,11 +11,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../CSS/session.css" />
   <link rel="stylesheet" href="../CSS/popup.css" />
-<<<<<<< HEAD
   <link rel="stylesheet" href="../CSS/mySet.css" />
-=======
-  <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css" />
->>>>>>> c3628aaa06e3a6a56724d96a0f1d9753d00a2ee4
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="website icon" type="png" href="/Img/lego-icon-12.ico" />
