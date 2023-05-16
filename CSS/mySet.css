@@ -1,0 +1,21 @@
+#lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#lista li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  text-align: center;
+}
+
+#lista li img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 5px;
+}
