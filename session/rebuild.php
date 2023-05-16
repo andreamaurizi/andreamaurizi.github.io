@@ -22,7 +22,9 @@
     if ($pg_connect) {
         $id_n = $_SESSION["user_id"];
 
-        $q3 = "SELECT split_part(Unnest(parts), ',', 1) AS value1, split_part(Unnest(parts), ',', 2) AS value2 FROM setutente where id_n = $id_n";
+        $q3 = "SELECT split_part(Unnest(parts), ',', 1) 
+                AS part_id, split_part(Unnest(parts), ',', 2) 
+                AS quantity FROM setutente where id_n = $id_n";
 
 
         $result3 = pg_query($pg_connect, $q3);
@@ -58,19 +60,34 @@
                 array_unshift($partsArray, array('part_id' => $row['part_id'], 
                 'quantity' => $row['quantity']));
             }
+            
+            // Scandiamo le parti dell'utente
+        
+        }
+        
+    }
+
+    
+
+
+?>
+
+Questa roba potrebbe tornarci utile in futuro
+
+// Scandiamo le parti per ogni utente
             // Scandiamo le parti per ogni set
-            for ($j = 0; $j < count($partsArray); $j++) {
+            /*for ($j = 0; $j < count($partsArray); $j++) {
                 /*print_r( $partsArray[$j]["part_id"]);
                 echo "/";
                 print_r( $partsArray[$j]["quantity"]);
-                echo "----";*/
+                echo "----";
                 
                 $possiede = 0;
                 $nonPossiede = 0;
                 $presente = 0;
                 foreach($prova as $row){
-                    $parts = str_replace('(','',$row['value1']);
-                    $quantity = str_replace(')','',$row['value2']);
+                    $parts = str_replace('(','',$row['part_id']);
+                    $quantity = str_replace(')','',$row['quantity']);
                     
                     //echo $parts . $quantity;
                     if($partsArray[$j]['part_id'] == $parts){
@@ -113,11 +130,4 @@
             $percentuale = ($possiede/($nonPossiede+$possiede))*100;
             echo $percentuale;
             echo "<br>";
-
-        }
-
-        
-    }
-
-
-?>
+*/
