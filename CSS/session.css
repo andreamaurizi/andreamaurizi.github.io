@@ -3,12 +3,16 @@
     margin: 0;
     padding: 0;
     font-family: 'Kumbh Sans', sans-serif;
+
   }
   
-  
+  body{
+    background: #4b6cb7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+  }
 
-
-  .navbar {
+  .navbar  {
     background: #141414;
     height: 80px;
     display: flex;
@@ -18,7 +22,7 @@
     position: sticky;
     top: 0;
     z-index: 999;
-  }
+  } 
   
   .navbar__container {
     display: flex;
@@ -225,13 +229,11 @@
   }
 
 
-/* Search Bat */
-
+/* Search Bar */
 .container{
   width: 100%;
   min-height: 100vh;
   padding: 5%;
-  background-image: url(/Img/pinterest/omar-albeik-I6gWLztKrYc-unsplash.jpg);
   background-position: center;
   background-size: cover;
   display: flex;

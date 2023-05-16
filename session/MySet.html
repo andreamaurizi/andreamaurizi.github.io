@@ -45,23 +45,24 @@
 
 
         function settaImmagine(nome, imageURL){
-            alert(nome + imageURL);
-
             var elementList = document.getElementById("lista");
 
             // Crea un nuovo elemento <li>
             var newItem = document.createElement("li");
             newItem.classList.add("element-item");
+            newItem.id = "element-id"
 
             // Crea l'elemento <img>
             var newImage = document.createElement("img");
             newImage.src = imageURL;
             newImage.alt = "Immagine";
+            newImage.id = "list-img"
 
             // Crea l'elemento <span> per il testo
             var newText = document.createElement("span");
             newText.classList.add(nome);
             newText.textContent = nome;
+            newText.id = "Set-Name"
 
             // Aggiungi l'immagine e il testo come figli del nuovo elemento <li>
             newItem.appendChild(newImage);

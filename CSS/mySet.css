@@ -3,17 +3,38 @@
   list-style: none;
   padding: 0;
   flex-wrap: wrap;
+  margin-right: 10px;
+  margin-left: 50px;
 }
 
-li {
+#element-id {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 20px;
+  margin-right: 10px;
+  margin-left: 45px;
 }
 
-span {
+#list-img{
+    margin: 1rem;
+    border-radius: 4px;
+    background-size: cover;
+    position: relative;
+    color: #fff;
+}
+
+#list-img:hover {
+  transform: scale(1.075);
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+
+#Set-Name {
   text-align: center;
+  padding-top: 10px;
+  padding-bottom: 25px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: red;
 }
 
 /* Regola opzionale per allineare gli elementi al centro orizzontalmente */
