@@ -118,6 +118,9 @@ else {
             $q4= "insert into setutente(id_n, id_set) values ($1,NULL)"; 
             $result3 = pg_query_params($pg_connect, $q4, array($tuple_id_n["id_n"]));
 
+            $q5= "insert into missingparts(id_n, set_id, missing_parts) values ($1,NULL,NULL)"; 
+            $result4 = pg_query_params($pg_connect, $q5, array($tuple_id_n["id_n"]));
+
 
             if($result1){
                 echo("<h1>La registrazione è andata a buon fine!</h1><br> 

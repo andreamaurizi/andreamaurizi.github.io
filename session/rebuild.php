@@ -31,8 +31,23 @@
         //print_r(pg_fetch_array($result3)['0']);
 
         $prova = pg_fetch_all($result3);
+        $myPartsArray = array();
 
+        foreach($prova as $row){
+            $parts = str_replace('(','',$row['part_id']);
+            $quantity = str_replace(')','',$row['quantity']);
+            array_unshift($myPartsArray,array('part_id' => $parts, 
+            'quantity' => $quantity));
+        }
+       
+        $myParts_id = array();
 
+        // iterate through each row of the matrix
+        foreach ($myPartsArray as $row) {
+            // access the desired column by its index and append its value to the column_values array
+            $myParts_id[] = $row["part_id"];
+        }
+        print_r($myParts_id);
         // Query per selezionare tutti i set nel database
         $q1 = "select distinct set_id
                from parts";
@@ -60,74 +75,23 @@
                 array_unshift($partsArray, array('part_id' => $row['part_id'], 
                 'quantity' => $row['quantity']));
             }
-            
-            // Scandiamo le parti dell'utente
-        
+            // Scandiamo le parti per ogni utente
+            // Scandiamo le parti per ogni set
+            for ($j = 0; $j < count($partsArray); $j++) {
+                 if(in_array($partsArray[$j]["part_id"], $myParts_id)){
+
+                    echo $partsArray[$j]["part_id"]."SI <br>";
+
+                }
+                else{
+                    echo "NO <br>";
+                }
+            }
         }
-        
     }
 
-    
+
 
 
 ?>
 
-Questa roba potrebbe tornarci utile in futuro
-
-// Scandiamo le parti per ogni utente
-            // Scandiamo le parti per ogni set
-            /*for ($j = 0; $j < count($partsArray); $j++) {
-                /*print_r( $partsArray[$j]["part_id"]);
-                echo "/";
-                print_r( $partsArray[$j]["quantity"]);
-                echo "----";
-                
-                $possiede = 0;
-                $nonPossiede = 0;
-                $presente = 0;
-                foreach($prova as $row){
-                    $parts = str_replace('(','',$row['part_id']);
-                    $quantity = str_replace(')','',$row['quantity']);
-                    
-                    //echo $parts . $quantity;
-                    if($partsArray[$j]['part_id'] == $parts){
-                        if($quantity <= $partsArray[$j]['quantity']){
-                            echo $parts. ": ";
-
-                        }
-                        else{
-                            echo $parts . ": ";
-                            $presente +=1;
-                        }
-                    }
-                }
-                if ($presente == 0){
-                    $nonPossiede += 1;
-                }
-                else{
-                    $possiede +=1;
-                }
-
-
-
-
-
-                /*while ($row = $prova) {
-                // prepend each row to the beginning of the array
-                    array_unshift($myPartsArray, array('part_id' => $row[0], 
-                    'total_value' => $row[1]));
-                }
-                print_r( $myPartsArray);
-                /*if(in_array($partsArray[$j], $myPartsArray)){
-                    echo "SI";
-                }
-                else{
-                    echo "NO";
-                }*/
-                // Creiamo un array con tutti i set
-              
-            }
-            $percentuale = ($possiede/($nonPossiede+$possiede))*100;
-            echo $percentuale;
-            echo "<br>";
-*/
