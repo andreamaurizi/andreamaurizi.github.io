@@ -1,21 +1,13 @@
 <?php
 
+// Takes in the user's image
+$base64Image = $_POST["imgBase64"];
+$imageData = base64_decode($base64Image);
+
+
 // BrickOwl API endpoint
 $endpoint = 'https://api.brickognize.com/predict/';
 
-// API key
-
-// Set the image file path
-$imageFilePath = '/path/to/image.jpg';
-
-// Open the file
-$fileHandle = fopen($imageFilePath, 'r');
-
-// Read the file contents
-$fileContents = fread($fileHandle, filesize($imageFilePath));
-
-// Close the file handle
-fclose($fileHandle);
 
 // Create the cURL request
 $curl = curl_init();
@@ -25,7 +17,7 @@ curl_setopt_array($curl, array(
     CURLOPT_URL => $endpoint,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_POST => true,
-    CURLOPT_POSTFIELDS => $fileContents,
+    CURLOPT_POSTFIELDS => $imageData,
     CURLOPT_HTTPHEADER => array(
         'Content-Type: image/jpeg',
     ),
@@ -41,6 +33,7 @@ if (curl_errno($curl)) {
 } else {
     // Process the response
     $data = json_decode($response);
+    print_r($data);
     // ...
 }
 

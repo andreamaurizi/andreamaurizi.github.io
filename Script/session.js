@@ -50,4 +50,19 @@ function prova() {
             const img = new Image();
             img.src = dataUrl;
             document.body.appendChild(img);
+
+            $(document).ready(function() {
+                $.ajax({
+                    type:"POST",
+                    url:"brickognize.php",
+                    data:{imgBase64:dataUrl},
+                    success:function(msg){
+                        console.log("image uploaded");
+                        console.log(msg);
+                    }
+                })
+            })
+
+            
+           
         }
