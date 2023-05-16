@@ -16,15 +16,14 @@
 
             // ciclo su tutti gli oggetti e accedi alle loro proprietà
             for (var i = 0; i < oggetti.length; i++) {
-            var oggetto = oggetti[i];
-            getImg(JSON.stringify(oggetto.set_id));
+                var oggetto = oggetti[i];
+                getImg(oggetto.set_id);
             }   
             // Invia i dati del modulo a setUtente.php tramite Ajax
-                
+            //getImg("79111-1");   
         });
 
         function getImg(setId){
-            alert(setId);
             $.ajax({
                 type: 'POST',
                 url: 'MySet.php',
