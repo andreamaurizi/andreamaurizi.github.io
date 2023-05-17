@@ -14,7 +14,7 @@ session_start();
   <link rel="stylesheet" href="../CSS/mySet.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="../Script/app.js"></script>
+  <link rel="stylesheet" href="../CSS/dialog.css" />
   <link rel="website icon" type="png" href="/Img/lego-icon-12.ico" />
   <script src="../Script/session.js"></script>
   <title>Ricrea il tuo Brick Set</title>
@@ -33,11 +33,10 @@ session_start();
         $(".alert").hide();
       })
 
-      $(.)
-  
+    
     })
   </script>
-
+  
   <script>
     $(document).ready(function() {
       $('.search-bar').submit(function(event) {
@@ -132,12 +131,8 @@ session_start();
     </script>
   <?php endif; ?>
 
-  <script>
-    $(document).ready(function() {
-      
-    })
-  </script>
-  
+   <script src="../Script/app.js"></script>
+   
 </body>
 
 </html>

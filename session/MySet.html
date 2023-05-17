@@ -17,14 +17,56 @@
             // ciclo su tutti gli oggetti e accedi alle loro proprietà
             for (var i = 0; i < oggetti.length; i++) {
                 var oggetto = oggetti[i];
-                //getImg(oggetto.set_id);
-            }   
+                //getImg(oggetto.set_id,i);
+            }  
+            
+            
+            
             
         });
+
+
+
     </script>
 </head>
 <body>
-    <button onclick="settaImmagine('Ciao Ciaooo','https://images.brickset.com/sets/AdditionalImages/79111-1/tn_79111_alt1_jpg.jpg')">owqeihfoewhfwehfe</button>
+    <button onclick="settaImmagine('Ciao Ciaooo','https://images.brickset.com/sets/AdditionalImages/79111-1/tn_79111_alt1_jpg.jpg','1')">owqeihfoewhfwehfe</button>
     <ul id="lista"></ul>
+
+    <div id="dialog" class="dialog-container">
+        <span class="dialog-close">X</span>
+        <h2 id="setName">Elemento cliccato</h2>
+        <p id="dialog-content"></p>
+    </div>
+
+    <script> 
+        /*function handleElementClick(event) {
+          var element = event.target;
+          var elementId = element.id;
+          alert(elementId);
+        }*/
+
+        function handleElementClick(event) {
+            var elementId = event.target.id;
+            var dialogContent = document.getElementById('setName');
+            dialogContent.textContent =  elementId;
+
+            var dialog = document.getElementById('dialog');
+            dialog.style.display = 'block';
+        }
+
+        // Funzione per chiudere l'elemento di dialogo
+        function closeDialog() {
+            var dialog = document.getElementById('dialog');
+            dialog.style.display = 'none';
+        }
+
+      // Aggiungi un gestore di eventi al contenitore principale della lista
+      var listContainer = document.getElementById('lista');
+      listContainer.addEventListener('click', handleElementClick);
+
+      var dialogClose = document.querySelector('.dialog-close');
+        dialogClose.addEventListener('click', closeDialog);
+      </script>
 </body>
 </html>

@@ -69,7 +69,7 @@ function prova() {
 
 
 
-function getImg(setId){
+function getImg(setId,i){
     $.ajax({
         type: 'POST',
         url: 'MySet.php',
@@ -77,11 +77,10 @@ function getImg(setId){
             setId: setId
         },
         success: function(response) {
-        // Mostra il popup di successo
-        var risposta = response.split(",");
-        var nome = risposta[0];
-        var imageURL = risposta[1];
-        settaImmagine(nome, imageURL);
+            var risposta = response.split(",");
+            var nome = risposta[0];
+            var imageURL = risposta[1];
+            settaImmagine(nome, imageURL,i);
         },
     });
     
@@ -90,7 +89,7 @@ function getImg(setId){
 
 
 
-function settaImmagine(nome, imageURL){
+function settaImmagine(nome, imageURL,i){
     var elementList = document.getElementById("lista");
 
     // Crea un nuovo elemento <li>
@@ -103,6 +102,7 @@ function settaImmagine(nome, imageURL){
     newImage.src = imageURL;
     newImage.alt = "Immagine";
     newImage.className = "list-img"
+    newImage.id = nome;
 
     // Crea l'elemento <span> per il testo
     var newText = document.createElement("span");
