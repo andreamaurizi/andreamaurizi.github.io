@@ -88,8 +88,6 @@
                 continue;
                 }
             $setStringa = $everySetArray[$i]["set_id"];
-            print_r( $setStringa);
-            echo "<br>";
             $q2 = "select part_id, quantity
                    from parts
                    where set_id=$1";
@@ -112,9 +110,7 @@
 
                 $partiTotali += $quantityStringa;
 
-                echo "<br>";
-                print_r($partiTotali . " " . $quantityStringa . " parti totali");
-                echo "<br>";
+                
 
 
                 // QUESTA ROBA SERVE PER RIEMPIRE LA TABELLA MISSING PARTS
@@ -131,9 +127,7 @@
 
                         $partiMancanti += $newQuantity;
 
-                        echo "<br>";
-                        print_r($partiMancanti . " " . $newQuantity . " parti mancanti");
-                        echo "<br>";
+                        
                         
                         //controllo se il set è nel db missingparts
                         $q5 = "select * from missingparts where set_id=$1 AND id_n=$id_n";
@@ -164,9 +158,7 @@
 
                     $partiMancanti += $quantityStringa;
 
-                    echo "<br>";
-                    print_r($partiMancanti . " " . $quantityStringa . " parti mancanti");
-                    echo "<br>";
+            
 
                     //controllo se il set è nel db missingparts
                     $q5 = "select * from missingparts where set_id=$1 AND id_n=$id_n";
@@ -194,9 +186,6 @@
             // Fuori dal for delle parti ma dentro il for dei set
             // Qua si fa Il confronto tra missing parts e parts per ottenere la percentuale
             $percentuale = (1 - ($partiMancanti/$partiTotali)) * 100;
-            echo "<br>";
-            print_r($percentuale . "% percentuale");
-            echo "<br>";
             if ($percentuale >= 80 && $partiTotali >= 50) {
                 array_unshift($matchingSetsArray, array('set_id' => $setStringa, 'percentuale'=>$percentuale, 
                                                 "parti_totali" => $partiTotali, "parti_mancanti" => $partiMancanti));
@@ -206,9 +195,8 @@
         $percentualeArray = array_column($matchingSetsArray, 'percentuale');
 
         array_multisort($percentualeArray, SORT_DESC, $matchingSetsArray );
-        echo "test <br>";
-        print_r($matchingSetsArray);
         $jsonMatchingSets = json_encode($matchingSetsArray);
+        print_r($jsonMatchingSets);
         echo "<html><body>";
         echo "<script>";
         echo "localStorage.setItem('myMatchingSets', '$jsonMatchingSets');";

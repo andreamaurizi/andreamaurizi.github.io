@@ -8,43 +8,31 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script>
           $(document).ready(function(event) {
+            alert("ciao");
+            //event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'rebuild.php',
+                success: function(response){
+                    var oggetti = JSON.parse(response);
+                    alert(oggetti);
+                    // ciclo su tutti gli oggetti e accedi alle loro proprietà
+                    for (var i = 0; i < oggetti.length; i++) {
+                        var oggetto = oggetti[i];
+                        alert(oggetto);
+                        // getImg(oggetto.set_id);
+                    }   
+                }
+            });
          // Impedisce il comportamento predefinito del modulo
-            var jsonString = localStorage.getItem("myMatchingSets");
-
-            var oggetti = JSON.parse(jsonString);
-
-            // ciclo su tutti gli oggetti e accedi alle loro proprietà
-            for (var i = 0; i < oggetti.length; i++) {
-                var oggetto = oggetti[i];
-                 getImg(oggetto.set_id);
-            }   
+            
             
         });
 
-        function getImg(setId){
-            $.ajax({
-                type: 'POST',
-                url: 'MySet.php',
-                data: {
-                    setId: setId
-                },
-                success: function(response) {
-                // Mostra il popup di successo
-                var risposta = response.split(",");
-                var nome = risposta[0];
-                var imageURL = risposta[1];
-                settaImmagine(nome, imageURL);
-                },
-            });
-            
-        };
 
     </script>
 </head>
 <body>
-    <form action='rebuild.php' method='POST'>
-        <input type="submit" value="REBUILD"  >
-    </form>
     <ul id="lista"></ul>
 </body>
 </html>

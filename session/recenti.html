@@ -11,27 +11,14 @@
         var sets = localStorage.getItem("mySet");
         var set = JSON.parse(sets);
         if(set.length <= 4){
-        var max = set.length;
+            var max = set.length;
         }
         else{
-        var max = 4;
+             var max = 4;
         }
         for (var i = 0; i < max; i++) {
             var setIDValue = set[i].set_id;
-            $.ajax({
-                type: 'POST',
-                url: 'MySet.php',
-                data: {
-                    setId: setIDValue
-                },
-                success: function(response) {
-                // Mostra il popup di successo
-                var risposta = response.split(",");
-                var nome = risposta[0];
-                var imageURL = risposta[1];
-                settaImmagine(nome, imageURL);
-                },
-            });
+            getImg(setIDValue);
         }
        // document.querySelector(".parti").innerHTML = JSON.stringify(part);
     </script>

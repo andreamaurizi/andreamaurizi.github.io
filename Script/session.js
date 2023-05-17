@@ -68,6 +68,28 @@ function prova() {
 }
 
 
+
+function getImg(setId){
+    $.ajax({
+        type: 'POST',
+        url: 'MySet.php',
+        data: {
+            setId: setId
+        },
+        success: function(response) {
+        // Mostra il popup di successo
+        var risposta = response.split(",");
+        var nome = risposta[0];
+        var imageURL = risposta[1];
+        settaImmagine(nome, imageURL);
+        },
+    });
+    
+};
+
+
+
+
 function settaImmagine(nome, imageURL){
     var elementList = document.getElementById("lista");
 
