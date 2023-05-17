@@ -82,7 +82,7 @@
         // Creiamo un array che contiene i set con più di 80% match
         $matchingSetsArray = array();
         // Scandiamo ogni set
-        for ($i = 0; $i < count($everySetArray)/20; $i++) {
+        for ($i = 0; $i < count($everySetArray)/10; $i++) {
             
             if(in_array($everySetArray[$i]["set_id"], $mieiSet)){  
                 continue;
@@ -197,12 +197,26 @@
             echo "<br>";
             print_r($percentuale . "% percentuale");
             echo "<br>";
-            if ($percentuale >= 80) {
-                array_unshift($matchingSetsArray, array('set_id' => $setStringa));
+            if ($percentuale >= 80 && $partiTotali >= 50) {
+                array_unshift($matchingSetsArray, array('set_id' => $setStringa, 'percentuale'=>$percentuale, 
+                                                "parti_totali" => $partiTotali, "parti_mancanti" => $partiMancanti));
             }
             
         }
+        $percentualeArray = array_column($matchingSetsArray, 'percentuale');
+
+        array_multisort($percentualeArray, SORT_DESC, $matchingSetsArray );
+        echo "test <br>";
+        print_r($matchingSetsArray);
+        $jsonMatchingSets = json_encode($matchingSetsArray);
+        echo "<html><body>";
+        echo "<script>";
+        echo "localStorage.setItem('myMatchingSets', '$jsonMatchingSets');";
+        echo "</script>";
+        echo "</body></html>";
+
     }
+
 
 
 
