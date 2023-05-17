@@ -30,9 +30,10 @@ session_start();
       })
 
       $(".alertClose").click(function() {
-        $(".alert").hide()
+        $(".alert").hide();
       })
 
+      $(.)
   
     })
   </script>
@@ -60,8 +61,6 @@ session_start();
       });
     });
   </script>
-    
-  
 
 </head>
  
