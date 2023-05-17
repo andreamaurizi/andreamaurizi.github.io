@@ -19,10 +19,10 @@
 
     if ($pg_connect) {
         // controllo che il numero di set sia sintatticamente corretto
-        if(!preg_match("/^\d{1,5}-\d$/", $_POST["set"])){
+        /*if(!preg_match("/^\d{1,5}-\d$/", $_POST["set"])){
 
             die("Il numero di set inserito è invalido");
-        }
+        }*/
         $set = $_POST["set"];
         $id_n = $_SESSION["user_id"];
         $q1 = "select * from parts where set_id= $1";

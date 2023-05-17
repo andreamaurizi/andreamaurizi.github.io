@@ -21,6 +21,8 @@
     
     if ($pg_connect) {
         $id_n = $_SESSION["user_id"];
+        $q8 = "DELETE from missingparts where id_n = $id_n";
+        $result8 = pg_query($pg_connect, $q8);
 
         $q3 = "SELECT split_part(Unnest(parts), ',', 1) 
                 AS part_id, split_part(Unnest(parts), ',', 2) 
@@ -77,8 +79,11 @@
         // prepend each row to the beginning of the array
             array_unshift($everySetArray, array('set_id' => $row['set_id']));
         }
+        // Creiamo un array che contiene i set con più di 80% match
+        $matchingSetsArray = array();
         // Scandiamo ogni set
         for ($i = 0; $i < count($everySetArray)/20; $i++) {
+            
             if(in_array($everySetArray[$i]["set_id"], $mieiSet)){  
                 continue;
                 }
@@ -96,19 +101,72 @@
                 array_unshift($partsArray, array('part_id' => $row['part_id'], 
                 'quantity' => $row['quantity']));
             }
+            $partiTotali = 0;
+            $partiMancanti = 0;
+
             // Scandiamo le parti per ogni set
             for ($j = 0; $j < count($partsArray); $j++) {
 
                 $partStringa =$partsArray[$j]["part_id"];
                 $quantityStringa =$partsArray[$j]["quantity"];
-                //parte del set compare nelle parti utente
-                 if(in_array($partStringa, $myParts_id)){
-                //IF Differenza quantità
-                    echo $partStringa."SI <br>";
+
+                $partiTotali += $quantityStringa;
+
+                echo "<br>";
+                print_r($partiTotali . " " . $quantityStringa . " parti totali");
+                echo "<br>";
+
+
+                // QUESTA ROBA SERVE PER RIEMPIRE LA TABELLA MISSING PARTS
+                //Caso in cui la parte del set compare nelle parti utente
+                if(in_array($partStringa, $myParts_id)){
+                    // Troviamo l'indice in cui compare questa parte in myPartss_id
+                    $posizione = array_search($partStringa, $myParts_id);
+                    $myQuantityStringa = $myPartsQuantity[$posizione];
+                    //echo "<br>";
+                    //print_r($myQuantityStringa . " " . $quantityStringa);
+                    //Se la quantità dell'utente è minore di quella del set 
+                    if ($myQuantityStringa < $quantityStringa) {
+                        $newQuantity = $quantityStringa - $myQuantityStringa;
+
+                        $partiMancanti += $newQuantity;
+
+                        echo "<br>";
+                        print_r($partiMancanti . " " . $newQuantity . " parti mancanti");
+                        echo "<br>";
+                        
+                        //controllo se il set è nel db missingparts
+                        $q5 = "select * from missingparts where set_id=$1 AND id_n=$id_n";
+                        $result5= pg_query_params($pg_connect,$q5,array($setStringa));
+
+                        //set presente nel db missingparts per l'utente
+                        if($tuple=pg_fetch_array($result5)){
+                            $q7 = "UPDATE missingparts
+                            SET missing_parts = missing_parts || hstore($1, $2)
+                            WHERE id_n = $id_n AND set_id = $3";
+                            $result7 = pg_query_params($pg_connect, $q7, array($partStringa, $newQuantity, $setStringa));
+                        }
+                        //set non presente nel db missingparts per l'utente
+                        else{
+
+                            //aggiungi il set
+                            $q6= "insert into missingparts(id_n, set_id, missing_parts) values ($id_n,$1,hstore($2, $3))"; 
+                            $result6 = pg_query_params($pg_connect, $q6, array($setStringa, $partStringa, $newQuantity));
+                        }
+                    //Se la quantità dell'utente è maggiore di quella del set
+                    } else {
+                        //Non dobbiamo fare un cazzo in verità qualcosa si
+                    }
 
                 }
-                // Caso in cui parte del set non compare nelle parti dell'utente
+                // Caso in cui la parte del set non compare nelle parti dell'utente
                 else{
+
+                    $partiMancanti += $quantityStringa;
+
+                    echo "<br>";
+                    print_r($partiMancanti . " " . $quantityStringa . " parti mancanti");
+                    echo "<br>";
 
                     //controllo se il set è nel db missingparts
                     $q5 = "select * from missingparts where set_id=$1 AND id_n=$id_n";
@@ -120,7 +178,6 @@
                         SET missing_parts = missing_parts || hstore($1, $2)
                         WHERE id_n = $id_n AND set_id = $3";
                         $result7 = pg_query_params($pg_connect, $q7, array($partStringa, $quantityStringa, $setStringa));
-                        echo"esiste <br> ";
                     }
                     //set non presente nel db missingparts per l'utente
                     else{
@@ -128,11 +185,22 @@
                         //aggiungi il set
                         $q6= "insert into missingparts(id_n, set_id, missing_parts) values ($id_n,$1,hstore($2, $3))"; 
                         $result6 = pg_query_params($pg_connect, $q6, array($setStringa, $partStringa, $quantityStringa));
-                        echo "creato <br>";
                     }
                     
                 }
+                
             }
+            
+            // Fuori dal for delle parti ma dentro il for dei set
+            // Qua si fa Il confronto tra missing parts e parts per ottenere la percentuale
+            $percentuale = (1 - ($partiMancanti/$partiTotali)) * 100;
+            echo "<br>";
+            print_r($percentuale . "% percentuale");
+            echo "<br>";
+            if ($percentuale >= 80) {
+                array_unshift($matchingSetsArray, array('set_id' => $setStringa));
+            }
+            
         }
     }
 
