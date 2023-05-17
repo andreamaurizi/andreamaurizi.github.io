@@ -197,11 +197,6 @@
         array_multisort($percentualeArray, SORT_DESC, $matchingSetsArray );
         $jsonMatchingSets = json_encode($matchingSetsArray);
         print_r($jsonMatchingSets);
-        echo "<html><body>";
-        echo "<script>";
-        echo "localStorage.setItem('myMatchingSets', '$jsonMatchingSets');";
-        echo "</script>";
-        echo "</body></html>";
 
     }
 

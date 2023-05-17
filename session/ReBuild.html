@@ -13,14 +13,15 @@
             $.ajax({
                 type: 'POST',
                 url: 'rebuild.php',
+                dataType: 'JSON',
                 success: function(response){
+                    localStorage.setItem('myMatchingSets', response);
                     var oggetti = JSON.parse(response);
-                    alert(oggetti);
+                    
                     // ciclo su tutti gli oggetti e accedi alle loro proprietà
                     for (var i = 0; i < oggetti.length; i++) {
                         var oggetto = oggetti[i];
-                        alert(oggetto);
-                        // getImg(oggetto.set_id);
+                        getImg(oggetto.set_id);
                     }   
                 }
             });
