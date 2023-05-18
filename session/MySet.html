@@ -19,10 +19,6 @@
                 var oggetto = oggetti[i];
                 //getImg(oggetto.set_id,i);
             }  
-            
-            
-            
-            
         });
 
 
@@ -37,6 +33,7 @@
         <span class="dialog-close">X</span>
         <h2 id="setName">Elemento cliccato</h2>
         <p id="dialog-content"></p>
+    
     </div>
 
     <script> 
@@ -48,8 +45,18 @@
 
         function handleElementClick(event) {
             var elementId = event.target.id;
+
             var dialogContent = document.getElementById('setName');
             dialogContent.textContent =  elementId;
+
+            alert(elementId);
+
+            var newImage = document.createElement("img");
+            newImage.src = elementId.src;
+            newImage.alt = "Immagine";
+            newImage.className = "img-content"
+            
+            var divElement = document.getElementById("dialog");
 
             var dialog = document.getElementById('dialog');
             dialog.style.display = 'block';
@@ -62,11 +69,12 @@
         }
 
       // Aggiungi un gestore di eventi al contenitore principale della lista
-      var listContainer = document.getElementById('lista');
-      listContainer.addEventListener('click', handleElementClick);
+        var listContainer = document.getElementById('lista');
+        listContainer.addEventListener('click', handleElementClick);
 
-      var dialogClose = document.querySelector('.dialog-close');
+        var dialogClose = document.querySelector('.dialog-close');
         dialogClose.addEventListener('click', closeDialog);
+
       </script>
 </body>
 </html>

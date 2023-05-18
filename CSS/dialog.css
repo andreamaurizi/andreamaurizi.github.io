@@ -31,3 +31,10 @@
   .dialog-close:hover {
     color: #f00;
   }
+
+
+  #img-content {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
