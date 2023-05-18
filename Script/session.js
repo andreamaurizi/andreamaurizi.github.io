@@ -145,7 +145,7 @@ function settaImmagine(nome, imageURL, i) {
     elementList.appendChild(newItem);
 
 }
-ù
+
 
 
 function handleElementClick(event) {
