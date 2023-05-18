@@ -70,40 +70,43 @@ session_start();
 </head>
  
 <body>
-
-  <nav class="navbar">
-    <div class="navbar__container">
-      <a href="/" id="navbar__logo"><img src="/Img/lego-icon-12.ico" id="logo" /> ReBuild</a>
-      <div class="navbar__toggle" id="mobile-menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/" id="navbar__logo"><img src="/Img/lego-icon-12.ico" id="logo" /> ReBuild</a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <p class="navbar__links">Recenti</p>
+          </li>
+          <li class="navbar__item">
+            <p class="navbar__links">MySet</p>
+          </li>
+          <li class="navbar__item">
+            <p class="navbar__links">Logout</p>
+          </li>
+          <li class="navbar__btn">
+            <p class="button">ReBuild</p>
+          </li>
+        </ul>
       </div>
-      <ul class="navbar__menu">
-        <li class="navbar__item">
-          <p class="navbar__links">Recenti</p>
-        </li>
-        <li class="navbar__item">
-          <p class="navbar__links">MySet</p>
-        </li>
-        <li class="navbar__item">
-          <p class="navbar__links">Logout</p>
-        </li>
-        <li class="navbar__btn">
-          <p class="button">ReBuild</p>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    </nav>
+  
 
   <?php if (isset($_SESSION["user_id"])): ?>
 
-    <div class="container">
     
+
+    <div class="container">
       <form id="search-bar" action="setUtente.php" class="search-bar" method="POST" onsubmit="mostraCustomAlert();">
         <input type="text" placeholder="Enter Lego Set Name" name="set">
         <button type="submit"><img src="/Img/search.png"></button>
       </form>
+
+      
 
       <div class="searchDiv">
       <button id="Camera" class="Camera" onclick="prova()">Camera</button>
@@ -117,7 +120,6 @@ session_start();
       <video id="video" width="640" height="480"></video>
       <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
 
-      <div class="div_dinamico"></div>
 
       <label>
         <input type="checkbox" class="alertCheckbox" autocomplete="off" />
@@ -126,8 +128,14 @@ session_start();
           <span class="alertText"><br class="clear"/></span>
         </div>
       </label>
-      
+    
+  
     </div>
+
+
+    <div class="div_dinamico"></div>
+    
+
 
   <?php else: ?>
 
@@ -141,6 +149,9 @@ session_start();
   <?php endif; ?>
 
    <script src="../Script/app.js"></script>
+   <script>
+    
+   </script>
    
 </body>
 

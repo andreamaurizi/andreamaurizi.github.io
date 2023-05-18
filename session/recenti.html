@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/dialog.css">
     <title>Document</title>
 </head>
 <body>
@@ -26,4 +27,21 @@
     <h1 class="set"></h1>
 </body>
     <ul id="lista"></ul>
+
+    <div class="main-area"></div>
+
+    <div id="dialog" class="dialog-container">
+        <span class="dialog-close">X</span>
+        <h2 id="setName">Elemento cliccato</h2>
+        <p id="dialog-content"></p>
+        <img id="img-content">
+    </div>
+
+    <script>
+        var listContainer = document.getElementById('lista');
+        listContainer.addEventListener('click', handleElementClick);
+
+        var dialogClose = document.querySelector('.dialog-close');
+        dialogClose.addEventListener('click', closeDialog);
+    </script>
 </html>

@@ -117,4 +117,37 @@ function settaImmagine(nome, imageURL,i){
     elementList.appendChild(newItem);
     
 }
+ù
 
+
+function handleElementClick(event) {
+    var elementId = event.target.id;
+
+    var dialogContent = document.getElementById('setName');
+    dialogContent.textContent =  elementId;
+
+    var imgUrl = document.getElementById(elementId).getAttribute("src");
+
+   var imgDialog = document.getElementById("img-content").src=imgUrl;
+    
+    var divElement = document.getElementById("dialog");
+
+    var dialog = document.getElementById('dialog');
+    dialog.style.display = 'block';
+
+    var mainArea = document.querySelector('.main-area');
+    mainArea.style.display = 'block';
+}
+
+// Funzione per chiudere l'elemento di dialogo
+function closeDialog() {
+    var dialog = document.getElementById('dialog');
+    dialog.style.display = 'none';
+
+    var mainArea = document.querySelector('.main-area');
+    mainArea.style.display = 'none';
+}
+
+
+
+// Aggiungi un gestore di eventi al contenitore principale della lista

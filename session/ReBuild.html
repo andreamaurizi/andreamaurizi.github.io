@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReBuild</title>
+    <link rel="stylesheet" href="../CSS/dialog.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script>
           $(document).ready(function(event) {
@@ -32,5 +33,21 @@
 </head>
 <body>
     <ul id="lista"></ul>
+
+    <div class="main-area"></div>
+
+    <div id="dialog" class="dialog-container">
+        <span class="dialog-close">X</span>
+        <h2 id="setName"></h2>
+        <p id="dialog-content"></p>
+        <img id="img-content">
+    </div>
+    <script>
+        var listContainer = document.getElementById('lista');
+        listContainer.addEventListener('click', handleElementClick);
+
+        var dialogClose = document.querySelector('.dialog-close');
+        dialogClose.addEventListener('click', closeDialog);
+    </script>
 </body>
 </html>

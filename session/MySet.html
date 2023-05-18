@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="../CSS/dialog.css">
     <title>Document</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script>
@@ -29,49 +29,21 @@
     <button onclick="settaImmagine('Ciao Ciaooo','https://images.brickset.com/sets/AdditionalImages/79111-1/tn_79111_alt1_jpg.jpg','1')">owqeihfoewhfwehfe</button>
     <ul id="lista"></ul>
 
+    <div class="main-area"></div>
+
     <div id="dialog" class="dialog-container">
         <span class="dialog-close">X</span>
         <h2 id="setName">Elemento cliccato</h2>
-        <p id="dialog-content"></p>
         <img id="img-content">
+        <p id="dialog-content">WQFWQFQWFWQF</p>
     </div>
 
-    <script> 
-        /*function handleElementClick(event) {
-          var element = event.target;
-          var elementId = element.id;
-          alert(elementId);
-        }*/
-
-        function handleElementClick(event) {
-            var elementId = event.target.id;
-
-            var dialogContent = document.getElementById('setName');
-            dialogContent.textContent =  elementId;
-
-            var imgUrl = document.getElementById(elementId).getAttribute("src");
-
-           var imgDialog = document.getElementById("img-content").src=imgUrl;
-            
-            var divElement = document.getElementById("dialog");
-
-            var dialog = document.getElementById('dialog');
-            dialog.style.display = 'block';
-        }
-
-        // Funzione per chiudere l'elemento di dialogo
-        function closeDialog() {
-            var dialog = document.getElementById('dialog');
-            dialog.style.display = 'none';
-        }
-
-      // Aggiungi un gestore di eventi al contenitore principale della lista
+    <script>
         var listContainer = document.getElementById('lista');
         listContainer.addEventListener('click', handleElementClick);
 
         var dialogClose = document.querySelector('.dialog-close');
         dialogClose.addEventListener('click', closeDialog);
-
-      </script>
+    </script>
 </body>
 </html>
