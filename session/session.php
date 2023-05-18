@@ -24,7 +24,7 @@ session_start();
       $(".navbar__links").click(function () {
         $(".div_dinamico").load(this.innerHTML + ".html",
           function (responseTxt, statusTxt, xhr) {
-            if (statusTxt == "success") alert("Caricamento terminato");
+
             if (statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
           });
       })
@@ -32,7 +32,7 @@ session_start();
       $(".button").click(function () {
         $(".div_dinamico").load(this.innerHTML + ".html",
           function (responseTxt, statusTxt, xhr) {
-            if (statusTxt == "success") alert("Caricamento terminato");
+
             if (statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
           });
       })

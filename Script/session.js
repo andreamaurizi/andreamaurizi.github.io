@@ -128,14 +128,14 @@ function settaImmagine(nome, imageURL, setId) {
     newItem.classList.add("element-item");
     newItem.className = "element-id"
 
+
     // Crea l'elemento <img>
     var newImage = document.createElement("img");
     newImage.src = imageURL;
     newImage.alt = "Immagine";
     newImage.className = "list-img"
     newImage.id = nome;
-    newImage.className = setId;
-
+    newImage.alt = setId;
     // Crea l'elemento <span> per il testo
     var newText = document.createElement("span");
     newText.textContent = nome;
@@ -160,19 +160,29 @@ function handleElementClick(event) {
 
     var imgUrl = document.getElementById(elementId).getAttribute("src");
 
-    var imgDialog = document.getElementById("img-content").src = imgUrl;
+    document.getElementById("img-content").src = imgUrl;
 
-    var divElement = document.getElementById("dialog");
-
+    
     var dialog = document.getElementById('dialog');
     dialog.style.display = 'block';
 
     var mainArea = document.querySelector('.main-area');
     mainArea.style.display = 'block';
 
-    var elementClass = event.target.className;
-    alert(elementClass);
+    var setId = document.getElementById(elementId).getAttribute("alt");
 
+    var jsonString = localStorage.getItem("myData");
+
+    var oggetti = JSON.parse(jsonString);
+
+    var part_idArray = [];
+    var quantityArray = [];
+    
+    for(var i = 0; i < oggetti.length; i++){
+        part_idArray.push(oggetti[i].part_id);
+        quantityArray.push(oggetti[i].total_value);
+    }
+    
     $.ajax({
         type: 'POST',
         url: 'listaparti.php',
@@ -180,15 +190,46 @@ function handleElementClick(event) {
             setId: setId
         },
         success: function (response) {
-            var risposta = response.split("|");
-            var nome = risposta[0];
-            var imageURL = risposta[1];
-            alert (imageURL);
-            if(imageURL=="nessuna immagine"){
-                imageURL = "https://theminifigclub.com/wp-content/uploads/2021/05/5.12.21-Shocked-Audience.png"
+            var oggetto = JSON.parse(response);
+            for (var i = 0; i < oggetto.length; i++) {
+                var part_id = oggetto[i].part_id;
+                var quantity = oggetto[i].quantity;
+                var myQuantity = 0;
+                var index = part_idArray.indexOf(part_id);
+                if(index == -1){
+                    myQuantity = 0;
+                }else{
+                    myQuantity = quantityArray[index];
+                }
+
+
+
+
+                var elementList = document.getElementById("dialog-content");
+
+                // Crea un nuovo elemento <li>
+                var newItem = document.createElement("li");
+                newItem.classList.add("part-item");
+                newItem.className = "part-id"
+                var partquantity = part_id + " : " + quantity + "(" + myQuantity + ")";
+
+
+
+                var newText = document.createElement("span");
+                newText.textContent = partquantity;
+                newText.className = "part-name";
+                newText.id = part_id
+               
+                newItem.appendChild(newText);
+                if(myQuantity <= quantity){
+                    var elementoSpan = $("#"+part_id);
+                    elementoSpan.css("color","red"); 
+
+                }
+                // Aggiungi il nuovo elemento <li> alla lista
+                elementList.appendChild(newItem);
             }
-            settaImmagine(nome, imageURL, i);
-        },
+        }
     });
 }
 

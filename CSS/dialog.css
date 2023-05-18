@@ -75,9 +75,11 @@
 #dialog-content li{
   font-size: 18px;
   padding: 5px;
-  -webkit-text-stroke: 1px white;
+  color: white;
+  /*-webkit-text-stroke: 1px white;
   -webkit-text-fill-color: transparent;
-  font-weight:bold;
+  font-weight:bold;*/
+  text-align: center;
 }
 
 #dialog-content::-webkit-scrollbar {
