@@ -33,7 +33,7 @@
         <span class="dialog-close">X</span>
         <h2 id="setName">Elemento cliccato</h2>
         <p id="dialog-content"></p>
-    
+        <img id="img-content">
     </div>
 
     <script> 
@@ -49,12 +49,9 @@
             var dialogContent = document.getElementById('setName');
             dialogContent.textContent =  elementId;
 
-            alert(elementId);
+            var imgUrl = document.getElementById(elementId).getAttribute("src");
 
-            var newImage = document.createElement("img");
-            newImage.src = elementId.src;
-            newImage.alt = "Immagine";
-            newImage.className = "img-content"
+           var imgDialog = document.getElementById("img-content").src=imgUrl;
             
             var divElement = document.getElementById("dialog");
 
