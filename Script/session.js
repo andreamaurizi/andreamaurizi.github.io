@@ -220,14 +220,19 @@ function handleElementClick(event) {
                 newText.className = "part-name";
                 newText.id = part_id;
                
+                myQuantity = parseInt(myQuantity);
+                quantity = parseInt(quantity);
                 newItem.appendChild(newText);
-                if(myQuantity <= quantity){
-                    var elementoSpan = $("#"+part_id);
+                
+                // Aggiungi il nuovo elemento <li> alla lista
+                elementList.appendChild(newItem);
+                
+                if(myQuantity < quantity){
+
+                    var elementoSpan = $("#"+ part_id);
                     elementoSpan.css("color","red"); 
 
                 }
-                // Aggiungi il nuovo elemento <li> alla lista
-                elementList.appendChild(newItem);
             }
         }
     });
