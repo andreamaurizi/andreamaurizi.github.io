@@ -91,6 +91,9 @@ session_start();
           <li class="navbar__btn">
             <p class="button">ReBuild</p>
           </li>
+          <li>
+            pallino che ruota
+          </li>
         </ul>
       </div>
     </nav>
