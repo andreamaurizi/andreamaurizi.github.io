@@ -105,9 +105,13 @@ function getImg(setId, i) {
             setId: setId
         },
         success: function (response) {
-            var risposta = response.split(",");
+            var risposta = response.split("|");
             var nome = risposta[0];
             var imageURL = risposta[1];
+            alert (imageURL);
+            if(imageURL=="nessuna immagine"){
+                imageURL = "https://theminifigclub.com/wp-content/uploads/2021/05/5.12.21-Shocked-Audience.png"
+            }
             settaImmagine(nome, imageURL, i);
         },
     });

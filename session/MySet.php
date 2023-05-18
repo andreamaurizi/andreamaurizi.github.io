@@ -1,6 +1,6 @@
 <?php
 
-$apiKey = "3-P3BN-Lef4-3wFqO ";
+$apiKey = "3-1KNg-2P7y-sVK1B";
 $setNumber = $_POST['setId'];
 // Url per la chiamata all'API
 
@@ -24,8 +24,13 @@ if ($data->status == "success") {
   $setID = $sets[0] -> setID;
   $name = $sets[0] -> name;
   $year = $sets[0] -> year;
-  $imgURL = $sets[0] -> image -> imageURL;
-  print_r($name. " " ."(".$year.")". "," .$imgURL);
+  $imgURL = $sets[0] -> image;
+  if(property_exists($imgURL ,'imageURL')){
+    $imgURL = $imgURL -> imageURL;
+  }else{
+    $imgURL = "nessuna immagine";
+  }
+  print_r($name. " " ."(".$year.")". "|" .$imgURL);
 
   
 
