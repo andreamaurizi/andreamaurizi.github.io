@@ -29,11 +29,17 @@ session_start();
           });
       })
 
+      $(".button").click(function () {
+        $(".div_dinamico").load(this.innerHTML + ".html",
+          function (responseTxt, statusTxt, xhr) {
+            if (statusTxt == "success") alert("Caricamento terminato");
+            if (statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
+          });
+      })
+
       $(".alertClose").click(function() {
         $(".alert").hide();
       })
-
-    
     })
   </script>
   
@@ -81,11 +87,10 @@ session_start();
           <p class="navbar__links">MySet</p>
         </li>
         <li class="navbar__item">
-          <p class="navbar__links">ReBuild</p>
+          <p class="navbar__links">Logout</p>
         </li>
         <li class="navbar__btn">
-          <a href="/SignUp_SignIn/Login_Registration.html" class="button">
-            Area Riservata</a>
+          <p class="button">ReBuild</p>
         </li>
       </ul>
     </div>
