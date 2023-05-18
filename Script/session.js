@@ -218,7 +218,7 @@ function handleElementClick(event) {
                 var newText = document.createElement("span");
                 newText.textContent = partquantity;
                 newText.className = "part-name";
-                newText.id = part_id
+                newText.id = part_id;
                
                 newItem.appendChild(newText);
                 if(myQuantity <= quantity){
