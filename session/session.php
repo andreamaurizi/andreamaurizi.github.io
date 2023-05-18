@@ -108,6 +108,10 @@ session_start();
       <div class="searchDiv">
       <button id="Camera" class="Camera" onclick="prova()">Camera</button>
       <button id="File" class="File">Carica</button>
+      <form method="POST" action="brickognize.php" enctype="multipart/form-data">
+        <input type="file" name="query_image">
+        <button type="submit">Submit</button>
+      </form>
       </div>
       <!-- Questa roba è per far funzionare la camera -->
       <video id="video" width="640" height="480"></video>
