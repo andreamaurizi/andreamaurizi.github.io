@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReBuild</title>
     <link rel="stylesheet" href="../CSS/dialog.css">
-    <link rel="stylesheet" href="../CSS/progress-bar.css">
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script>
           $(document).ready(function(event) {
@@ -16,8 +16,8 @@
                 url: 'rebuild.php',
                 dataType: 'JSON',
                 beforeSend: function() {
-                    // Mostra la barra di caricamento
-                    $('.progress').css('width', '0%');
+                    // Mostra l'immagine di caricamento
+                     $('.head').show();
                 },
                 success: function(response){
                     localStorage.setItem('myMatchingSets', response);
@@ -28,9 +28,9 @@
                         var oggetto = oggetti[i];
                         getImg(oggetto.set_id);
                     } 
-                    $('.progress').css('width', '100%');  
-
+                    $('.head').hide();
                 }
+                
             });
          // Impedisce il comportamento predefinito del modulo
         });
@@ -40,9 +40,6 @@
 </head>
 <body>
 
-    <div class="progress-bar">
-        <div class="progress"></div>
-    </div>
 
     <ul id="lista"></ul>
 

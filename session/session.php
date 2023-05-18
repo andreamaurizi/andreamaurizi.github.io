@@ -12,6 +12,7 @@ session_start();
   <link rel="stylesheet" href="../CSS/session.css" />
   <link rel="stylesheet" href="../CSS/popup.css" />
   <link rel="stylesheet" href="../CSS/mySet.css" />
+  <link rel="stylesheet" href="../CSS/progress-bar.css">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../CSS/dialog.css" />
@@ -91,8 +92,8 @@ session_start();
           <li class="navbar__btn">
             <p class="button">ReBuild</p>
           </li>
-          <li>
-            pallino che ruota
+          <li >
+            <img src="../Img/head.png" alt="" class="head" style="display: none;">
           </li>
         </ul>
       </div>

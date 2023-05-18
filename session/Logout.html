@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        $(document).ready(function(event) {
+            //event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '../SignUp_SignIn/logout.php',
+                success: function(response){
+                    location.reload();
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
