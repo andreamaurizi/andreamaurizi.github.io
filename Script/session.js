@@ -20,76 +20,104 @@ function prova() {
 }
 
 
-        async function startCamera() {
-            const video = document.getElementById('video');
-            const canvas = document.getElementById('canvas');
+async function startCamera() {
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
 
 
-            stream = await navigator.mediaDevices.getUserMedia({video: true});
+    stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
-            video.srcObject = stream;
-            video.play();
+    video.srcObject = stream;
+    video.play();
 
-            
 
-        }
 
-        function captureImage() {
-            const video = document.getElementById('video');
-            const canvas = document.getElementById('canvas');
+}
 
-            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-            const dataUrl = canvas.toDataURL('image/png');
-            console.log(dataUrl);
+function captureImage() {
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
 
-            // Stop the video stream
-            stream.getTracks().forEach(track => track.stop());
-            video.srcObject = null;
+    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+    const dataUrl = canvas.toDataURL('image/png');
+    console.log(dataUrl);
 
-            // Show the captured image on the page
-            const img = new Image();
-            img.src = dataUrl;
-            document.body.appendChild(img);
+    // Stop the video stream
+    stream.getTracks().forEach(track => track.stop());
+    video.srcObject = null;
 
-            $(document).ready(function() {
-                $.ajax({
-                    type:"POST",
-                    url:"brickognize.php",
-                    data:{imgBase64:dataUrl},
-                    success:function(msg){
-                        console.log("image uploaded");
-                        console.log(msg);
-                    }
-                })
-            })
+    // Show the captured image on the page
+    const img = new Image();
+    img.src = dataUrl;
+    //document.body.appendChild(img);
 
-            
-           
+    
+
+    // Convert the canvas image to a Blob object
+    canvas.toBlob(function(blob) {
+        // Convert the Blob to a File object with a desired filename and MIME type
+        var file = new File([blob], 'captured-image.jpg', { type: 'image/jpeg' });
+
+        // Use the captured file as needed (e.g., send it to the PHP script)
+        console.log(file);
+
+        
+        var formData = new FormData();
+        formData.append("image", file, "captured-image.jpg");
+
+        
+        // Send the FormData object to the PHP script using fetch
+        fetch('brickognizeCamera.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(function(response) {
+            // Check if the response was successful
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw new Error('Error: ' + response.status);
+            }
+        })
+        .then(function(data) {
+            // Handle the response data
+            console.log(data);
+        })
+        .catch(function(error) {
+            // Handle any errors
+            console.error(error);
+        });
+
+        
+    }, "image/jpeg");
+
+
+
 }
 
 
 
-function getImg(setId,i){
+function getImg(setId, i) {
     $.ajax({
         type: 'POST',
         url: 'MySet.php',
         data: {
             setId: setId
         },
-        success: function(response) {
+        success: function (response) {
             var risposta = response.split(",");
             var nome = risposta[0];
             var imageURL = risposta[1];
-            settaImmagine(nome, imageURL,i);
+            settaImmagine(nome, imageURL, i);
         },
     });
-    
+
 };
 
 
 
 
-function settaImmagine(nome, imageURL,i){
+function settaImmagine(nome, imageURL, i) {
     var elementList = document.getElementById("lista");
 
     // Crea un nuovo elemento <li>
@@ -115,7 +143,7 @@ function settaImmagine(nome, imageURL,i){
 
     // Aggiungi il nuovo elemento <li> alla lista
     elementList.appendChild(newItem);
-    
+
 }
 ù
 
@@ -124,12 +152,12 @@ function handleElementClick(event) {
     var elementId = event.target.id;
 
     var dialogContent = document.getElementById('setName');
-    dialogContent.textContent =  elementId;
+    dialogContent.textContent = elementId;
 
     var imgUrl = document.getElementById(elementId).getAttribute("src");
 
-   var imgDialog = document.getElementById("img-content").src=imgUrl;
-    
+    var imgDialog = document.getElementById("img-content").src = imgUrl;
+
     var divElement = document.getElementById("dialog");
 
     var dialog = document.getElementById('dialog');
