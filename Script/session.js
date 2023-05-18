@@ -97,7 +97,7 @@ function captureImage() {
 
 
 
-function getImg(setId, i) {
+function getImg(setId) {
     $.ajax({
         type: 'POST',
         url: 'MySet.php',
@@ -108,11 +108,10 @@ function getImg(setId, i) {
             var risposta = response.split("|");
             var nome = risposta[0];
             var imageURL = risposta[1];
-            alert (imageURL);
             if(imageURL=="nessuna immagine"){
                 imageURL = "https://theminifigclub.com/wp-content/uploads/2021/05/5.12.21-Shocked-Audience.png"
             }
-            settaImmagine(nome, imageURL, i);
+            settaImmagine(nome, imageURL, setId);
         },
     });
 
@@ -121,7 +120,7 @@ function getImg(setId, i) {
 
 
 
-function settaImmagine(nome, imageURL, i) {
+function settaImmagine(nome, imageURL, setId) {
     var elementList = document.getElementById("lista");
 
     // Crea un nuovo elemento <li>
@@ -135,6 +134,7 @@ function settaImmagine(nome, imageURL, i) {
     newImage.alt = "Immagine";
     newImage.className = "list-img"
     newImage.id = nome;
+    newImage.className = setId;
 
     // Crea l'elemento <span> per il testo
     var newText = document.createElement("span");
@@ -169,6 +169,27 @@ function handleElementClick(event) {
 
     var mainArea = document.querySelector('.main-area');
     mainArea.style.display = 'block';
+
+    var elementClass = event.target.className;
+    alert(elementClass);
+
+    $.ajax({
+        type: 'POST',
+        url: 'listaparti.php',
+        data: {
+            setId: setId
+        },
+        success: function (response) {
+            var risposta = response.split("|");
+            var nome = risposta[0];
+            var imageURL = risposta[1];
+            alert (imageURL);
+            if(imageURL=="nessuna immagine"){
+                imageURL = "https://theminifigclub.com/wp-content/uploads/2021/05/5.12.21-Shocked-Audience.png"
+            }
+            settaImmagine(nome, imageURL, i);
+        },
+    });
 }
 
 // Funzione per chiudere l'elemento di dialogo
