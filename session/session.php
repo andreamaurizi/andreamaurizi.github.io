@@ -142,10 +142,7 @@ session_start();
         <input type="text" placeholder="Enter Lego Set Name" name="set">
         <button type="submit"><img src="/Img/search.png"></button>
       </form>
-      <div class="searchDiv">
-        <button id="Camera" class="Camera" onclick="openCamera()">Camera</button>
-        <button class="File" onclick="caricaFile()">Seleziona un file</button>
-    </div>
+
       <!-- Questa roba è per far funzionare la camera -->
       <video id="video" width="640" height="480"></video>
       <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
@@ -159,7 +156,10 @@ session_start();
       </label>
     </div>
 
-    
+          <div class="searchDiv">
+        <button id="Camera" class="Camera" onclick="openCamera()">Camera</button>
+        <button id= "File" class="File" onclick="caricaFile()">Seleziona un file</button>
+    </div>
 
     <div class="div_dinamico"></div>
 
@@ -175,11 +175,6 @@ session_start();
   <?php endif; ?>
 
    <script src="../Script/app.js"></script>
-   <script>
-      document.getElementById('file-upload-button').addEventListener('click', function() {
-      document.getElementById('file-upload').click();
-    });
-   </script>
    
 </body>
 
