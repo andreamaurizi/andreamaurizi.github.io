@@ -85,8 +85,7 @@ session_start();
     function inviaFile(file) {
       var formdata = new FormData();
       formdata.append('file', file);
-  
-    
+      
       var xhr = new XMLHttpRequest();
       xhr.open('POST', 'brickognize.php', true);
       
@@ -97,7 +96,7 @@ session_start();
         }
       };
       
-      xhr.send(file);
+      xhr.send(formdata);
     }
   </script>
 

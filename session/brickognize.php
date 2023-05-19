@@ -1,5 +1,4 @@
 <?php
-
 // API endpoint
 $apiUrl = "https://api.brickognize.com/predict/";
 
@@ -7,7 +6,7 @@ $apiUrl = "https://api.brickognize.com/predict/";
 if (isset($_FILES['file'])) {
     // Get the uploaded file details
     $file = $_FILES['file'];
-    
+   
 
     // Check for any errors during file upload
     if ($file['error'] === UPLOAD_ERR_OK) {
