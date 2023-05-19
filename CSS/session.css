@@ -286,8 +286,7 @@
 
 .searchDiv{
   position: absolute;
-  transform: translate(-50%,-50%,0,0);
-  z-index: 9999;
+  right: 900px;
   top:350px;
 }
 
