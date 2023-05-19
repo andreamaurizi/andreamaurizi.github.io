@@ -1,12 +1,37 @@
-
-@keyframes rotateHue {
-    to{
-      filter: hue-rotate(1turn);
-    }
+.cssload-container {
+	width: 100%;
+	height: 25px;
+	text-align: center;
 }
 
-.head{
-  animation: rotateHue 2s alternate infinite;
-  height: 10%;
-  width: 20%;
+.cssload-zenith {
+	width: 25px;
+	height: 25px;
+	margin: 0 auto;
+	border-radius: 50%;
+	border-top-color: transparent;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	box-shadow: 1px 1px 0px rgb(255,128,119);
+	animation: cssload-spin 690ms infinite linear;
+		-o-animation: cssload-spin 690ms infinite linear;
+		-ms-animation: cssload-spin 690ms infinite linear;
+		-webkit-animation: cssload-spin 690ms infinite linear;
+}
+
+
+/*Il primo set di codice @keyframes cssload-spin definisce un'animazione chiamata "cssload-spin" che ruota un elemento di 360 gradi su se stesso. 
+Questo viene fatto utilizzando il selettore 100%, che rappresenta il completamento dell'animazione. All'interno delle parentesi graffe, viene specificata 
+la trasformazione transform: rotate(360deg);, che ruota l'elemento di 360 gradi.
+
+Il secondo set di codice @-webkit-keyframes cssload-spin è specifico per il browser webkit, come ad esempio Safari o Chrome. Funziona in modo 
+imile all'animazione precedente, ma utilizza il prefisso -webkit- per indicare che si tratta di una proprietà specifica del browser webkit.*/
+
+@keyframes cssload-spin {
+	100%{ transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+
+@-webkit-keyframes cssload-spin {
+	100%{ -webkit-transform: rotate(360deg); transform: rotate(360deg); }
 }

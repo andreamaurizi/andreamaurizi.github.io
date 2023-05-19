@@ -17,7 +17,7 @@
                 dataType: 'JSON',
                 beforeSend: function() {
                     // Mostra l'immagine di caricamento
-                     $('.head').show();
+                     $(".cssload-container").show()
                 },
                 success: function(response){
                     localStorage.setItem('myMatchingSets', response);
@@ -28,7 +28,9 @@
                         var oggetto = oggetti[i];
                         getImg(oggetto.set_id);
                     } 
-                    $('.head').hide();
+                    setTimeout(function(){
+                        $(".cssload-container").hide();
+                    }, 50000);
                 }
                 
             });

@@ -92,9 +92,9 @@ session_start();
           <li class="navbar__btn">
             <p class="button">ReBuild</p>
           </li>
-          <li >
-            <img src="../Img/head.png" alt="" class="head" style="display: none;">
-          </li>
+          <div class="cssload-container" style = "display:none">
+              <div class="cssload-zenith" ></div>
+          </div>
         </ul>
       </div>
     </nav>
