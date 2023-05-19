@@ -144,7 +144,7 @@ session_start();
       </form>
       <div class="searchDiv">
         <button id="Camera" class="Camera" onclick="openCamera()">Camera</button>
-        <button onclick="caricaFile()">Seleziona un file</button>
+        <button class="File" onclick="caricaFile()">Seleziona un file</button>
     </div>
       <!-- Questa roba è per far funzionare la camera -->
       <video id="video" width="640" height="480"></video>
