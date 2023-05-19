@@ -155,6 +155,10 @@ function settaImmagine(nome, imageURL, setId) {
 function handleElementClick(event) {
     var elementId = event.target.id;
 
+    if(elementId == "lista"){
+        return 0;
+    }
+
     var dialogContent = document.getElementById('setName');
     dialogContent.textContent = elementId;
 
@@ -162,7 +166,6 @@ function handleElementClick(event) {
 
     document.getElementById("img-content").src = imgUrl;
 
-    
     var dialog = document.getElementById('dialog');
     dialog.style.display = 'block';
 
@@ -245,6 +248,9 @@ function closeDialog() {
 
     var mainArea = document.querySelector('.main-area');
     mainArea.style.display = 'none';
+
+    var dialogList = document.getElementById('dialog-content');
+    dialogList.innerHTML = '';
 }
 
 

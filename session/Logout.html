@@ -11,10 +11,11 @@
             $.ajax({
                 type: 'POST',
                 url: '../SignUp_SignIn/logout.php',
-                success: function(response){
-                    location.reload();
-                }
             });
+
+            setTimeout(function(){
+                location.reload();
+            }, 320);
         })
     </script>
 </head>
