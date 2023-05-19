@@ -12,7 +12,7 @@
 	border-top-color: transparent;
 	border-left-color: transparent;
 	border-right-color: transparent;
-	box-shadow: 1px 1px 0px rgb(255,128,119);
+	box-shadow: 1px 1px 0px #f77062;
 	animation: cssload-spin 690ms infinite linear;
 		-o-animation: cssload-spin 690ms infinite linear;
 		-ms-animation: cssload-spin 690ms infinite linear;

@@ -4,9 +4,10 @@
 $apiUrl = "https://api.brickognize.com/predict/";
 
 // Check if a file was uploaded
-if (isset($_FILES['query_image'])) {
+if (isset($_FILES['file'])) {
     // Get the uploaded file details
-    $file = $_FILES['query_image'];
+    $file = $_FILES['file'];
+    
 
     // Check for any errors during file upload
     if ($file['error'] === UPLOAD_ERR_OK) {

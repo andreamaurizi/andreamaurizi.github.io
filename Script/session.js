@@ -2,7 +2,7 @@ let stream = null;
 
 
 
-function prova() {
+function openCamera() {
     var CameraButton = document.getElementById("Camera");
     var FileButton = document.getElementById("File");
     var SearchBar = document.getElementById("search-bar");
@@ -255,4 +255,6 @@ function closeDialog() {
 
 
 
-// Aggiungi un gestore di eventi al contenitore principale della lista
+
+
+

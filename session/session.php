@@ -68,6 +68,39 @@ session_start();
     });
   </script>
 
+  <script>
+     function caricaFile() {
+      var input = document.createElement('input');
+      input.type = 'file';
+      input.click();
+      
+      input.onchange = function() {
+        var file = input.files[0];
+        if (file) {
+          inviaFile(file);
+        }
+      };
+    }
+    
+    function inviaFile(file) {
+      var formdata = new FormData();
+      formdata.append('file', file);
+  
+    
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'brickognize.php', true);
+      
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // Azioni da eseguire dopo l'invio del file
+          console.log(xhr.responseText);
+        }
+      };
+      
+      xhr.send(file);
+    }
+  </script>
+
 </head>
  
 <body>
@@ -110,21 +143,6 @@ session_start();
         <button type="submit"><img src="/Img/search.png"></button>
       </form>
 
-      
-
-      <div class="searchDiv">
-      <button id="Camera" class="Camera" onclick="prova()">Camera</button>
-      <button id="File" class="File">Carica</button>
-      <form method="POST" action="brickognize.php" enctype="multipart/form-data">
-        <input type="file" name="query_image">
-        <button type="submit">Submit</button>
-      </form>
-      </div>
-      <!-- Questa roba è per far funzionare la camera -->
-      <video id="video" width="640" height="480"></video>
-      <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
-
-
       <label>
         <input type="checkbox" class="alertCheckbox" autocomplete="off" />
         <div class="alert success" style="display:none">
@@ -132,14 +150,18 @@ session_start();
           <span class="alertText"><br class="clear"/></span>
         </div>
       </label>
-    
-  
     </div>
+
+    <div class="searchDiv">
+      <button id="Camera" class="Camera" onclick="openCamera()">Camera</button>
+      <button onclick="caricaFile()">Seleziona un file</button>
+    </div>
+      <!-- Questa roba è per far funzionare la camera -->
+      <video id="video" width="640" height="480"></video>
+      <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
 
 
     <div class="div_dinamico"></div>
-    
-
 
   <?php else: ?>
 
@@ -154,7 +176,9 @@ session_start();
 
    <script src="../Script/app.js"></script>
    <script>
-    
+      document.getElementById('file-upload-button').addEventListener('click', function() {
+      document.getElementById('file-upload').click();
+    });
    </script>
    
 </body>
