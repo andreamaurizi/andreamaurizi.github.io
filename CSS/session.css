@@ -155,12 +155,36 @@
       font-size: 1.6rem;
       z-index: 99;
     }
-    /*
+    
     .searchDiv{
-      right: 150px;
-      top: 1000000000000000000px;
+      position: absolute;
+      right: 850px;
+      top:350px;
+      text-align: center;
     }
-    */
+
+    .Camera{
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px; 
+      background: #f77062;
+      font-size: 1rem;
+      color: #fff;
+    }
+    
+    
+    .File{
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px; 
+      font-size: 1rem;
+      background: #f77062;
+      color: #fff;
+    }
+    
+    
     #navbar__logo {
       padding-left: 25px;
     }
@@ -286,12 +310,13 @@
 
 .searchDiv{
   position: absolute;
-  right: 900px;
+  right: 850px;
   top:350px;
+  text-align: center;
 }
 
 .Camera{
-  display: flex;
+  display: inline-block;
   text-decoration: none;
   padding: 10px 20px;
   border-radius: 4px; 
@@ -302,7 +327,7 @@
 
 
 .File{
-  display: flex;
+  display: inline-block;
   text-decoration: none;
   padding: 10px 20px;
   border-radius: 4px; 
