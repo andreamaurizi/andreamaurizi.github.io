@@ -141,6 +141,13 @@ session_start();
         <input type="text" placeholder="Enter Lego Set Name" name="set">
         <button type="submit"><img src="/Img/search.png"></button>
       </form>
+      <div class="searchDiv">
+        <button id="Camera" class="Camera" onclick="openCamera()">Camera</button>
+        <button onclick="caricaFile()">Seleziona un file</button>
+    </div>
+      <!-- Questa roba è per far funzionare la camera -->
+      <video id="video" width="640" height="480"></video>
+      <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
 
       <label>
         <input type="checkbox" class="alertCheckbox" autocomplete="off" />
@@ -151,14 +158,7 @@ session_start();
       </label>
     </div>
 
-    <div class="searchDiv">
-      <button id="Camera" class="Camera" onclick="openCamera()">Camera</button>
-      <button onclick="caricaFile()">Seleziona un file</button>
-    </div>
-      <!-- Questa roba è per far funzionare la camera -->
-      <video id="video" width="640" height="480"></video>
-      <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
-
+    
 
     <div class="div_dinamico"></div>
 
