@@ -92,7 +92,7 @@ session_start();
       xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
           // Azioni da eseguire dopo l'invio del file
-          console.log(xhr.responseText);
+          alert(xhr.responseText);
         }
       };
       
