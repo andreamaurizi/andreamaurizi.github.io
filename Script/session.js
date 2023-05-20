@@ -83,9 +83,10 @@ function captureImage() {
         .then(function(data) {
             // Handle the response data
             console.log(data);
+            localStorage.setItem("brickognizeData", data);
             $(".div_dinamico").load("brickognize.html",
                 function (responseTxt, statusTxt, xhr) {
-                    localStorage.setItem("brickognizeData", data);
+                    
 
                     if (statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
                 });
