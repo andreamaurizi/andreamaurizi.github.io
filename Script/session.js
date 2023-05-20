@@ -282,6 +282,9 @@ function handleElementClickBrickognize(event) {
         // Request failed
         console.log(error);
       });
+    
+    var dialogList = document.getElementById('lista');
+    dialogList.innerHTML = '';
 }
 
 // Funzione per chiudere l'elemento di dialogo

@@ -186,7 +186,7 @@
             // Fuori dal for delle parti ma dentro il for dei set
             // Qua si fa Il confronto tra missing parts e parts per ottenere la percentuale
             $percentuale = (1 - ($partiMancanti/$partiTotali)) * 100;
-            if ($percentuale >= 80 && $partiTotali >= 50) {
+            if ($percentuale >= 80 && $partiTotali >= 200) {
                 array_unshift($matchingSetsArray, array('set_id' => $setStringa, 'percentuale'=>$percentuale, 
                                                 "parti_totali" => $partiTotali, "parti_mancanti" => $partiMancanti));
             }
@@ -195,6 +195,9 @@
         $percentualeArray = array_column($matchingSetsArray, 'percentuale');
 
         array_multisort($percentualeArray, SORT_DESC, $matchingSetsArray );
+
+       
+
         $jsonMatchingSets = json_encode($matchingSetsArray);
         print_r($jsonMatchingSets);
 
