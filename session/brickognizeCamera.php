@@ -36,7 +36,9 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     }
 
     // Display the response content for debugging
-    echo "Response: " . $response;
+    //echo $response;
+
+    // FINO A QUA FUNZIONA
 
     // Decode the response JSON
     $responseData = json_decode($response, true);
@@ -46,37 +48,37 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         die("Error: Invalid JSON response");
     }
 
-    // Check if the response contains an error message
-    if (isset($responseData['detail'])) {
-        $errors = $responseData['detail'];
-        die("Error: " . $errors[0]['msg']);
-    }
-
     // Check if the response contains predictions
-    if (!isset($responseData['predictions']) || !is_array($responseData['predictions'])) {
+    if (!isset($responseData['items']) || !is_array($responseData['items'])) {
         die("Error: Missing or invalid predictions in the API response");
     }
 
-    // Access the prediction results
-    $predictions = $responseData['predictions'];
+    // Access the prediction items
+    $items = $responseData['items'];
 
     // Check if predictions exist
-    if (empty($predictions)) {
+    if (empty($items)) {
         die("No predictions found");
     }
 
-    // Display the predictions
-    foreach ($predictions as $prediction) {
-        $label = isset($prediction['label']) ? $prediction['label'] : "Unknown";
-        $confidence = isset($prediction['confidence']) ? $prediction['confidence'] : "N/A";
+    // Create an associative array to store the objects
+    $predictions = array();
 
-        echo "Label: $label<br>";
-        echo "Confidence: $confidence<br>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
+    // Populate the associative array with prediction objects
+    foreach ($items as $item) {
+        $prediction = array(
+            'id' => isset($item['id']) ? $item['id'] : "Unknown",
+            'score' => isset($item['score']) ? $item['score'] : "N/A",
+            'name' => isset($item['name']) ? $item['name'] : "Unknown",
+            'imageUrl' => isset($item['img_url']) ? $item['img_url'] : ""
+        );
+        $predictions[$prediction['id']] = $prediction;
     }
+
+    $jsonPredictions = json_encode($predictions);
+    print_r($jsonPredictions);
+
+    
 } else {
     die("Error uploading file");
 }

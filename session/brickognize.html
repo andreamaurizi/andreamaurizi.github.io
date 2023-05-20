@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/dialog.css">
+    <title>Brickognize</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function (event) {
+            // Impedisce il comportamento predefinito del modulo
+            var jsonString = localStorage.getItem("brickognizeData");
+
+            console.log(jsonString);
+
+            // Parse JSON string to JavaScript object
+            var data = JSON.parse(jsonString);
+
+            // Loop through each element
+            for (var key in data) {
+                if (data.hasOwnProperty(key)) {
+                    var element = data[key];
+                    console.log("ID:", element.id);
+                    console.log("Name:", element.name);
+                    console.log("--------------------");
+                    var setId = element.id;
+                    var nome = element.name;
+                    var imageURL = element.imageUrl;
+                    settaImmagine(nome, imageURL, setId);
+                }
+            }
+
+        });
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+    <ul id="lista"></ul>
+
+    <div class="main-area"></div>
+
+    <div id="dialog" class="dialog-container">
+        <span class="dialog-close">X</span>
+        <h2 id="setName"></h2>
+        <img id="img-content">
+        <ul id="dialog-content">
+        </ul>
+    </div>
+
+    <script>
+        var listContainer = document.getElementById('lista');
+        listContainer.addEventListener('click', handleElementClickBrickognize);
+
+        var dialogClose = document.querySelector('.dialog-close');
+        dialogClose.addEventListener('click', closeDialog);
+    </script>
+
+
+
+</body>
+
+</html>

@@ -83,6 +83,12 @@ function captureImage() {
         .then(function(data) {
             // Handle the response data
             console.log(data);
+            $(".div_dinamico").load("brickognize.html",
+                function (responseTxt, statusTxt, xhr) {
+                    localStorage.setItem("brickognizeData", data);
+
+                    if (statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
+                });
         })
         .catch(function(error) {
             // Handle any errors
@@ -240,6 +246,41 @@ function handleElementClick(event) {
             }
         }
     });
+}
+
+function handleElementClickBrickognize(event) {
+    var elementId = event.target.id;
+
+    if(elementId == "lista"){
+        return 0;
+    }
+    var set = document.getElementById(elementId).getAttribute("alt");
+
+
+    // Create the request data
+    var data = new URLSearchParams();
+    data.append("set", set);
+  
+    // Send the request using fetch
+    fetch("setUtenteBrickognize.php", {
+      method: "POST",
+      body: data
+    })
+      .then(function(response) {
+        if (response.ok) {
+          return response.text();
+        } else {
+          throw new Error("Error: " + response.status);
+        }
+      })
+      .then(function(result) {
+        // Request was successful, do something with the response
+        console.log(result);
+      })
+      .catch(function(error) {
+        // Request failed
+        console.log(error);
+      });
 }
 
 // Funzione per chiudere l'elemento di dialogo
