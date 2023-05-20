@@ -41,6 +41,10 @@
   -webkit-text-stroke: 1px white;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
+  max-width: 250px;
+  font-weight: bold;
+  overflow-wrap: normal; /* Per i browser più recenti */
+  hyphens: auto; /* Per gestire la divisione delle parole */
 }
 
 /* Regola opzionale per allineare gli elementi al centro orizzontalmente */
@@ -49,4 +53,4 @@
 }
 
 
-/*Mobile View*/
+
