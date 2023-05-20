@@ -6,15 +6,15 @@ function openCamera() {
     var CameraButton = document.getElementById("Camera");
     var FileButton = document.getElementById("File");
     var SearchBar = document.getElementById("search-bar");
+    
     if (CameraButton.innerHTML === "Camera") {
         CameraButton.innerHTML = "Take picture";
         FileButton.style.display = "none";
-        SearchBar.style.display = "none";
+        
         startCamera();
     } else {
         CameraButton.innerHTML = "Camera";
         FileButton.style.display = "inline";
-        SearchBar.style.display = "flex";
         captureImage();
     }
 }
@@ -24,11 +24,12 @@ async function startCamera() {
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
 
-
     stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
     video.srcObject = stream;
     video.play();
+
+    
 
 
 

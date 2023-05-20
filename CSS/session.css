@@ -156,35 +156,8 @@
       z-index: 99;
     }
     
-    .searchDiv{
-      position: absolute;
-      right: 850px;
-      top:350px;
-      text-align: center;
-    }
 
-    .Camera{
-      display: inline-block;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 4px; 
-      background: #f77062;
-      font-size: 1rem;
-      color: #fff;
-    }
-    
-    
-    .File{
-      display: inline-block;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 4px; 
-      font-size: 1rem;
-      background: #f77062;
-      color: #fff;
-    }
-    
-    
+
     #navbar__logo {
       padding-left: 25px;
     }
@@ -262,6 +235,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
 } 
 /**/
 
@@ -308,11 +282,29 @@
 /**/
 
 
-.searchDiv{
+.searchDiv {
   position: absolute;
-  right: 850px;
-  top:350px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Imposta l'altezza al 100% della viewport per centrare verticalmente */
+  top:40%;
+  
+}
+
+.videoDiv{
+  position: absolute;
+  top: 50%;
+}
+
+#video{
+  width: 300px;
+  height: 300px;
+}
+
+#canvas{
+  display: none;
+  width: 300px;
+  height: 300px;
 }
 
 .Camera{
@@ -323,6 +315,10 @@
   background: #f77062;
   font-size: 1rem;
   color: #fff;
+  border-radius: 4px;
+  border: none;
+  margin: 10px;
+
 }
 
 
@@ -334,10 +330,72 @@
   font-size: 1rem;
   background: #f77062;
   color: #fff;
+  border-radius: 4px;
+  border: none;
+  margin: 10px;
 }
+
+.Camera:hover {
+  background: blue;
+  transition: all 0.3s ease;
+  transform: scale(1.075);
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+
+.File:hover {
+  background: blue;
+  transition: all 0.3s ease;
+  transform: scale(1.075);
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+
 
 .div_dinamico {
   position: absolute;
-  top: 300px;
+  top: 350px;
 }
 
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  .div_dinamico {
+    position: absolute;
+    top: 450px;
+    right: 50px;
+  }
+
+  #search-bar{
+    width: 90%;
+  }
+
+  #lente{
+    width: 40px;
+  }
+
+  .searchDiv {
+    top:30%;
+    
+  }
+  
+  .videoDiv{
+    position: absolute;
+    top: 40%;
+  }
+
+}
+
+
+@media screen and (max-width: 900px) and (orientation: landscape){
+  .searchDiv {
+    top:70%;
+    
+  }
+  
+  .videoDiv{
+    position: absolute;
+    top: 80%;
+  }
+  .navbar__menu.active {
+    height: 80vh; 
+  }
+}

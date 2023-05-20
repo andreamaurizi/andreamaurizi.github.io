@@ -41,6 +41,23 @@ session_start();
       $(".alertClose").click(function() {
         $(".alert").hide();
       })
+
+
+
+
+      $("#Camera").click(function(){
+        if (document.getElementById("Camera").innerHTML !== "Camera"){
+          var mainArea = document.querySelector('.main-area');
+          mainArea.style.display = 'block';
+          $(".videoDiv").css("z-index","10000");
+          $(".Camera").css("z-index","10000");
+        }
+        else{
+          var mainArea = document.querySelector('.main-area');
+          mainArea.style.display = 'none';
+          $(".videoDiv").css("z-index","-10000");
+        }
+      })
     })
   </script>
   
@@ -100,6 +117,8 @@ session_start();
     }
   </script>
 
+
+
 </head>
  
 <body>
@@ -135,17 +154,28 @@ session_start();
     
   <?php if (isset($_SESSION["user_id"])): ?>
 
-    
+    <div class="main-area"></div>
 
     <div class="container">
       <form id="search-bar" action="setUtente.php" class="search-bar" method="POST" onsubmit="mostraCustomAlert();">
         <input type="text" placeholder="Enter Lego Set Name" name="set">
-        <button type="submit"><img src="/Img/search.png"></button>
+        <button type="submit"><img src="/Img/search.png" id="lente"></button>
       </form>
 
       <!-- Questa roba è per far funzionare la camera -->
-      <video id="video" width="640" height="480"></video>
-      <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
+
+      <div class="searchDiv">
+        <button id="Camera" class="Camera" onclick="openCamera()">Camera</button>
+        <button id= "File" class="File" onclick="caricaFile()">Seleziona un file</button>
+      </div>
+
+
+      <div class="videoDiv">
+        <video id="video" ></video>
+        <canvas id="canvas" width="300" height="300" style="display:none"></canvas>
+      </div>
+
+      
 
       <label>
         <input type="checkbox" class="alertCheckbox" autocomplete="off" />
@@ -156,10 +186,8 @@ session_start();
       </label>
     </div>
 
-          <div class="searchDiv">
-        <button id="Camera" class="Camera" onclick="openCamera()">Camera</button>
-        <button id= "File" class="File" onclick="caricaFile()">Seleziona un file</button>
-    </div>
+    
+    
 
     <div class="div_dinamico"></div>
 
@@ -174,7 +202,7 @@ session_start();
     </script>
   <?php endif; ?>
 
-   <script src="../Script/app.js"></script>
+  <script src="../Script/app.js"></script>
    
 </body>
 

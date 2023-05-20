@@ -396,6 +396,7 @@
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color:transparent;
+    text-align: center;
 }
 
 
@@ -623,3 +624,10 @@
         width: 100%;
     }
 }
+
+
+@media screen and (max-width: 900px) and (orientation: landscape){
+    .navbar__menu.active {
+      height: 80vh; 
+    }
+  }

@@ -1,12 +1,15 @@
 const menu = document.querySelector('#mobile-menu')
 const menuLinks = document.querySelector('.navbar__menu')
 const buttonSearch = document.getElementsByClassName('searchDiv');
-if(/Mobi/.test(navigator.userAgent)){
-    buttonSearch.classList.add('mobile');
-}
+
 
 
 menu.addEventListener('click',function(){
+    menu.classList.toggle('is-active') 
+    menuLinks.classList.toggle('active') /*Toggle nasconde l'elemento 'active' da style.css */
+})
+
+menuLinks.addEventListener('click',function(){
     menu.classList.toggle('is-active') 
     menuLinks.classList.toggle('active') /*Toggle nasconde l'elemento 'active' da style.css */
 })
