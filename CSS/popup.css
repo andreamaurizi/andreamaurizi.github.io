@@ -30,7 +30,8 @@
     margin: 0 auto;
     text-align: center;
     font-size: 16px;
-    color: black;
+    color: white;
+    font-weight: bold;
   }
   
   .alertClose {
@@ -56,29 +57,23 @@
   .success {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px); /* per supportare alcuni browser più vecchi */
-    background-color: rgba(52, 162, 182, 0.5); 
+    background-color: #f771629a;
     color: #9A9;
     border: 1px solid black ;
   }
   
 
   @media screen and (max-width: 1000px) {
-    .alert {
+    .alert.success {
       position: absolute;
-      top: 85px;
-      transform: translate(-24%,0);
-      width: 300px; 
-      height: 40px; 
-      padding: 2px; 
-      font-size: 10px; 
-      margin: 10px;
-      line-height: 1.8;
-      border-radius: 5px;
-      cursor: hand;
-      cursor: pointer;
-      font-family: sans-serif;
-      font-weight: 400;
+      top: 12%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+
     }
+  
+
   }
   
  
