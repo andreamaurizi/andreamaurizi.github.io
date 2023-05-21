@@ -1,6 +1,6 @@
 <?php
 
-$apiKey = "3-8aLX-B2Qx-jPCCT";
+$apiKey = "3-kyo2-adxJ-rL71V";
 $setNumber = $_POST['setId'];
 // Url per la chiamata all'API
 
