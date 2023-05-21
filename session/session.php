@@ -101,19 +101,29 @@ session_start();
     
     function inviaFile(file) {
       var formdata = new FormData();
-      formdata.append('file', file);
+      formdata.append('image', file);
       
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'brickognize.php', true);
+      xhr.open('POST', 'brickognizeCamera.php', true);
       
+      xhr.send(formdata);
+
       xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
           // Azioni da eseguire dopo l'invio del file
           alert(xhr.responseText);
+          
+          localStorage.setItem("brickognizeData", xhr.responseText);
+            $(".div_dinamico").load("brickognize.html",
+                function (responseTxt, statusTxt, xhr) {
+                    
+
+                    if (statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
+                });
         }
       };
       
-      xhr.send(formdata);
+      
     }
   </script>
 
