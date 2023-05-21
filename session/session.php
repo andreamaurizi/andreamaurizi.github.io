@@ -113,8 +113,6 @@ session_start();
       xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
           // Azioni da eseguire dopo l'invio del file
-          alert(xhr.responseText);
-          
           localStorage.setItem("brickognizeData", xhr.responseText);
             $(".div_dinamico").load("brickognize.html",
                 function (responseTxt, statusTxt, xhr) {

@@ -26,7 +26,6 @@
             // ...
           
             // Send a response back to the JavaScript if needed
-            echo "Received number: " . $set;
           }
         $id_n = $_SESSION["user_id"];
         $q1 = "select * from parts where set_id= $1";

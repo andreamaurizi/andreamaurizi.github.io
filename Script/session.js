@@ -273,6 +273,13 @@ function handleElementClickBrickognize(event) {
       .then(function(result) {
         // Request was successful, do something with the response
         console.log(result);
+        var alert = $('.alert.success');
+                    alert.find('.alertText').html(result);
+                    alert.show();
+                    setTimeout(function(){
+                        alert.hide();
+                        location.reload();
+                      }, 3000);
       })
       .catch(function(error) {
         // Request failed
