@@ -76,14 +76,16 @@
             success: function(response) {
               // Mostra il popup di successo
 
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(htmlCode, 'text/html');
-              const spanText = doc.querySelector('span').textContent;
+              const tempElement = document.createElement('div');
+              tempElement.innerHTML = response;
+
+              const spanElement = tempElement.querySelector('span');
+              const spanText = spanElement.textContent;
 
               console.log(spanText);
               
-              if(spanText === "La registrazione è andata a buon fine!"){
-                console.log("AOOOOOOOOOOOO");
+              if(spanText=== "La registrazione è andata a buon fine!"){
+                $("#check").click();
               }
 
               var alert = $('.alert.success');
