@@ -29,10 +29,6 @@ async function startCamera() {
     video.srcObject = stream;
     video.play();
 
-    
-
-
-
 }
 
 function captureImage() {

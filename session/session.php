@@ -74,13 +74,13 @@ session_start();
           url: 'setUtente.php',
           data: $(this).serialize(),
           success: function(response) {
-            // Mostra il popup di successo
             var alert = $('.alert.success');
             alert.find('.alertText').html(response);
             alert.show();
             setTimeout(function(){
               alert.hide();
-            }, 5000);
+              location.reload();
+            },3000);
           },
         });        
       });
