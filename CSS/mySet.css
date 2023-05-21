@@ -47,6 +47,32 @@
   hyphens: auto; /* Per gestire la divisione delle parole */
 }
 
+.Percentuale {
+  text-align: center;
+  /*padding-top: 8px;
+  padding-bottom: 25px;*/
+  font-size: 1rem;
+  color: grey;
+  /*font-weight: bold;*/
+  max-width: 250px;
+  font-weight: bold;
+  overflow-wrap: normal; /* Per i browser più recenti */
+  hyphens: auto; /* Per gestire la divisione delle parole */
+}
+
+.Parti {
+  text-align: center;
+  /*padding-top: 7px;
+  padding-bottom: 25px;*/
+  font-size: 0.9rem;
+  color: white ;
+  font-weight: italics;
+  max-width: 250px;
+  font-weight: bold;
+  overflow-wrap: normal; /* Per i browser più recenti */
+  hyphens: auto; /* Per gestire la divisione delle parole */
+}
+
 /* Regola opzionale per allineare gli elementi al centro orizzontalmente */
 .span {
   justify-content: center;

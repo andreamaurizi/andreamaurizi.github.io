@@ -31,7 +31,11 @@
                         // ciclo su tutti gli oggetti e accedi alle loro proprietà
                         for (var i = 0; i < oggetti.length; i++) {
                             var oggetto = oggetti[i];
-                            getImg(oggetto.set_id);
+                            getImg2(oggetto.set_id, oggetto.percentuale, oggetto.parti_totali,
+                            oggetto.parti_mancanti);
+                            //console.log(oggetto.percentuale);
+                            //console.log(oggetto.parti_totali);
+                            //console.log(oggetto.parti_mancanti);
                         } 
                         setTimeout(function(){
                             $(".cssload-container").hide();

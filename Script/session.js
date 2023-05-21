@@ -121,6 +121,26 @@ function getImg(setId) {
 
 };
 
+function getImg2(setId, percentuale, parti_totali, parti_mancanti) {
+    $.ajax({
+        type: 'POST',
+        url: 'MySet.php',
+        data: {
+            setId: setId
+        },
+        success: function (response) {
+            var risposta = response.split("|");
+            var nome = risposta[0];
+            var imageURL = risposta[1];
+            if(imageURL=="nessuna immagine"){
+                imageURL = "https://theminifigclub.com/wp-content/uploads/2021/05/5.12.21-Shocked-Audience.png"
+            }
+            console.log(percentuale);
+            settaImmagine2(nome, imageURL, setId, percentuale, parti_totali, parti_mancanti);
+        },
+    });
+
+};
 
 
 
@@ -143,7 +163,7 @@ function settaImmagine(nome, imageURL, setId) {
     // Crea l'elemento <span> per il testo
     var newText = document.createElement("span");
     newText.textContent = nome;
-    newText.className = "Set-Name"
+    newText.className = "Set-Name";
 
     // Aggiungi l'immagine e il testo come figli del nuovo elemento <li>
     newItem.appendChild(newImage);
@@ -154,6 +174,52 @@ function settaImmagine(nome, imageURL, setId) {
 
 }
 
+function settaImmagine2(nome, imageURL, setId, percentuale, parti_totali, parti_mancanti) {
+    var elementList = document.getElementById("lista");
+
+    // Crea un nuovo elemento <li>
+    var newItem = document.createElement("li");
+    newItem.classList.add("element-item");
+    newItem.className = "element-id"
+
+
+    // Crea l'elemento <img>
+    var newImage = document.createElement("img");
+    newImage.src = imageURL;
+    newImage.alt = "Immagine";
+    newImage.className = "list-img"
+    newImage.id = nome;
+    newImage.alt = setId;
+    // Crea l'elemento <span> per il testo
+    var newText = document.createElement("span");
+    newText.textContent = nome;
+    newText.className = "Set-Name";
+
+    var percentualeText = document.createElement("span");
+    percentuale =  percentuale.toFixed(1);
+    percentualeText.textContent = percentuale + "%";
+    percentualeText.className = "Percentuale";
+
+    var partiText = document.createElement("span");
+    partiText.textContent = parti_mancanti + " parti mancanti su " + parti_totali;
+    partiText.className = "Parti";
+
+    
+
+    // Aggiungi l'immagine e il testo come figli del nuovo elemento <li>
+    newItem.appendChild(newImage);
+    
+    newItem.appendChild(percentualeText);
+    newItem.appendChild(partiText);
+
+    newItem.appendChild(newText);
+
+    
+
+    // Aggiungi il nuovo elemento <li> alla lista
+    elementList.appendChild(newItem);
+
+}
 
 
 function handleElementClick(event) {
