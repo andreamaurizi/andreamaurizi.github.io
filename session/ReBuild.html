@@ -11,31 +11,45 @@
     <script>
           $(document).ready(function(event) {
             //event.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: 'rebuild.php',
-                dataType: 'JSON',
-                beforeSend: function() {
-                    // Mostra l'immagine di caricamento
-                     $(".cssload-container").show()
-                },
-                success: function(response){
-                    localStorage.setItem('myMatchingSets', response);
-                    var oggetti = JSON.parse(response);
+
+            var sets = localStorage.getItem("mySet");
+
+            if(sets){
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'rebuild.php',
+                    dataType: 'JSON',
+                    beforeSend: function() {
+                        // Mostra l'immagine di caricamento
+                        $(".cssload-container").show()
+                    },
+                    success: function(response){
+                        localStorage.setItem('myMatchingSets', response);
+                        var oggetti = JSON.parse(response);
+                        
+                        // ciclo su tutti gli oggetti e accedi alle loro proprietà
+                        for (var i = 0; i < oggetti.length; i++) {
+                            var oggetto = oggetti[i];
+                            getImg(oggetto.set_id);
+                        } 
+                        setTimeout(function(){
+                            $(".cssload-container").hide();
+                        }, 50000);
+                    }
                     
-                    // ciclo su tutti gli oggetti e accedi alle loro proprietà
-                    for (var i = 0; i < oggetti.length; i++) {
-                        var oggetto = oggetti[i];
-                        getImg(oggetto.set_id);
-                    } 
-                    setTimeout(function(){
-                        $(".cssload-container").hide();
-                    }, 50000);
-                }
-                
-            });
+                    
+                });
+
+            }
+            else{
+                var alert = $('.alert.success');
+                    alert.find('.alertText').html("Non ci sono LEGO® set");
+                    alert.show(); 
+            }
          // Impedisce il comportamento predefinito del modulo
         });
+
 
 
     </script>

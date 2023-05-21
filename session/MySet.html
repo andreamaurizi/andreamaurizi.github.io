@@ -11,17 +11,24 @@
         $(document).ready(function(event) {
          // Impedisce il comportamento predefinito del modulo
             var jsonString = localStorage.getItem("mySet");
+            if(jsonString){
+                var oggetti = JSON.parse(jsonString);
 
-            var oggetti = JSON.parse(jsonString);
+                // ciclo su tutti gli oggetti e accedi alle loro proprietà
+                for (var i = 0; i < oggetti.length; i++) {
+                    var oggetto = oggetti[i];
+                    //getImg(oggetto.set_id);
+                }  
+            }
+            else{
+                var alert = $('.alert.success');
+                    alert.find('.alertText').html("Non ci sono LEGO® set");
+                    alert.show(); 
+            }
 
-            // ciclo su tutti gli oggetti e accedi alle loro proprietà
-            for (var i = 0; i < oggetti.length; i++) {
-                var oggetto = oggetti[i];
-                //getImg(oggetto.set_id);
-            }  
         });
 
-
+        
 
     </script>
 </head>

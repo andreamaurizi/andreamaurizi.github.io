@@ -10,16 +10,26 @@
 <body>
     <script>
         var sets = localStorage.getItem("mySet");
-        var set = JSON.parse(sets);
-        if(set.length <= 4){
-            var max = set.length;
+
+        if(sets){
+            var set = JSON.parse(sets);
+            
+            
+            if(set.length <= 4){
+                var max = set.length;
+            }
+            else{
+                var max = 4;
+            }
+            for (var i = 0; i < max; i++) {
+                var setIDValue = set[i].set_id;
+                getImg(setIDValue);
+            }
         }
         else{
-             var max = 4;
-        }
-        for (var i = 0; i < max; i++) {
-            var setIDValue = set[i].set_id;
-            getImg(setIDValue);
+            var alert = $('.alert.success');
+                alert.find('.alertText').html("Non ci sono LEGO® set");
+                alert.show(); 
         }
        // document.querySelector(".parti").innerHTML = JSON.stringify(part);
     </script>
@@ -36,6 +46,9 @@
         <ul id="dialog-content">
         </ul>
     </div>
+
+
+
 
     <script>
         var listContainer = document.getElementById('lista');

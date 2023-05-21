@@ -25,7 +25,6 @@ session_start();
       $(".navbar__links").click(function () {
         $(".div_dinamico").load(this.innerHTML + ".html",
           function (responseTxt, statusTxt, xhr) {
-
             if (statusTxt == "error") alert("Errore" + xhr.status + ":" + xhr.statusText);
           });
       })
@@ -42,6 +41,9 @@ session_start();
         $(".alert").hide();
       })
 
+      $("#placeholder").click(function(){
+        $(this).removeAttr('placeholder');
+      })
 
 
 
@@ -122,12 +124,10 @@ session_start();
                 });
         }
       };
-      
-      
     }
   </script>
 
-
+  <script></script>
 
 </head>
  
@@ -168,7 +168,7 @@ session_start();
 
     <div class="container">
       <form id="search-bar" action="setUtente.php" class="search-bar" method="POST" onsubmit="mostraCustomAlert();">
-        <input type="text" placeholder="Enter Lego Set Name" name="set">
+        <input type="text" placeholder="Enter Lego Set Name" name="set" id="placeholder">
         <button type="submit"><img src="/Img/search.png" id="lente"></button>
       </form>
 
