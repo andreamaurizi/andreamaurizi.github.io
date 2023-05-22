@@ -282,7 +282,7 @@ function handleElementClick(event) {
                 var newItem = document.createElement("li");
                 newItem.classList.add("part-item");
                 newItem.className = "part-id"
-                var partquantity = part_id + " : " + quantity + "(" + myQuantity + ")";
+                var partquantity = part_id + " : " + quantity +"   "+      "(" + myQuantity + ")";
 
 
 
