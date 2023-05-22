@@ -3,9 +3,8 @@ const menuLinks = document.querySelector('.navbar__menu')
 const buttonSearch = document.getElementsByClassName('searchDiv');
 
 
-
 menu.addEventListener('click',function(){
-    menu.classList.toggle('is-active') 
+    menu.classList.toggle('is-active')
     menuLinks.classList.toggle('active') /*Toggle nasconde l'elemento 'active' da style.css */
 })
 

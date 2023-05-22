@@ -366,6 +366,8 @@
   top: 350px;
 }
 
+
+
 @media screen and (max-width: 768px) and (orientation: portrait) {
   .div_dinamico {
     position: absolute;
@@ -428,24 +430,3 @@
   }
 }
 
-/*.container2 {
-  max-width: 960px; 
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.search-bar2 {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.button-container2 {
-  display: flex;
-  justify-content: space-between;
-}
-
-.button2 {
-  flex: 1;
-  margin-right: 10px;
-}*/

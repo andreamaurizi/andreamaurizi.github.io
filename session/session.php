@@ -170,7 +170,6 @@ session_start();
         <button type="submit"><img src="/Img/search.png" id="lente"></button>
       </form>
 
-      <!-- Questa roba è per far funzionare la camera -->
 
       <div class="searchDiv">
         <button id="Camera" class="Camera" onclick="openCamera()">Camera</button>
@@ -194,12 +193,18 @@ session_start();
       </label>
     </div>
 
-    
-    
-
     <div class="div_dinamico"></div>
 
+    
+
+    
+
+
+    
+
   <?php else: ?>
+
+    
 
     <script>
       setTimeout(function () {
