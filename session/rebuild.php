@@ -113,7 +113,8 @@
                 
 
 
-                // QUESTA ROBA SERVE PER RIEMPIRE LA TABELLA MISSING PARTS
+                //TABELLA MISSING PARTS
+
                 //Caso in cui la parte del set compare nelle parti utente
                 if(in_array($partStringa, $myParts_id)){
                     // Troviamo l'indice in cui compare questa parte in myPartss_id
@@ -149,7 +150,7 @@
                         }
                     //Se la quantità dell'utente è maggiore di quella del set
                     } else {
-                        //Non dobbiamo fare un cazzo in verità qualcosa si
+                        //Non dobbiamo fare nulla
                     }
 
                 }

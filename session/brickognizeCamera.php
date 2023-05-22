@@ -38,7 +38,6 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     // Display the response content for debugging
     //echo $response;
 
-    // FINO A QUA FUNZIONA
 
     // Decode the response JSON
     $responseData = json_decode($response, true);
