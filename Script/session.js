@@ -1,3 +1,4 @@
+// Questa variabile servirà a contenere l'oggetto stream
 let stream = null;
 
 
@@ -22,8 +23,13 @@ function openCamera() {
 async function startCamera() {
     const video = document.getElementById('video');
 
+
+    // Chiediamo l'accesso alla fotocamera dell'utente con navigator.mediaDevices.getUserMedia
+    // La proprietà del video è true perché il feed della camera deve essere incluso
+    // await fa sì che questo oggetto venga assegnato a stream prima di provedere con il codice
     stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
+    // Assegniamo questo elemento a video e lo facciamo partire
     video.srcObject = stream;
     video.play();
 
@@ -33,12 +39,19 @@ function captureImage() {
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
 
+    // Chiamiamo il metodo getContext('2d') per ottenere un rendering in 2d
+    // drawImage disegna il frame corrente del video sulla canvas. Le coordinate sono 0,0, altezza canvas, larghezza canvas
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+    // toDataURL converte il contenuto della canvas in una URL che rappresenta l'immagine
     const dataUrl = canvas.toDataURL('image/png');
     console.log(dataUrl);
 
     // Il video stream viene fermato
+    // il metodo getTracks() viene chiamato su stream per recuperare un array di oggetti
+    // di tipo MediaStreamTrack, che sono associati alla stream.
+    // Con il forEach iteriamo su ognuno di questi oggetti e li stoppiamo con track.stop
     stream.getTracks().forEach(track => track.stop());
+    // Viene assegnato null al video per eliminare l'associazione con l'oggetto stream
     video.srcObject = null;
 
 
@@ -47,8 +60,10 @@ function captureImage() {
     img.src = dataUrl;
 
     
-
+    // Un BLOB è un binary large object, solitamente un file
     // Trasformiamo l'immagine della canvas in un oggetto blob
+    // Il metodo toBlob accetta una callback function, che viene eseguita quando il Blob 
+    // viene creato
     canvas.toBlob(function(blob) {
         // Creiamo la variabile file
         var file = new File([blob], 'captured-image.jpg', { type: 'image/jpeg' });
@@ -318,7 +333,9 @@ function handleElementClickBrickognize(event) {
     }
     var set = document.getElementById(elementId).getAttribute("alt");
 
+    // Creiamo un oggetto del tipo URLSearchParams
     var data = new URLSearchParams();
+    // Aggiungiamo a questo oggettoil numero del set
     data.append("set", set);
   
     // Mandiamo la richiesta con fetch
@@ -347,6 +364,7 @@ function handleElementClickBrickognize(event) {
         console.log(error);
       });
     
+    // Tutte le immagini vengono cancellate da schermo 
     var dialogList = document.getElementById('lista');
     dialogList.innerHTML = '';
 }
