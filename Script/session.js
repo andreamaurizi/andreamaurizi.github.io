@@ -5,7 +5,6 @@ let stream = null;
 function openCamera() {
     var CameraButton = document.getElementById("Camera");
     var FileButton = document.getElementById("File");
-    var SearchBar = document.getElementById("search-bar");
     
     if (CameraButton.innerHTML === "Camera") {
         CameraButton.innerHTML = "Take picture";
@@ -22,7 +21,6 @@ function openCamera() {
 
 async function startCamera() {
     const video = document.getElementById('video');
-    const canvas = document.getElementById('canvas');
 
     stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
@@ -78,7 +76,7 @@ function captureImage() {
         })
         .then(function(data) {
             // Handle the response data
-            console.log(data);
+            //console.log(data);
             localStorage.setItem("brickognizeData", data);
             $(".div_dinamico").load("brickognize.html",
                 function (responseTxt, statusTxt, xhr) {
