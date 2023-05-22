@@ -10,15 +10,14 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script>
         $(document).ready(function (event) {
-            // Impedisce il comportamento predefinito del modulo
             var jsonString = localStorage.getItem("brickognizeData");
 
             console.log(jsonString);
 
-            // Parse JSON string to JavaScript object
+            // Faciamo il parse di data
             var data = JSON.parse(jsonString);
 
-            // Loop through each element
+            // Scandiamo ogni elemento
             for (var key in data) {
                 if (data.hasOwnProperty(key)) {
                     var element = data[key];

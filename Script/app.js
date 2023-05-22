@@ -5,12 +5,12 @@ const buttonSearch = document.getElementsByClassName('searchDiv');
 
 menu.addEventListener('click',function(){
     menu.classList.toggle('is-active')
-    menuLinks.classList.toggle('active') /*Toggle nasconde l'elemento 'active' da style.css */
+    menuLinks.classList.toggle('active') /*Toggle attiva/disattiva al click l'elemento 'active' da style.css */
 })
 
 menuLinks.addEventListener('click',function(){
     menu.classList.toggle('is-active') 
-    menuLinks.classList.toggle('active') /*Toggle nasconde l'elemento 'active' da style.css */
+    menuLinks.classList.toggle('active') /*Toggle attiva/disattiva al click l'elemento 'active' da style.css */
 })
 
 

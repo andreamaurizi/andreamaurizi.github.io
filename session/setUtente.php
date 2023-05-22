@@ -58,7 +58,7 @@
                     //print_r($tuple3["id_set"]);
                     $mySetArray = array();
                     while ($row = pg_fetch_assoc($result3)) {
-                        // prepend each row to the beginning of the array
+                        // Inserisce ogni riga all'inizio dell'array
                             array_unshift($mySetArray, array('set_id' => $row['set_id']));
                         }
 
@@ -85,10 +85,10 @@
 
                    
                 
-                    $data = array(); // initialize an array to hold the data
+                    $data = array(); 
 
                     while ($row = pg_fetch_assoc($result)) {
-                    // prepend each row to the beginning of the array
+                    // Aggiungiamo ogni riga all'inizio dell'array
                         array_unshift($data, array('part_id' => $row['part_id'], 'total_value' => $row['total_value']));
                     }
                     

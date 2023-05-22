@@ -45,13 +45,13 @@
         $myParts_id = array();
         $myPartsQuantity = array();
 
-        // iterate through each row of the matrix
+        // Iteriamo su ogni riga della matrice
         foreach ($myPartsArray as $row) {
-            // access the desired column by its index and append its value to the column_values array
+            // Accediamo alla colonna desiderata tramite l'indice e appendiamo il valore alla colonna "part_id"
             $myParts_id[] = $row["part_id"];
         }
         foreach ($myPartsArray as $row) {
-            // access the desired column by its index and append its value to the column_values array
+            // Idem a sopra
             $myPartsQuantity[] = $row["quantity"];
         }
 
@@ -76,7 +76,7 @@
         // Creiamo un array con tutti i set
         $everySetArray = array();
         while ($row = pg_fetch_assoc($result1)) {
-        // prepend each row to the beginning of the array
+        // Inseriamo ogni riga all'inizio dell'array
             array_unshift($everySetArray, array('set_id' => $row['set_id']));
         }
         // Creiamo un array che contiene i set con più di 80% match

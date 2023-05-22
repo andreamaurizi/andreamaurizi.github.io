@@ -1,69 +1,59 @@
 <?php
 
-// API endpoint
+// Questo è l'endpoint dell'API di brickognize
 $apiUrl = "https://api.brickognize.com/predict/";
 
-//var_dump($_FILES);
 
 
-
-// Check if the image file is received
+// Controlliamo se il file sia stato ricevuto
 if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
 
-    // Get the uploaded file details
     $file = $_FILES['image'];
 
-    // Create a cURL file handle
+    // Creiamo un fileHandle cURL
     $imageFile = new CURLFile($file['tmp_name'], $file['type'], $file['name']);
 
-    // Create the request body
+    // Inseriamo nel campo query_image il nostro imageFile
     $requestData = [
         'query_image' => $imageFile,
     ];
 
-    // Set up the cURL request
+    //Facciamo il setup della richiesta cURL
     $curl = curl_init($apiUrl);
     curl_setopt($curl, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_POSTFIELDS, $requestData);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-    // Execute the cURL request
+    // Eseguiamo la richiesta cURL
     $response = curl_exec($curl);
 
-    // Check if the request was successful
+    //  Controllo di successo della richiesta
     if ($response === false) {
         die("Error: " . curl_error($curl));
     }
 
-    // Display the response content for debugging
-    //echo $response;
-
-
-    // Decode the response JSON
+    // Decodifichiamo la risposta JSON
     $responseData = json_decode($response, true);
 
-    // Check if the response is valid JSON
     if ($responseData === null && json_last_error() !== JSON_ERROR_NONE) {
         die("Error: Invalid JSON response");
     }
 
-    // Check if the response contains predictions
+    // Controlliamo se la risposta contenga predizioni
     if (!isset($responseData['items']) || !is_array($responseData['items'])) {
         die("Error: Missing or invalid predictions in the API response");
     }
 
-    // Access the prediction items
     $items = $responseData['items'];
 
-    // Check if predictions exist
+    // Controlliamo se esistano predizioni
     if (empty($items)) {
         die("No predictions found");
     }
 
-    // Create an associative array to store the objects
     $predictions = array();
 
-    // Populate the associative array with prediction objects
+    // Riempiamo l'array predidiction con i vari elementi restituiti dall'API
     foreach ($items as $item) {
         $prediction = array(
             'id' => isset($item['id']) ? $item['id'] : "Unknown",

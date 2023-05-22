@@ -22,10 +22,7 @@
         if (isset($_POST['set'])) {
             $set = $_POST['set'];
           
-            // Process the number or perform any desired actions
-            // ...
-          
-            // Send a response back to the JavaScript if needed
+
           }
         $id_n = $_SESSION["user_id"];
         $q1 = "select * from parts where set_id= $1";
@@ -62,10 +59,9 @@
                     $q3 = "select * from setutente, UNNEST(id_set) as set_id where id_n= $1";
                     $result3 = pg_query_params($pg_connect, $q3, array($_SESSION["user_id"]));
                    
-                    //print_r($tuple3["id_set"]);
                     $mySetArray = array();
                     while ($row = pg_fetch_assoc($result3)) {
-                        // prepend each row to the beginning of the array
+                        // Aggiungiamo ogni riga all'inizio dell'array
                             array_unshift($mySetArray, array('set_id' => $row['set_id']));
                         }
 
@@ -92,10 +88,10 @@
 
                    
                 
-                    $data = array(); // initialize an array to hold the data
+                    $data = array(); 
 
                     while ($row = pg_fetch_assoc($result)) {
-                    // prepend each row to the beginning of the array
+                    // Aggiungiamo ogni riga all'inizio dell'array
                         array_unshift($data, array('part_id' => $row['part_id'], 'total_value' => $row['total_value']));
                     }
                     

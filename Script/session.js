@@ -37,37 +37,36 @@ function captureImage() {
     const dataUrl = canvas.toDataURL('image/png');
     console.log(dataUrl);
 
-    // Stop the video stream
+    // Il video stream viene fermato
     stream.getTracks().forEach(track => track.stop());
     video.srcObject = null;
 
-    // Show the captured image on the page
+
+    // Mettiamo l'immagine in una variabile img
     const img = new Image();
     img.src = dataUrl;
-    //document.body.appendChild(img);
 
     
 
-    // Convert the canvas image to a Blob object
+    // Trasformiamo l'immagine della canvas in un oggetto blob
     canvas.toBlob(function(blob) {
-        // Convert the Blob to a File object with a desired filename and MIME type
+        // Creiamo la variabile file
         var file = new File([blob], 'captured-image.jpg', { type: 'image/jpeg' });
 
-        // Use the captured file as needed (e.g., send it to the PHP script)
-        console.log(file);
+        //console.log(file);
 
         
         var formData = new FormData();
         formData.append("image", file, "captured-image.jpg");
 
         
-        // Send the FormData object to the PHP script using fetch
+        // Mandiamo l'oggetto formData al php con la fetch
         fetch('brickognizeCamera.php', {
             method: 'POST',
             body: formData
         })
         .then(function(response) {
-            // Check if the response was successful
+            // Controlliamo se la risposta ha avuto successo
             if (response.ok) {
                 return response.text();
             } else {
@@ -75,7 +74,6 @@ function captureImage() {
             }
         })
         .then(function(data) {
-            // Handle the response data
             //console.log(data);
             localStorage.setItem("brickognizeData", data);
             $(".div_dinamico").load("brickognize.html",
@@ -86,7 +84,6 @@ function captureImage() {
                 });
         })
         .catch(function(error) {
-            // Handle any errors
             console.error(error);
         });
 
@@ -119,6 +116,7 @@ function getImg(setId) {
 
 };
 
+// Come getImg ma per rebuild
 function getImg2(setId, percentuale, parti_totali, parti_mancanti) {
     $.ajax({
         type: 'POST',
@@ -172,6 +170,7 @@ function settaImmagine(nome, imageURL, setId) {
 
 }
 
+// Come settaImmagine ma per rebuild
 function settaImmagine2(nome, imageURL, setId, percentuale, parti_totali, parti_mancanti) {
     var elementList = document.getElementById("lista");
 
@@ -207,6 +206,7 @@ function settaImmagine2(nome, imageURL, setId, percentuale, parti_totali, parti_
     // Aggiungi l'immagine e il testo come figli del nuovo elemento <li>
     newItem.appendChild(newImage);
     
+    // esclusivo a rebuild
     newItem.appendChild(percentualeText);
     newItem.appendChild(partiText);
 
@@ -309,6 +309,7 @@ function handleElementClick(event) {
     });
 }
 
+// L'handleElementClick di Brickognize
 function handleElementClickBrickognize(event) {
     var elementId = event.target.id;
 
@@ -317,12 +318,10 @@ function handleElementClickBrickognize(event) {
     }
     var set = document.getElementById(elementId).getAttribute("alt");
 
-
-    // Create the request data
     var data = new URLSearchParams();
     data.append("set", set);
   
-    // Send the request using fetch
+    // Mandiamo la richiesta con fetch
     fetch("setUtenteBrickognize.php", {
       method: "POST",
       body: data
@@ -335,7 +334,6 @@ function handleElementClickBrickognize(event) {
         }
       })
       .then(function(result) {
-        // Request was successful, do something with the response
         console.log(result);
         var alert = $('.alert.success');
                     alert.find('.alertText').html(result);
@@ -346,7 +344,6 @@ function handleElementClickBrickognize(event) {
                       }, 3000);
       })
       .catch(function(error) {
-        // Request failed
         console.log(error);
       });
     
