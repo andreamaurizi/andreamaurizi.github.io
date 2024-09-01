@@ -1,2 +1,2 @@
 # Progetto-Lego-Ltw
-Questa è la cartella github per il progetto di LTW 2023. Il progetto consiste in un sito che prende in input i tuoi lego set e restituisce tutti i set che puoi costruire con i mattoncini che già possiedi
+This is the github folder for the exam "Languages and technologies for the web 2023". The project consists of a website that collects and stores your Lego Sets and returns every Lego Set you can build with the bricks you already have. Your Lego Sets can be entered into the database either by code or with a picture of your Lego Set.
