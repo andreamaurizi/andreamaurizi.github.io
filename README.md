@@ -17,11 +17,10 @@ The ReBuild Website Project, developed for the "Languages and Technologies for t
 
 ## Technologies Used
 
-- **Frontend**: [Specify technologies, e.g., HTML, CSS, JavaScript, React]
-- **Backend**: [Specify technologies, e.g., Node.js, Express]
-- **Database**: [Specify database, e.g., MySQL, PostgreSQL]
-- **API Integration**: [Specify API, e.g., LEGO Set Recognition API]
-- **Other**: [Include any other relevant technologies or tools]
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: PHP
+- **Database**: PostgreSQL
+- **API Integration**: Brickognize API
 
 
 
@@ -31,18 +30,9 @@ The ReBuild Website Project, developed for the "Languages and Technologies for t
 - **Adding LEGO Sets**: Use the interface to either input set IDs or upload images for automatic recognition.
 - **View Recommendations**: Navigate to the recommendations section to see what sets you can build or need additional pieces for.
 
-## Contributing
 
-Feel free to submit pull requests or open issues for any bugs or feature requests. Your contributions are welcome!
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Contact
-
-For any questions or further information, please contact [Your Name](mailto:your.email@example.com).
-
----
-
-Feel free to customize this README with specific details about your project’s technologies, setup instructions, and any other relevant information.
